@@ -70,7 +70,8 @@ your extension.
 9. Go to https://github.com/nwb-extensions/staged-extensions and fork the
 repository to your local filesystem.
 
-10. Make a new folder `{{ cookiecutter.namespace }}` in `staged-extensions/`.
+10. Copy the directory `staged-extensions/example` to a new directory
+`staged-extensions/{{ cookiecutter.namespace }}`.
 
 11. Edit `staged-extensions/{{ cookiecutter.namespace }}/ndx-meta.yaml`
 with information on where to find your NWB extension.
@@ -80,7 +81,7 @@ with information on where to find your NWB extension.
     - src: <URL> : URL to the public repository with the sources of the extension
     - pip: <URL> : URL for installing the extensions from PyPi
     - license: <license> : name of the license of the extension
-    - extension-maintainers: {{ cookiecutter.github-name }} : list of GitHub
+    - maintainers: {{ cookiecutter.github-name }} : list of GitHub
     usernames of those who will reliably maintain the extension
 
 12. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`
