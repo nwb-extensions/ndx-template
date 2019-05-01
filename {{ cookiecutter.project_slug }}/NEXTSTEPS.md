@@ -1,0 +1,111 @@
+# Next Steps for {{ cookiecutter.namespace }} Extension for NWB:N
+
+## Creating Your Extension
+
+1. In a terminal, change directory into the new {{ cookiecutter.project_slug }}
+directory.
+
+2. Run `python setup.py install` to load the `pynwb` module and any other
+packages required by your extension that you listed within `setup.py`.
+
+3. Modify `src/create_extension_spec.py` to define your extension.
+
+If you want to create any custom classes for interacting with the extension,
+create a directory called `pynwb-src` and add them there.
+  - If present, the `pynwb-src` folder MUST contain the following:
+    - `{{ cookiecutter.namespace }}`: Folder with the sources of the NWB extension
+    - `{{ cookiecutter.namespace }}/__init__.py`: Python file that may be empty
+    - `requirements.txt`: Text file listing the Python package requirements for the extension
+    - `README.md`: Markdown file describing the NWB extension
+    - `setup.py`: Python script to install the extension<sup>1</sup>
+  - If present, the `pynwb-src` folder MAY contain the following files/folders:
+    - `test`: Folder for unit tests for the extensions
+    - `jupyter-widgets`: Optional package with custom widgets for use with Jupyter
+
+4. Run `python src/create_extension_spec.py` to generate the
+`spec/{{ cookiecutter.namespace }}.namespace.yaml` and
+`spec/{{ cookiecutter.namespace }}.extensions.yaml` files.
+
+5. You may need to modify `setup.py` and re-run `python setup.py install` if you
+use any dependencies.
+
+<sup>1</sup>: Make sure to include to ensure the YAML files in the installation:
+```python
+setup(...
+      package_data={'': [
+        '{{ cookiecutter.namespace }}.namespace.yaml',
+        '{{ cookiecutter.namespace }}.extensions.yaml'
+      ]},
+      include_package_data=True)
+```
+
+
+## Documenting and Publishing Your Extension to the Community
+
+1. Make your extension directory {{ cookiecutter.project_slug }} a git
+repository and push it to GitHub. You will need a GitHub account.
+  - Follow these directions:
+  https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line
+
+2. Change directory into `docs`.
+
+3. Run `make apidoc` to generate documentation for your extension based on the
+YAML files.
+
+4. Run `make html` to generate documentation for your extension based on the
+YAML files.
+
+5. Read `docs/README.md` for instructions on how to customize documentation for
+your extension.
+
+6. Modify `README.md` to describe this extension for interested developers.
+
+7. Add a license file. Permissive licenses should be used if possible.
+**BSD license is recommended.**
+
+8. Publish your updated extension on PyPi.
+  - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
+  - You may need to modify `setup.py`
+
+9. Go to https://github.com/nwb-extensions/staged-extensions and fork the
+repository to your local filesystem.
+
+10. Make a new folder `{{ cookiecutter.namespace }}` in `staged-extensions/`.
+
+11. Edit `staged-extensions/{{ cookiecutter.namespace }}/ndx-meta.yaml`
+with information on where to find your NWB extension.
+  - The YAML file MUST contain a dict with the following keys:
+    - name: {{ cookiecutter.namespace }}
+    - version: {{ cookiecutter.version }}
+    - src: <URL> : URL to the public repository with the sources of the extension
+    - pip: <URL> : URL for installing the extensions from PyPi
+    - license: <license> : name of the license of the extension
+    - extension-maintainers: {{ cookiecutter.github-name }} : list of GitHub
+    usernames of those who will reliably maintain the extension
+
+12. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`
+to add information about your extension. You may copy it from
+`{{ cookiecutter.namespace }}/README.md`.
+
+13. Open a pull request. Building of your extension will be tested on Windows,
+Mac, and Linux. The technical team will review your extension shortly after
+and provide feedback and request changes, if any.
+
+14. When your pull request is merged, a new repository, called
+{{ cookiecutter.namespace }}-feedstock will be created in the nwb-extensions
+GitHub organization and you will be added as a maintainer for that repository.
+
+
+## Updating Your Published Extension
+
+1. Update your {{ cookiecutter.namespace }} GitHub repository.
+
+2. Publish your updated extension on PyPi.
+
+3. Fork the {{ cookiecutter.namespace }}-feedstock repository on GitHub.
+
+4. Open a pull request to test the changes automatically. The technical team
+will review your changes shortly after and provide feedback and request changes,
+ if any.
+
+5. Your updated extension is approved.
