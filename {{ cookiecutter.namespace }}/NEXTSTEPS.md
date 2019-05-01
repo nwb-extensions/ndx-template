@@ -2,7 +2,7 @@
 
 ## Creating Your Extension
 
-1. In a terminal, change directory into the new {{ cookiecutter.project_slug }}
+1. In a terminal, change directory into the new {{ cookiecutter.namespace }}
 directory.
 
 2. Run `python setup.py install` to load the `pynwb` module and any other
@@ -42,7 +42,7 @@ setup(...
 
 ## Documenting and Publishing Your Extension to the Community
 
-1. Make your extension directory {{ cookiecutter.project_slug }} a git
+1. Make your extension directory {{ cookiecutter.namespace }} a git
 repository and push it to GitHub. You will need a GitHub account.
   - Follow these directions:
   https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line

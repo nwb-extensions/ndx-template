@@ -1,10 +1,9 @@
 {
-  "namespace": "my_namespace",
-  "project_slug": "{{ cookiecutter.namespace.lower().replace(' ', '_').replace('-', '_') }}",
+  "namespace": "ndx-my-namespace",
   "description": "An NWB:N extension",
   "author": "My Name",
   "email": "my_email@example.com",
-  "github-name": "myname"
+  "github-name": "myname",
   "copyright": "2019, {{ cookiecutter.author }}",
   "version": "0.1.0",
   "release": "alpha"

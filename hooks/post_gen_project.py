@@ -1,1 +1,1 @@
-print('\nSuccess! Directory {{ cookiecutter.project_slug }} was created with a skeleton for your new NWB:N extension.\nPlease see {{ cookiecutter.project_slug }}/NEXTSTEPS.md for creating and publishing your extension.')
+print('\nSuccess! Directory {{ cookiecutter.namespace }} was created with a skeleton for your new NWB:N extension.\nPlease see {{ cookiecutter.namespace }}/NEXTSTEPS.md for creating and publishing your extension.')
