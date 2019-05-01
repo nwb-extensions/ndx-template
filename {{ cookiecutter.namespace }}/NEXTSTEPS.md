@@ -81,7 +81,7 @@ with information on where to find your NWB extension.
     - src: <URL> : URL to the public repository with the sources of the extension
     - pip: <URL> : URL for installing the extensions from PyPi
     - license: <license> : name of the license of the extension
-    - maintainers: {{ cookiecutter.github-name }} : list of GitHub
+    - maintainers: {{ cookiecutter.github_name }} : list of GitHub
     usernames of those who will reliably maintain the extension
 
 12. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`

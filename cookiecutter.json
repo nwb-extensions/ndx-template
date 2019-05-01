@@ -3,7 +3,7 @@
   "description": "An NWB:N extension",
   "author": "My Name",
   "email": "my_email@example.com",
-  "github-name": "myname",
+  "github_name": "myname",
   "copyright": "2019, {{ cookiecutter.author }}",
   "version": "0.1.0",
   "release": "alpha"
