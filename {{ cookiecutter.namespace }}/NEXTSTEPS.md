@@ -68,8 +68,8 @@ your extension.
 **BSD license is recommended.**
 
 8. Publish your updated extension on PyPi.
-  - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
-  - You may need to modify `setup.py`
+    - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
+    - You may need to modify `setup.py`
 
 9. Go to https://github.com/nwb-extensions/staged-extensions and fork the
 repository to your local filesystem.
@@ -79,14 +79,14 @@ repository to your local filesystem.
 
 11. Edit `staged-extensions/{{ cookiecutter.namespace }}/ndx-meta.yaml`
 with information on where to find your NWB extension.
-  - The YAML file MUST contain a dict with the following keys:
-    - name: {{ cookiecutter.namespace }}
-    - version: {{ cookiecutter.version }}
-    - src: <URL> : URL to the public repository with the sources of the extension
-    - pip: <URL> : URL for installing the extensions from PyPi
-    - license: <license> : name of the license of the extension
-    - maintainers: {{ cookiecutter.github_name }} : list of GitHub
-    usernames of those who will reliably maintain the extension
+    - The YAML file MUST contain a dict with the following keys:
+      - name: {{ cookiecutter.namespace }}
+      - version: {{ cookiecutter.version }}
+      - src: <URL> : URL to the public repository with the sources of the extension
+      - pip: <URL> : URL for installing the extensions from PyPi
+      - license: <license> : name of the license of the extension
+      - maintainers: {{ cookiecutter.github_name }} : list of GitHub
+      usernames of those who will reliably maintain the extension
 
 12. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`
 to add information about your extension. You may copy it from
