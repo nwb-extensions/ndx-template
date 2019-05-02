@@ -4,7 +4,7 @@ from email.utils import parseaddr
 
 PREF_NAMESPACE_REGEX = r'^[\-a-z]+$'
 REQ_NAMESPACE_REGEX = r'^[\-_a-zA-Z0-9]+$'
-GITHUB_USERNAME_REGEX = r'/^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$/i'
+GITHUB_USERNAME_REGEX = r'^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$'
 
 namespace = '{{ cookiecutter.namespace }}'
 email = '{{ cookiecutter.email }}'
@@ -25,5 +25,5 @@ if '@' not in parseaddr(email)[1]:
     print(f'WARNING: The email address you entered "{email}" does not appear to '
           'be a valid email address. Are you sure you entered it correctly?')
 if not re.match(GITHUB_USERNAME_REGEX, github_name):
-    print(f'WARNING: The GitHub username you entered "{email}" does not appear '
+    print(f'WARNING: The GitHub username you entered "{github_name}" does not appear '
           'to be a valid GitHub username. Are you sure you entered it correctly?')
