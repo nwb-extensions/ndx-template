@@ -92,11 +92,13 @@ with information on where to find your NWB extension.
 to add information about your extension. You may copy it from
 `{{ cookiecutter.namespace }}/README.md`.
 
-13. Open a pull request. Building of your extension will be tested on Windows,
+13. Git commit and push your changes to GitHub.
+
+14. Open a pull request. Building of your extension will be tested on Windows,
 Mac, and Linux. The technical team will review your extension shortly after
 and provide feedback and request changes, if any.
 
-14. When your pull request is merged, a new repository, called
+15. When your pull request is merged, a new repository, called
 {{ cookiecutter.namespace }}-feedstock will be created in the nwb-extensions
 GitHub organization and you will be added as a maintainer for that repository.
 
