@@ -26,7 +26,8 @@
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.ifconfig']
+              'sphinx.ext.ifconfig',
+              'sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -160,6 +161,9 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
+# -- Options for intersphinx  ---------------------------------------------
+
+intersphinx_mapping = {'core': ('https://nwb-schema.readthedocs.io/en/latest/', None)}
 
 
 
