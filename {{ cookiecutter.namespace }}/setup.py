@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 setup_args = {
     'name': '{{ cookiecutter.namespace }}',
     'version': '{{ cookiecutter.version }}',
-    'description': '{{ cookiecutter.version }}',
+    'description': '{{ cookiecutter.description }}',
     'author': '{{ cookiecutter.author }}',
     'author_email': '{{ cookiecutter.email }}',
     'url': '',
