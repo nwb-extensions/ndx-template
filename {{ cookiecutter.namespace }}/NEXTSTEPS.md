@@ -42,18 +42,20 @@ setup(...
 
 ## Documenting and Publishing Your Extension to the Community
 
-1. Start a git repository for your extension directory {{ cookiecutter.namespace }}
+1. Clone the latest nwb-docutils repository https://github.com/nwb-extensions-test/ndx-template.git
+or install the latest release:
+`python -m pip install nwb-docutils`
+    - If you cloned the latest version, run `python setup.py install` to install nwb-docutils locally.
+
+2. Start a git repository for your extension directory {{ cookiecutter.namespace }}
  and push it to GitHub. You will need a GitHub account.
     - Follow these directions:
   https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line
 
-2. Change directory into `docs`.
+3. Change directory into `docs`.
 
-3. Run `make apidoc` to generate documentation for your extension based on the
-YAML files.
-
-4. Run `make html` to generate documentation for your extension based on the
-YAML files.
+4. Run `nwb_generate_format_docs` and then `make html` to generate documentation 
+for your extension based on the YAML files.
 
 5. Read `docs/README.md` for instructions on how to customize documentation for
 your extension.
