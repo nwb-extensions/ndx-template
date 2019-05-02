@@ -10,14 +10,14 @@ ns_builder = NWBNamespaceBuilder(doc='{{ cookiecutter.description }}',
 
 # CHANGEME
 # define the new data types
-# comparment_series = NWBGroupSpec(
+# compartment_series = NWBGroupSpec(
 #     neurodata_type_def='CompartmentSeries',
 #     neurodata_type_inc='TimeSeries',
 #     doc='Stores continuous data from cell compartments',
 #     links=[
 #         NWBLinkSpec(name='compartments',
 #                     target_type='Compartments',
-#                     doc='meta-data about compartments in this CompartmentSeries',
+#                     doc='metadata about compartments in this CompartmentSeries',
 #                     quantity='?')
 #     ]
 # )
