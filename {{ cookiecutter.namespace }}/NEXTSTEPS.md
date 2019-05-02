@@ -5,10 +5,13 @@
 1. In a terminal, change directory into the new {{ cookiecutter.namespace }}
 directory.
 
-2. Run `python setup.py install` to load the `pynwb` module and any other
-packages required by your extension that you listed within `setup.py`.
+2. Add any packages required by your extension to `requirements.txt` and 
+`setup.py`.
 
-3. Modify `src/create_extension_spec.py` to define your extension.
+3. Run `python -m pip install -r requirements.txt` to load the `pynwb` module 
+and any other packages required by your extension.
+
+4. Modify `src/create_extension_spec.py` to define your extension.
 
     - If you want to create any custom classes for interacting with the extension,
   create a directory called `pynwb-src` and add them there.
@@ -22,11 +25,11 @@ packages required by your extension that you listed within `setup.py`.
         - `test` - Folder for unit tests for the extensions
         - `jupyter-widgets` - Optional package with custom widgets for use with Jupyter
 
-4. Run `python src/create_extension_spec.py` to generate the
+5. Run `python src/create_extension_spec.py` to generate the
 `spec/{{ cookiecutter.namespace }}.namespace.yaml` and
 `spec/{{ cookiecutter.namespace }}.extensions.yaml` files.
 
-5. You may need to modify `setup.py` and re-run `python setup.py install` if you
+6. You may need to modify `setup.py` and re-run `python setup.py install` if you
 use any dependencies.
 
 <sup>1</sup>: Make sure to include to ensure the YAML files in the installation:
