@@ -10,17 +10,17 @@ packages required by your extension that you listed within `setup.py`.
 
 3. Modify `src/create_extension_spec.py` to define your extension.
 
-If you want to create any custom classes for interacting with the extension,
-create a directory called `pynwb-src` and add them there.
-  - If present, the `pynwb-src` folder MUST contain the following:
-    - `{{ cookiecutter.namespace }}`: Folder with the sources of the NWB extension
-    - `{{ cookiecutter.namespace }}/__init__.py`: Python file that may be empty
-    - `requirements.txt`: Text file listing the Python package requirements for the extension
-    - `README.md`: Markdown file describing the NWB extension
-    - `setup.py`: Python script to install the extension<sup>1</sup>
-  - If present, the `pynwb-src` folder MAY contain the following files/folders:
-    - `test`: Folder for unit tests for the extensions
-    - `jupyter-widgets`: Optional package with custom widgets for use with Jupyter
+    - If you want to create any custom classes for interacting with the extension,
+  create a directory called `pynwb-src` and add them there.
+      - If present, the `pynwb-src` folder MUST contain the following:
+        - `{{ cookiecutter.namespace }}` - Folder with the sources of the NWB extension
+        - `{{ cookiecutter.namespace }}/__init__.py` - Python file that may be empty
+        - `requirements.txt` - Text file listing the Python package requirements for the extension
+        - `README.md` - Markdown file describing the NWB extension
+        - `setup.py` - Python script to install the extension<sup>1</sup>
+      - If present, the `pynwb-src` folder MAY contain the following files/folders:
+        - `test` - Folder for unit tests for the extensions
+        - `jupyter-widgets` - Optional package with custom widgets for use with Jupyter
 
 4. Run `python src/create_extension_spec.py` to generate the
 `spec/{{ cookiecutter.namespace }}.namespace.yaml` and
@@ -42,9 +42,9 @@ setup(...
 
 ## Documenting and Publishing Your Extension to the Community
 
-1. Make your extension directory {{ cookiecutter.namespace }} a git
-repository and push it to GitHub. You will need a GitHub account.
-  - Follow these directions:
+1. Start a git repository for your extension directory {{ cookiecutter.namespace }}
+ and push it to GitHub. You will need a GitHub account.
+    - Follow these directions:
   https://help.github.com/en/articles/adding-an-existing-project-to-github-using-the-command-line
 
 2. Change directory into `docs`.
