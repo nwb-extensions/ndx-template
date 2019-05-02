@@ -2,6 +2,7 @@
 docs/_build
 docs/source/_format_auto_docs
 docs/source/_static
+!docs/source/_static/theme_overrides.css
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
