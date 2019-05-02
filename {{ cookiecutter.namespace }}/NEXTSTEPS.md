@@ -5,10 +5,10 @@
 1. In a terminal, change directory into the new {{ cookiecutter.namespace }}
 directory.
 
-2. Add any packages required by your extension to `requirements.txt` and 
+2. Add any packages required by your extension to `requirements.txt` and
 `setup.py`.
 
-3. Run `python -m pip install -r requirements.txt` to load the `pynwb` module 
+3. Run `python -m pip install -r requirements.txt` to load the `pynwb` module
 and any other packages required by your extension.
 
 4. Modify `src/create_extension_spec.py` to define your extension.
@@ -57,8 +57,7 @@ or install the latest release:
 
 3. Change directory into `docs`.
 
-4. Run `nwb_generate_format_docs` and then `make html` to generate documentation 
-for your extension based on the YAML files.
+4. Run `make html` to generate documentation for your extension based on the YAML files.
 
 5. Read `docs/README.md` for instructions on how to customize documentation for
 your extension.

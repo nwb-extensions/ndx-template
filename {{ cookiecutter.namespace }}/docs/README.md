@@ -1,10 +1,9 @@
 
 # Generate Documentation
 
-* **Generate the extension docs**
-  * To generate the extension documentation from the YAML format specs run ``make apidoc``
 * **Generate the documentation**
   * To generate the HTML version of your documentation run ``make html``. For further details, see below.
+  * The nwb_docutils package must be installed.
 
 # Customize Your Documentation
 
