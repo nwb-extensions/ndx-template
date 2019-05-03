@@ -1,6 +1,7 @@
 {
   "namespace": "ndx-my-namespace",
   "description": "An NWB:N extension",
+  "dev_language": ["Python", "MATLAB", "Neither"],
   "author": "My Name",
   "email": "my_email@example.com",
   "github_name": "myname",

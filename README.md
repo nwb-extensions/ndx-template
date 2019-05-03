@@ -29,6 +29,7 @@ throughout the template. You will be prompted for:
       - Use the naming schema "ndx-myname", e.g., "ndx-cortical-surface"
       - Use short and descriptive names
   - `description` - A description of your NDX in simple terms
+  - `dev_language` - Language for developing your extension (Python, MATLAB, neither)
   - `author` - Your name
   - `email` - Your email address
   - `github-name` - Your username on GitHub
@@ -45,5 +46,5 @@ Extension for the greater neuroscience community!
 ## Maintainers
 - [@rly](https://github.com/rly)
 - [@oruebel](https://github.com/oruebel)
-- [@adtritt](https://github.com/ajtritt)
+- [@ajtritt](https://github.com/ajtritt)
 - [@bendichter](https://github.com/bendichter)
