@@ -30,7 +30,12 @@ template automatically. You will be prompted for:
         - Use the naming schema "ndx-myname", e.g., "ndx-cortical-surface"
         - Use short and descriptive names
     - `description` - A description of your extension in simple terms
-    - `dev_language` - Language for developing your extension (Python, MATLAB, Neither)
+    - `dev_language` - Language for developing your extension (Python, MATLAB, 
+       Neither)
+      - If you want to include custom classes and functionality with your
+        extension, please select the language in whcich  those classes are written.
+      - If you intend your extension to be loaded without custom classes, select
+        Neither. 
     - `author` - Your name
     - `email` - Your email address
     - `github_name` - Your username on GitHub
