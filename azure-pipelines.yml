@@ -10,12 +10,23 @@ jobs:
 
   strategy:
     matrix:
-      Linux:
+      Linux-py3.7:
         imageName: 'ubuntu-16.04'
-      macOS:
+        pythonVersion: '3.7'
+
+      macOS-py3.7:
         imageName: 'macos-10.13'
-      Windows:
+        pythonVersion: '3.7'
+
+      Windows-py3.7:
         imageName: 'vs2017-win2016'
+        pythonVersion: '3.7'
+      Windows-py3.6:
+        imageName: 'vs2017-win2016'
+        pythonVersion: '3.6'
+      Windows-py3.5:
+        imageName: 'vs2017-win2016'
+        pythonVersion: '3.5'
 
   pool:
     vmImage: $(imageName)
@@ -24,7 +35,7 @@ jobs:
 
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.7'
+      versionSpec: '$(pythonVersion)'
       architecture: 'x64'
 
   - script: |

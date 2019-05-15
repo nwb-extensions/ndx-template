@@ -22,8 +22,8 @@ if not re.match(REQ_NAMESPACE_REGEX, namespace):
           'letters, hyphens (-), and underscores (-).')
     sys.exit(1)
 if '@' not in parseaddr(email)[1]:
-    print(f'WARNING: The email address you entered "{email}" does not appear to '
-          'be a valid email address. Are you sure you entered it correctly?')
+    print('WARNING: The email address you entered "{email}" does not appear to '
+          'be a valid email address. Are you sure you entered it correctly?'.format(email=email))
 if not re.match(GITHUB_USERNAME_REGEX, github_name):
-    print(f'WARNING: The GitHub username you entered "{github_name}" does not appear '
-          'to be a valid GitHub username. Are you sure you entered it correctly?')
+    print('WARNING: The GitHub username you entered "{github_name}" does not appear '
+          'to be a valid GitHub username. Are you sure you entered it correctly?'.format(github_name=github_name))
