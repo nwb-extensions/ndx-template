@@ -1,19 +1,40 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- master
+  branches:
+    include:
+    - master
 
-pool:
-  vmImage: 'ubuntu-latest'
+jobs:
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- job: 'Test'
+  displayName: "Evaluate cookiecutter template"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  strategy:
+    matrix:
+      Linux:
+        imageName: 'ubuntu-16.04'
+      macOS:
+        imageName: 'macos-10.13'
+      Windows:
+        imageName: 'vs2017-win2016'
+
+  pool:
+    vmImage: $(imageName)
+
+  steps:
+
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.7'
+      architecture: 'x64'
+
+  - script: |
+      python -m pip install --upgrade pip
+      python -m pip install --upgrade setuptools
+      python -m pip install cookiecutter
+    displayName: 'Install build dependencies'
+
+  - bash: |
+      python -m cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
+    displayName: 'Evaluate template'
+
+
