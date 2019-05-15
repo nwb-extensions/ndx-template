@@ -3,6 +3,10 @@ trigger:
     include:
     - master
 
+parameters:
+  pythonVersions: ['3.7', '3.6', '3.5'],
+  operatingSystems: ['ubuntu-16.04', 'macos-10.13', 'vs2017-win2016']
+
 jobs:
 
 - job: 'Test'
@@ -10,12 +14,11 @@ jobs:
 
   strategy:
     matrix:
-      Linux:
-        imageName: 'ubuntu-16.04'
-      macOS:
-        imageName: 'macos-10.13'
-      Windows:
-        imageName: 'vs2017-win2016'
+      ${{ each py in parameters.pythonVersions }}:
+        ${{ each os in parameters.operatingSystems }}:
+          ${{ format('{0}{1}', py, os) }}:
+            imageName: ${{ image }}
+            pythonVersion: ${{ py }}
 
   pool:
     vmImage: $(imageName)
@@ -24,7 +27,7 @@ jobs:
 
   - task: UsePythonVersion@0
     inputs:
-      versionSpec: '3.7'
+      versionSpec: '$(pythonVersion)'
       architecture: 'x64'
 
   - script: |
