@@ -1,11 +1,11 @@
+variables:
+  pythonVersions: ['3.7', '3.6', '3.5']
+  operatingSystems: ['ubuntu-16.04', 'macos-10.13', 'vs2017-win2016']
+
 trigger:
   branches:
     include:
     - master
-
-parameters:
-  pythonVersions: ['3.7', '3.6', '3.5'],
-  operatingSystems: ['ubuntu-16.04', 'macos-10.13', 'vs2017-win2016']
 
 jobs:
 
@@ -14,8 +14,8 @@ jobs:
 
   strategy:
     matrix:
-      ${{ each py in parameters.pythonVersions }}:
-        ${{ each os in parameters.operatingSystems }}:
+      ${{ each py in variables.pythonVersions }}:
+        ${{ each os in variables.operatingSystems }}:
           ${{ format('{0}{1}', py, os) }}:
             imageName: ${{ image }}
             pythonVersion: ${{ py }}
