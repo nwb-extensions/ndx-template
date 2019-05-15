@@ -8,4 +8,4 @@ if dev_language != 'MATLAB':
     shutil.rmtree(os.path.join(os.getcwd(), 'src', 'matnwb'))
 
 print('\nSuccess! Directory {{ cookiecutter.namespace }} was created with a skeleton for your new NWB:N extension.\n'
-      f'Please see {{ cookiecutter.namespace }}/NEXTSTEPS.md for creating and publishing your extension.')
+      'Please see {{ cookiecutter.namespace }}/NEXTSTEPS.md for creating and publishing your extension.')
