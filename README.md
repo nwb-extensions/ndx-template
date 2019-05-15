@@ -9,17 +9,16 @@ MATLAB support is in development.
 
 ## Getting started
 
-1. Clone this repository.
-2. Install [cookiecutter](https://pypi.org/project/cookiecutter/), a Python-based
+1. Install [cookiecutter](https://pypi.org/project/cookiecutter/), a Python-based
 command-line utility that creates projects from templates:
 ```bash
 python -m pip install cookiecutter
 ```
-3. Run cookiecutter on your local cloned ndx-template directory:
+2. Run cookiecutter on your local working directory:
 ```bash
-cookiecutter ndx-template
+cookiecutter gh:nwb-extensions/ndx-template
 ```
-4. Answer the prompts, which will be used to fill in the blanks throughout the 
+3. Answer the prompts, which will be used to fill in the blanks throughout the
 template automatically. You will be prompted for:
     - `namespace` - The name of the namespace for your NDX. This could be a
     description of the extension (e.g. "ndx-cortical-surface") or the name of your
@@ -42,7 +41,7 @@ template automatically. You will be prompted for:
     - `copyright` - Copyright statement, if desired
     - `version` - Version of your extension. Versioning should start at 0.1.0.
     - `release` - Release category, e.g. alpha, beta, official
-5. A new directory with the same name as your entered `namespace` will be
+4. A new directory with the same name as your entered `namespace` will be
 created. See `NEXTSTEPS.md` in that directory for the next steps in creating
 your awesome new Neurodata Extension.
 
