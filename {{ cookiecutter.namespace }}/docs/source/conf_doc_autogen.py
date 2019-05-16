@@ -1,6 +1,5 @@
-
 # -*- coding: utf-8 -*-
-#Configuration file for generating sources for the format documentation from the YAML specification files
+# Configuration file for generating sources for the format documentation from the YAML specification files
 
 import os
 
@@ -29,7 +28,7 @@ spec_output_doc_filename = 'format_spec_doc.inc'
 
 # Name of the file where the sources of the format spec go. NOTE: This file is only generated if
 # spec_generate_src_file is enabled
-spec_output_src_filename  = 'format_spec_sources.inc'
+spec_output_src_filename = 'format_spec_sources.inc'
 
 # Name of the file containing the type hierarchy. (Included in spec_output_doc_filename)
 spec_output_doc_type_hierarchy_filename = 'format_spec_type_hierarchy.inc'
@@ -60,7 +59,7 @@ spec_file_per_type = True
 # Should top-level subgroups be listed in a seperate table or as part of the main dataset and attributes table
 spec_show_subgroups_in_seperate_table = True
 
-# Appreviate the documentation of the main object for which a table is rendered in the table.
+# Abbreviate the documentation of the main object for which a table is rendered in the table.
 # This is commonly set to True as doc of the main object is alrready rendered as the main intro for the
 # section describing the object
 spec_appreviate_main_object_doc_in_tables = True
@@ -69,7 +68,7 @@ spec_appreviate_main_object_doc_in_tables = True
 spec_show_title_for_tables = True
 
 # Char to be used as prefix to indicate the depth of an object in the specification hierarchy
-spec_table_depth_char = '.' # '→' '.'
+spec_table_depth_char = '.'  # '→' '.'
 
 # Add a LaTeX clearpage after each main section describing a neurodata_type. This helps in LaTeX to keep the ordering
 # of figures, tables, and code blocks consistent in particular when the hierarchy_plots are included
@@ -81,7 +80,7 @@ spec_resolve_type_inc = False
 
 # Default type map to be used. This is the type map where dependent namespaces are stored. In the case of
 # NWB this is spec_default_type_map = pynwb.get_type_map()
-import pynwb
+import pynwb  # noqa: E402
 spec_default_type_map = pynwb.get_type_map()
 
 # Default specification classes for groups datasets and namespaces. In the case of NWB these are the NWB-specfic

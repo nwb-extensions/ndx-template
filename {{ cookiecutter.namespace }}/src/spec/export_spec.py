@@ -2,7 +2,7 @@ import os
 
 
 def export_spec(ns_builder, new_data_types):
-    '''
+    """
     Creates YAML specification files for a new namespace and extensions with
     the given new neurodata types.
 
@@ -11,7 +11,7 @@ def export_spec(ns_builder, new_data_types):
                      namespace and extension
         new_data_types - Iterable of NWB Specs that represent new data types
                          to be added
-    '''
+    """
 
     if not ns_builder.name:
         raise RuntimeError('Namespace name is required to export specs')

@@ -165,34 +165,36 @@ texinfo_documents = [
 
 intersphinx_mapping = {'core': ('https://nwb-schema.readthedocs.io/en/latest/', None)}
 
-
-
 ############################################################################
 #  CUSTOM CONFIGURATIONS ADDED BY THE NWB TOOL FOR GENERATING FORMAT DOCS
 ###########################################################################
 
-import sphinx_rtd_theme
-import os
+import sphinx_rtd_theme  # noqa: E402
+import textwrap  # noqa: E402
 
 # -- Generate sources from YAML---------------------------------------------------
-spec_doc_rebuild_always = True   # Always rebuild the source docs from YAML even if the folder with the source files already exists
+# Always rebuild the source docs from YAML even if the folder with the source files already exists
+spec_doc_rebuild_always = True
+
 
 def run_doc_autogen(_):
-   # Execute the autogeneration of Sphinx format docs from the YAML sources
-   import sys
-   import os
-   conf_file_dir = os.path.dirname(os.path.abspath(__file__))
-   sys.path.append(conf_file_dir)  # Need so that generate format docs can find the conf_doc_autogen file
-   from conf_doc_autogen import spec_output_dir
+    # Execute the autogeneration of Sphinx format docs from the YAML sources
+    import sys
+    import os
+    conf_file_dir = os.path.dirname(os.path.abspath(__file__))
+    sys.path.append(conf_file_dir)  # Need so that generate format docs can find the conf_doc_autogen file
+    from conf_doc_autogen import spec_output_dir
 
-   if spec_doc_rebuild_always or not os.path.exists(spec_output_dir):
-      sys.path.append('./docs')  # needed to enable import of generate_format docs
-      from nwb_docutils.generate_format_docs import main as generate_docs
-      generate_docs()
+    if spec_doc_rebuild_always or not os.path.exists(spec_output_dir):
+        sys.path.append('./docs')  # needed to enable import of generate_format docs
+        from nwb_docutils.generate_format_docs import main as generate_docs
+        generate_docs()
+
 
 def setup(app):
-   app.connect('builder-inited', run_doc_autogen)
-   app.add_stylesheet("theme_overrides.css")  # overrides for wide tables in RTD theme
+    app.connect('builder-inited', run_doc_autogen)
+    app.add_stylesheet("theme_overrides.css")  # overrides for wide tables in RTD theme
+
 
 # -- Customize sphinx settings
 numfig = True
@@ -208,19 +210,17 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # LaTeX Sphinx options
 latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    'papersize': 'letterpaper',
 
-# The font size ('10pt', '11pt' or '12pt').
-'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    'pointsize': '10pt',
 
-# Additional stuff for the LaTeX preamble.
-'preamble':
-'''
-\setcounter{tocdepth}{3}
-\setcounter{secnumdepth}{6}
-\\usepackage{enumitem}
-\setlistdepth{100}
-''',
+    # Additional stuff for the LaTeX preamble.
+    'preamble': textwrap.dedent('''
+        \\setcounter{tocdepth}{3}
+        \\setcounter{secnumdepth}{6}
+        \\usepackage{enumitem}
+        \\setlistdepth{100}
+        '''),
 }
-
