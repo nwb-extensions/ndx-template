@@ -1,5 +1,6 @@
 import os
 
+
 def export_spec(ns_builder, new_data_types):
     '''
     Creates YAML specification files for a new namespace and extensions with
@@ -24,5 +25,6 @@ def export_spec(ns_builder, new_data_types):
     ns_builder.export(ns_path, outdir=os.path.join(
         os.path.dirname(os.path.abspath(__file__)), '..', '..', 'spec'))
 
-    print(f'spec/{ns_path} created')
-    print(f'spec/{ext_path} created with {len(new_data_types)} data types')
+    print('spec/{ns_path} created'.format(ns_path=ns_path))
+    print('spec/{ext_path} created with {new_data_types_count} data types'.format(
+        ext_path=ext_path, new_data_types_count=len(new_data_types)))
