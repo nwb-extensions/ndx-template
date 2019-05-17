@@ -135,7 +135,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, '{{ cookiecutter.namespace }}.tex', '{{ cookiecutter.namespace|replace("_", "\\_") }} Documentation',
+    (master_doc, '{{ cookiecutter.namespace }}.tex', '{{ cookiecutter.namespace|replace("_", "\\\\_") }} Documentation',
      '{{ cookiecutter.author }}', 'manual'),
 ]
 
