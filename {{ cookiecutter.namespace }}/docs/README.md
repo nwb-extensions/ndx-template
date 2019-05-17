@@ -8,9 +8,9 @@
 # Customize Your Documentation
 
 * **Edit your custom description**
-  * Edit ``source/description.py`` to add your custom description of your extension
+  * Edit ``source/description.rst`` to add your custom description of your extension
 * **Edit your custom release notes**
-  * Edit ``source/release_notes.py`` to add your custom release notes of your extension
+  * Edit ``source/release_notes.rst`` to add your custom release notes of your extension
 * **Edit the build configuration**
   * Edit ``source/conf.py`` to customize your build configuration
 * **Customize documentation auto-generation**
