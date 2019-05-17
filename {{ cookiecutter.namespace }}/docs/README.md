@@ -1,20 +1,23 @@
 
-# Generate Documentation
+# Getting started
 
-* **Generate the documentation**
-  * To generate the HTML version of your documentation run ``make html``. For further details, see below.
-  * The nwb_docutils package must be installed.
+## Generate Documentation
 
-# Customize Your Documentation
+* To generate the HTML version of your documentation run ``make html``.
+* The [nwb-docutils](https://pypi.org/project/nwb-docutils/) package must be installed.
 
-* **Edit your custom description**
-  * Edit ``source/description.rst`` to add your custom description of your extension
-* **Edit your custom release notes**
-  * Edit ``source/release_notes.rst`` to add your custom release notes of your extension
-* **Edit the build configuration**
-  * Edit ``source/conf.py`` to customize your build configuration
-* **Customize documentation auto-generation**
-  * Edit ``source/conf_doc_autogen.py`` to customize the documentation auto-generation, as described below.
+## Customize Your Extension Documentation
+
+* **extension description**
+  * Edit ``source/description.rst`` to describe your extension.
+
+* **release notes**
+  * Edit ``source/release_notes.rst`` to document improvements and fixes of your extension.
+
+* **documentation build settings**
+  * Edit ``source/conf.py`` to customize your extension documentation configuration.
+  * Edit ``source/conf_doc_autogen.py`` to customize the format documentation auto-generation based on
+    the YAML specification files.
 
 
 # Overview
