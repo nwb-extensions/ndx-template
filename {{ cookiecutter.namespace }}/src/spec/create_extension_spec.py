@@ -1,4 +1,9 @@
-from pynwb.spec import NWBNamespaceBuilder
+
+from pynwb.spec import (
+    NWBNamespaceBuilder,
+    NWBGroupSpec,
+    NWBLinkSpec
+)
 from export_spec import export_spec
 
 
@@ -9,28 +14,24 @@ def main():
                                      author='{{ cookiecutter.author }}',
                                      contact='{{ cookiecutter.email }}')
 
-    # CHANGEME
-    # define the new data types
-    # compartment_series = NWBGroupSpec(
-    #     neurodata_type_def='CompartmentSeries',
-    #     neurodata_type_inc='TimeSeries',
-    #     doc='Stores continuous data from cell compartments',
-    #     links=[
-    #         NWBLinkSpec(name='compartments',
-    #                     target_type='Compartments',
-    #                     doc='metadata about compartments in this CompartmentSeries',
-    #                     quantity='?')
-    #     ]
-    # )
+    # TODO: define the new data types
+    compartment_series = NWBGroupSpec(
+        neurodata_type_def='CompartmentSeries',
+        neurodata_type_inc='TimeSeries',
+        doc='Stores continuous data from cell compartments',
+        links=[
+            NWBLinkSpec(name='compartments',
+                        target_type='Compartments',
+                        doc='metadata about compartments in this CompartmentSeries',
+                        quantity='?')
+        ]
+    )
 
-    # CHANGEME
-    # add the new data types to this list
-    # new_data_types = [compartment_series]
-    new_data_types = []
+    # TODO: add the new data types to this list
+    new_data_types = [compartment_series]
 
-    # CHANGEME
-    # Must include types that are used and their namespaces (where to find them)
-    # ns_builder.include_type('TimeSeries', namespace='core')
+    # TODO: include the types that are used and their namespaces (where to find them)
+    ns_builder.include_type('TimeSeries', namespace='core')
 
     export_spec(ns_builder, new_data_types)
 

@@ -16,11 +16,11 @@ Specification for the {{ cookiecutter.namespace }} extension
     format
 
 .. toctree::
-   :maxdepth: 2
-   :caption: History & Legal
+    :maxdepth: 2
+    :caption: History & Legal
 
-   release_notes
-   credits
+    release_notes
+    credits
 
 Indices and tables
 ==================
