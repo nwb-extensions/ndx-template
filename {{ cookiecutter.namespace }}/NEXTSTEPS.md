@@ -2,26 +2,24 @@
 
 ## Creating Your Extension
 
-1. In a terminal, change directory into the new {{ cookiecutter.namespace }}
-directory.
+1. In a terminal, change directory into the new {{ cookiecutter.namespace }} directory.
 
-2. Add any packages required by your extension to `requirements.txt` and
-`setup.py`.
+2. Add any packages required by your extension to `requirements.txt` and `setup.py`.
 
-3. Run `python -m pip install -r requirements.txt` to load the `pynwb` module
+3. Run `python -m pip install -r requirements.txt` to install the `pynwb` package
 and any other packages required by your extension.
 
 4. Modify `src/create_extension_spec.py` to define your extension.
 
     - If you want to create any custom classes for interacting with the extension,
-  create a directory called `pynwb-src` and add them there.
-      - If present, the `pynwb-src` folder MUST contain the following:
+      and them to the `src/pynwb`.
+      - If present, the `src/pynwb` folder MUST contain the following:
         - `{{ cookiecutter.namespace }}` - Folder with the sources of the NWB extension
         - `{{ cookiecutter.namespace }}/__init__.py` - Python file that may be empty
         - `requirements.txt` - Text file listing the Python package requirements for the extension
         - `README.md` - Markdown file describing the NWB extension
         - `setup.py` - Python script to install the extension<sup>1</sup>
-      - If present, the `pynwb-src` folder MAY contain the following files/folders:
+      - If present, the `src/pynwb` folder MAY contain the following files/folders:
         - `test` - Folder for unit tests for the extensions
         - `jupyter-widgets` - Optional package with custom widgets for use with Jupyter
 
@@ -32,14 +30,17 @@ and any other packages required by your extension.
 6. You may need to modify `setup.py` and re-run `python setup.py install` if you
 use any dependencies.
 
-<sup>1</sup>: Make sure to include to ensure the YAML files in the installation:
+<sup>1</sup>: To ensure the YAML files are distributed with your extension, make sure to
+update `setup.py` setting the `package_data` and `include_package_data` keyword parameters:
 ```python
-setup(...
-      package_data={'': [
+setup(
+    # [...]
+    package_data={'': [
         '{{ cookiecutter.namespace }}.namespace.yaml',
         '{{ cookiecutter.namespace }}.extensions.yaml'
-      ]},
-      include_package_data=True)
+    ]},
+    include_package_data=True
+)
 ```
 
 
