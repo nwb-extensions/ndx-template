@@ -26,8 +26,8 @@
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-              'sphinx.ext.ifconfig',
-              'sphinx.ext.intersphinx']
+              'sphinx.ext.intersphinx',
+              'sphinx.ext.ifconfig']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -108,7 +108,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = '{{ cookiecutter.namespace }}_doc'
+htmlhelp_basename = '{{ cookiecutter.namespace }}doc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -161,9 +161,6 @@ texinfo_documents = [
      'Miscellaneous'),
 ]
 
-# -- Options for intersphinx  ---------------------------------------------
-
-intersphinx_mapping = {'core': ('https://nwb-schema.readthedocs.io/en/latest/', None)}
 
 ############################################################################
 #  CUSTOM CONFIGURATIONS ADDED BY THE NWB TOOL FOR GENERATING FORMAT DOCS
@@ -171,6 +168,9 @@ intersphinx_mapping = {'core': ('https://nwb-schema.readthedocs.io/en/latest/', 
 
 import sphinx_rtd_theme  # noqa: E402
 import textwrap  # noqa: E402
+
+# -- Options for intersphinx  ---------------------------------------------
+intersphinx_mapping = {'core': ('https://nwb-schema.readthedocs.io/en/latest/', None)}
 
 # -- Generate sources from YAML---------------------------------------------------
 # Always rebuild the source docs from YAML even if the folder with the source files already exists
@@ -217,7 +217,8 @@ latex_elements = {
     'pointsize': '10pt',
 
     # Additional stuff for the LaTeX preamble.
-    'preamble': textwrap.dedent('''
+    'preamble': textwrap.dedent(
+        '''
         \\setcounter{tocdepth}{3}
         \\setcounter{secnumdepth}{6}
         \\usepackage{enumitem}
