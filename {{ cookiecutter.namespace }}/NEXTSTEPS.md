@@ -23,7 +23,7 @@ and any other packages required by your extension.
         - `test` - Folder for unit tests for the extensions
         - `jupyter-widgets` - Optional package with custom widgets for use with Jupyter
 
-5. Run `python src/create_extension_spec.py` to generate the
+5. Run `python src/spec/create_extension_spec.py` to generate the
 `spec/{{ cookiecutter.namespace }}.namespace.yaml` and
 `spec/{{ cookiecutter.namespace }}.extensions.yaml` files.
 
