@@ -13,11 +13,11 @@ def export_spec(ns_builder, new_data_types):
                          to be added
     """
 
-    if not ns_builder.name:
+    if 'name' not in ns_builder._NamespaceBuilder__ns_args:
         raise RuntimeError('Namespace name is required to export specs')
 
-    ns_path = ns_builder.name + '.namespace.yaml'
-    ext_path = ns_builder.name + '.extensions.yaml'
+    ns_path = ns_builder._NamespaceBuilder__ns_args['name'] + '.namespace.yaml'
+    ext_path = ns_builder._NamespaceBuilder__ns_args['name'] + '.extensions.yaml'
 
     for neurodata_type in new_data_types:
         ns_builder.add_spec(ext_path, neurodata_type)
