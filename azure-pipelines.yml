@@ -57,4 +57,11 @@ jobs:
       python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/" "ndx-my-namespace"
     displayName: 'Check files'
 
+  - bash: |
+      set -e
+      cd "$(Agent.BuildDirectory)/ndx-my-namespace/docs"
+      make apidoc
+      make html
+    displayName: 'Build documentation'
+
 
