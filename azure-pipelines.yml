@@ -46,7 +46,10 @@ jobs:
 
   - bash: |
       python -m cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
-      python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/"
     displayName: 'Evaluate template'
+
+  - bash: |
+      python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/" "ndx-my-namespace"
+    displayName: 'Check files'
 
 
