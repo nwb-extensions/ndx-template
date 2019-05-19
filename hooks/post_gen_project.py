@@ -2,6 +2,8 @@ import os
 import shutil
 import textwrap
 
+from nwb_docutils.init_sphinx_extension_doc import main as init_sphinx_extension_doc
+
 
 def _select_dev_language():
     dev_language = '{{ cookiecutter.dev_language }}'
@@ -11,11 +13,29 @@ def _select_dev_language():
         shutil.rmtree(os.path.join(os.getcwd(), 'src', 'matnwb'))
 
 
+def _generate_doc():
+    init_sphinx_extension_doc([
+        "--project", "{{ cookiecutter.namespace }}",
+        "--author", "{{ cookiecutter.author }}",
+        "--version", "{{ cookiecutter.version }}",
+        "--release", "{{ cookiecutter.release }}",
+        "--output", "docs",
+        "--spec_dir", "spec",
+        "--namespace_filename", "{{ cookiecutter.namespace }}.namespace.yaml",
+        "--default_namespace", "{{ cookiecutter.namespace }}",
+        "--custom_description", "description.rst",
+        "--custom_release_notes", "release_notes.rst",
+    ])
+
+
 def main():
     """
     Runs the post gen project hook main entry point.
     """
+
     _select_dev_language()
+    _generate_doc()
+
     print(textwrap.dedent(
         """
         Success! Directory {{ cookiecutter.namespace }} was created with a skeleton for your new NWB:N extension.

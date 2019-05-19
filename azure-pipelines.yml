@@ -41,11 +41,12 @@ jobs:
   - script: |
       python -m pip install --upgrade pip
       python -m pip install --upgrade setuptools
-      python -m pip install cookiecutter
+      python -m pip install cookiecutter "nwb-docutils>=0.3.1"
     displayName: 'Install build dependencies'
 
   - bash: |
       python -m cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
+      python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/"
     displayName: 'Evaluate template'
 
 
