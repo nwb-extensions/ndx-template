@@ -41,11 +41,27 @@ jobs:
   - script: |
       python -m pip install --upgrade pip
       python -m pip install --upgrade setuptools
-      python -m pip install cookiecutter
+      python -m pip install cookiecutter "nwb-docutils>=0.3.1"
     displayName: 'Install build dependencies'
+
+  - bash: |
+      git config --global user.email "you@example.com"
+      git config --global user.name "Your Name"
+    displayName: 'Configure git'
 
   - bash: |
       python -m cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
     displayName: 'Evaluate template'
+
+  - bash: |
+      python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/" "ndx-my-namespace"
+    displayName: 'Check files'
+
+  - bash: |
+      set -e
+      cd "$(Agent.BuildDirectory)/ndx-my-namespace/docs"
+      make apidoc
+      make html
+    displayName: 'Build documentation'
 
 

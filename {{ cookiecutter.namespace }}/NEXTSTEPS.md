@@ -33,14 +33,13 @@ use any dependencies.
 <sup>1</sup>: To ensure the YAML files are distributed with your extension, make sure to
 update `setup.py` setting the `package_data` and `include_package_data` keyword parameters:
 ```python
-setup(
+setup_args = {
     # [...]
-    package_data={'': [
-        '{{ cookiecutter.namespace }}.namespace.yaml',
-        '{{ cookiecutter.namespace }}.extensions.yaml'
+    'package_data': {'{{ cookiecutter.py_pkg_name }}': [
+        'spec/{{ cookiecutter.namespace }}.namespace.yaml',
+        'spec/{{ cookiecutter.namespace }}.extensions.yaml',
     ]},
-    include_package_data=True
-)
+}
 ```
 
 

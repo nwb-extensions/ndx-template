@@ -16,15 +16,18 @@ def export_spec(ns_builder, new_data_types):
     if 'name' not in ns_builder._NamespaceBuilder__ns_args:
         raise RuntimeError('Namespace name is required to export specs')
 
+    project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    output_dir = os.path.join(project_dir, 'spec')
+
     ns_path = ns_builder._NamespaceBuilder__ns_args['name'] + '.namespace.yaml'
     ext_path = ns_builder._NamespaceBuilder__ns_args['name'] + '.extensions.yaml'
+
+    print('Creating file {output_dir}/{ext_path} with {new_data_types_count} data types'.format(
+        output_dir=output_dir, ext_path=ext_path, new_data_types_count=len(new_data_types)))
 
     for neurodata_type in new_data_types:
         ns_builder.add_spec(ext_path, neurodata_type)
 
-    ns_builder.export(ns_path, outdir=os.path.join(
-        os.path.dirname(os.path.abspath(__file__)), '..', '..', 'spec'))
+    print('Creating file {output_dir}/{ns_path}'.format(output_dir=output_dir, ns_path=ns_path))
 
-    print('spec/{ns_path} created'.format(ns_path=ns_path))
-    print('spec/{ext_path} created with {new_data_types_count} data types'.format(
-        ext_path=ext_path, new_data_types_count=len(new_data_types)))
+    ns_builder.export(ns_path, outdir=output_dir)
