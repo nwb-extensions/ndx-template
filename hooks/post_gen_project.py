@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 import textwrap
 
 from nwb_docutils.init_sphinx_extension_doc import main as init_sphinx_extension_doc
@@ -29,6 +30,12 @@ def _generate_doc():
     ])
 
 
+def _create_extension_spec():
+    spec_dir = "src/spec"
+    sys.path.insert(0, spec_dir)
+    check_call([sys.executable, spec_dir + "/create_extension_spec.py"])
+
+
 def _initialize_git():
     check_call(["git", "init"])
     check_call(["git", "add", "-A"])
@@ -42,6 +49,7 @@ def main():
 
     _select_dev_language()
     _generate_doc()
+    _create_extension_spec()
     _initialize_git()
 
     print(textwrap.dedent(
