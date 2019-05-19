@@ -13,7 +13,8 @@ setup_args = {
     'install_requires': [
         'pynwb'
     ],
-    'packages': find_packages(),
+    'packages': find_packages('src'),
+    'package_dir': {'': 'src'},
     'classifiers': [
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
