@@ -4,6 +4,9 @@ docs/source/_format_auto_docs
 docs/source/_static
 !docs/source/_static/theme_overrides.css
 
+# copied spec files
+src/pynwb/spec/*.yaml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
