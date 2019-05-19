@@ -3,6 +3,7 @@ import shutil
 import textwrap
 
 from nwb_docutils.init_sphinx_extension_doc import main as init_sphinx_extension_doc
+from subprocess import check_call
 
 
 def _select_dev_language():
@@ -28,6 +29,12 @@ def _generate_doc():
     ])
 
 
+def _initialize_git():
+    check_call(["git", "init"])
+    check_call(["git", "add", "-A"])
+    check_call(["git", "commit", "-m", "Initial commit"])
+
+
 def main():
     """
     Runs the post gen project hook main entry point.
@@ -35,6 +42,7 @@ def main():
 
     _select_dev_language()
     _generate_doc()
+    _initialize_git()
 
     print(textwrap.dedent(
         """
