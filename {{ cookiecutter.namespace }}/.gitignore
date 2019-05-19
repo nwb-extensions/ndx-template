@@ -5,7 +5,7 @@ docs/source/_static
 !docs/source/_static/theme_overrides.css
 
 # copied spec files
-src/pynwb/spec/*.yaml
+src/pynwb/{{ cookiecutter.namespace|replace("-", "_") }}/spec/*.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
