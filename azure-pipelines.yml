@@ -45,6 +45,11 @@ jobs:
     displayName: 'Install build dependencies'
 
   - bash: |
+      git config --global user.email "you@example.com"
+      git config --global user.name "Your Name"
+    displayName: 'Configure git'
+
+  - bash: |
       python -m cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
     displayName: 'Evaluate template'
 
