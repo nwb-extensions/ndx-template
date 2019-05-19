@@ -35,7 +35,7 @@ update `setup.py` setting the `package_data` and `include_package_data` keyword 
 ```python
 setup_args = {
     # [...]
-    'package_data': {'{{ cookiecutter.namespace|replace("-", "_") }}': [
+    'package_data': {'{{ cookiecutter.py_pkg_name }}': [
         'spec/{{ cookiecutter.namespace }}.namespace.yaml',
         'spec/{{ cookiecutter.namespace }}.extensions.yaml',
     ]},

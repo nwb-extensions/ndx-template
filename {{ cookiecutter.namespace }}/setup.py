@@ -18,7 +18,7 @@ setup_args = {
     ],
     'packages': find_packages('src/pynwb'),
     'package_dir': {'': 'src/pynwb'},
-    'package_data': {'{{ cookiecutter.namespace|replace("-", "_") }}': [
+    'package_data': {'{{ cookiecutter.py_pkg_name }}': [
         'spec/{{ cookiecutter.namespace }}.namespace.yaml',
         'spec/{{ cookiecutter.namespace }}.extensions.yaml',
     ]},
@@ -34,7 +34,7 @@ def _copy_spec_files(project_dir):
     ns_path = os.path.join(project_dir, 'spec', '{{ cookiecutter.namespace }}.namespace.yaml')
     ext_path = os.path.join(project_dir, 'spec', '{{ cookiecutter.namespace }}.extensions.yaml')
 
-    dst_dir = os.path.join(project_dir, 'src', 'pynwb', '{{ cookiecutter.namespace|replace("-", "_") }}', 'spec')
+    dst_dir = os.path.join(project_dir, 'src', 'pynwb', '{{ cookiecutter.py_pkg_name }}', 'spec')
     if not os.path.exists(dst_dir):
         os.mkdir(dst_dir)
 
