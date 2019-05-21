@@ -12,7 +12,7 @@ and any other packages required by your extension.
 4. Modify `src/create_extension_spec.py` to define your extension.
 
     - If you want to create any custom classes for interacting with the extension,
-      and them to the `src/pynwb`.
+      add them to the `src/pynwb`.
       - If present, the `src/pynwb` folder MUST contain the following:
         - `{{ cookiecutter.namespace }}` - Folder with the sources of the NWB extension
         - `{{ cookiecutter.namespace }}/__init__.py` - Python file that may be empty
