@@ -18,7 +18,6 @@ and any other packages required by your extension.
         - `{{ cookiecutter.namespace }}/__init__.py` - Python file that may be empty
         - `requirements.txt` - Text file listing the Python package requirements for the extension
         - `README.md` - Markdown file describing the NWB extension
-        - `setup.py` - Python script to install the extension<sup>1</sup>
       - If present, the `src/pynwb` folder MAY contain the following files/folders:
         - `test` - Folder for unit tests for the extensions
         - `jupyter-widgets` - Optional package with custom widgets for use with Jupyter
@@ -30,7 +29,7 @@ and any other packages required by your extension.
 6. You may need to modify `setup.py` and re-run `python setup.py install` if you
 use any dependencies.
 
-<sup>1</sup>: To ensure the YAML files are distributed with your extension, make sure to
+To ensure the YAML files are distributed with your extension, make sure to
 update `setup.py` setting the `package_data` and `include_package_data` keyword parameters:
 ```python
 setup_args = {
