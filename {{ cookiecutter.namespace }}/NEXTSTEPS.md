@@ -74,7 +74,11 @@ your extension.
 repository to your local filesystem.
 
 10. Copy the directory `staged-extensions/example` to a new directory
-`staged-extensions/{{ cookiecutter.namespace }}`.
+`staged-extensions/{{ cookiecutter.namespace }}`:
+
+```bash
+cp -r staged-extensions/example staged-extensions/{{ cookiecutter.namespace }}
+```
 
 11. Edit `staged-extensions/{{ cookiecutter.namespace }}/ndx-meta.yaml`
 with information on where to find your NWB extension.
