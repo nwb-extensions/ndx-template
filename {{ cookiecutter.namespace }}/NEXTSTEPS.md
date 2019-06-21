@@ -29,18 +29,6 @@ and any other packages required by your extension.
 6. You may need to modify `setup.py` and re-run `python setup.py install` if you
 use any dependencies.
 
-To ensure the YAML files are distributed with your extension, make sure to
-update `setup.py` setting the `package_data` and `include_package_data` keyword parameters:
-```python
-setup_args = {
-    # [...]
-    'package_data': {'{{ cookiecutter.py_pkg_name }}': [
-        'spec/{{ cookiecutter.namespace }}.namespace.yaml',
-        'spec/{{ cookiecutter.namespace }}.extensions.yaml',
-    ]},
-}
-```
-
 
 ## Documenting and Publishing Your Extension to the Community
 
@@ -63,39 +51,44 @@ your extension.
 
 6. Modify `README.md` to describe this extension for interested developers.
 
-7. Add a license file. Permissive licenses should be used if possible.
-**BSD license is recommended.**
+7. Add a license file. Permissive licenses should be used if possible. **A [BSD license](https://opensource.org/licenses/BSD-3-Clause) is recommended.**
 
-8. Publish your updated extension on PyPi.
+8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }}
+
+9. Publish your updated extension on PyPi.
     - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
     - You may need to modify `setup.py`
+    - If your extension version is {{ cookiecutter.version }}, then this page should exist: https://pypi.org/project/{{ cookiecutter.namespace }}/{{ cookiecutter.version }}
 
-9. Go to https://github.com/nwb-extensions/staged-extensions and fork the
-repository. Clone the fork onto your local filesystem.
+10. Go to https://github.com/nwb-extensions/staged-extensions and fork the
+repository.
+
+10. Clone the fork onto your local filesystem.
 
 10. Copy the directory `staged-extensions/example` to a new directory
 `staged-extensions/{{ cookiecutter.namespace }}`:
 
-```bash
+    ```bash
 cp -r staged-extensions/example staged-extensions/{{ cookiecutter.namespace }}
 ```
 
 11. Edit `staged-extensions/{{ cookiecutter.namespace }}/ndx-meta.yaml`
 with information on where to find your NWB extension.
     - The YAML file MUST contain a dict with the following keys:
-      - name: {{ cookiecutter.namespace }}
-      - version: {{ cookiecutter.version }}
-      - src: <URL> : URL to the public repository with the sources of the extension
-      - pip: <URL> : URL for installing the extensions from PyPi
-      - license: <license> : name of the license of the extension
-      - maintainers: {{ cookiecutter.github_name }} : list of GitHub
+      - name: extension namespace name
+      - version: extension version
+      - src: URL for the main page of the public repository (e.g. on GitHub, BitBucket, GitLab) that contains the sources of the extension
+      - pip: URL for the main page of the extension on PyPI
+      - license: name of the license of the extension
+      - maintainers: list of GitHub
       usernames of those who will reliably maintain the extension
-    
-auto-generated:
+    -
+
+  You may copy and modify the following YAML that was auto-generated:
 ```yaml
 name: {{ cookiecutter.namespace }}
 version: {{ cookiecutter.version }}
-src: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.namespace }}.git
+src: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.namespace }}
 pip: https://pypi.org/project/{{ cookiecutter.namespace }}/
 license: {{ cookiecutter.license }}
 maintainers:
@@ -106,7 +99,7 @@ maintainers:
 to add information about your extension. You may copy it from
 `{{ cookiecutter.namespace }}/README.md`.
 
-```bash
+  ```bash
 cp {{ cookiecutter.namespace }}/README.md staged-extensions/{{ cookiecutter.namespace }}/README.md
 ```
 
