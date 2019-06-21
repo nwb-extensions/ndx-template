@@ -71,7 +71,7 @@ your extension.
     - You may need to modify `setup.py`
 
 9. Go to https://github.com/nwb-extensions/staged-extensions and fork the
-repository and clone on your local filesystem
+repository. Clone the fork onto your local filesystem.
 
 10. Copy the directory `staged-extensions/example` to a new directory
 `staged-extensions/{{ cookiecutter.namespace }}`.
