@@ -1,5 +1,5 @@
 import os
-
+import warnings
 
 def export_spec(ns_builder, new_data_types):
     """
@@ -13,7 +13,11 @@ def export_spec(ns_builder, new_data_types):
                          to be added
     """
 
-    if 'name' not in ns_builder._NamespaceBuilder__ns_args:
+    if len(new_data_types) == 0:
+        warnings.warn('No data types specified. Exiting.')
+        return
+
+    if ns_builder.name is None:
         raise RuntimeError('Namespace name is required to export specs')
 
     project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
