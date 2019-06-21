@@ -31,12 +31,12 @@ template automatically. You will be prompted for:
         - Use the naming schema "ndx-myname", e.g., "ndx-cortical-surface"
         - Use short and descriptive names
     - `description` - A description of your extension in simple terms
-    - `dev_language` - Language for developing your extension (Python, MATLAB, 
+    - `dev_language` - Language for developing your extension (Python, MATLAB,
        Neither)
       - If you want to include custom classes and functionality with your
-        extension, please select the language in whcich  those classes are written.
+        extension, please select the language in which those classes are written.
       - If you intend your extension to be loaded without custom classes, select
-        Neither. 
+        Neither.
     - `author` - Your name
     - `email` - Your email address
     - `github_name` - Your username on GitHub
@@ -48,7 +48,7 @@ created. See `NEXTSTEPS.md` in that directory for the next steps in creating
 your awesome new Neurodata Extension.
 
 When you are done creating your extension, we encourage you to follow the steps
-to publish your Neurodata Extension for the benefit of the greater neuroscience 
+to publish your Neurodata Extension for the benefit of the greater neuroscience
 community! :)
 
 ## Maintainers

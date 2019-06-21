@@ -22,7 +22,7 @@ def _validate():
         # these are the rules for naming GitHub repositories, and we want the name
         # of the GitHub repository to match the name of the extension
         print('ERROR: Namespace can only have lower-case and upper-case ASCII '
-              'letters, hyphens (-), and underscores (-).')
+              'letters, hyphens (-), and underscores (_).')
         sys.exit(1)
     if '@' not in parseaddr(email)[1]:
         print('WARNING: The email address you entered "{email}" does not appear to '
