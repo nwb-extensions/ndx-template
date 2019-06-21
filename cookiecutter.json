@@ -4,7 +4,7 @@
   "dev_language": ["Python", "MATLAB", "Neither"],
   "author": "My Name",
   "email": "my_email@example.com",
-  "github_name": "myname",
+  "github_username": "myname",
   "copyright": "2019, {{ cookiecutter.author }}",
   "version": "0.1.0",
   "release": "alpha",

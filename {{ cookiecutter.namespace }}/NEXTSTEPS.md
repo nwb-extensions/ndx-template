@@ -53,7 +53,7 @@ your extension.
 
 7. Add a license file. Permissive licenses should be used if possible. **A [BSD license](https://opensource.org/licenses/BSD-3-Clause) is recommended.**
 
-8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }}
+8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }}
 
 9. Publish your updated extension on PyPi.
     - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
@@ -88,11 +88,11 @@ with information on where to find your NWB extension.
 ```yaml
 name: {{ cookiecutter.namespace }}
 version: {{ cookiecutter.version }}
-src: https://github.com/{{ cookiecutter.github_name }}/{{ cookiecutter.namespace }}
+src: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}
 pip: https://pypi.org/project/{{ cookiecutter.namespace }}/
 license: {{ cookiecutter.license }}
 maintainers:
-  - {{ cookiecutter.github_name }}
+  - {{ cookiecutter.github_username }}
 ```
 
 12. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`

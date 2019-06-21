@@ -39,7 +39,7 @@ template automatically. You will be prompted for:
         Neither.
     - `author` - Your name
     - `email` - Your email address
-    - `github_name` - Your username on GitHub
+    - `github_username` - Your username on GitHub
     - `copyright` - Copyright statement, if desired
     - `version` - Version of your extension. Versioning should start at 0.1.0.
     - `release` - Release category, e.g. alpha, beta, official

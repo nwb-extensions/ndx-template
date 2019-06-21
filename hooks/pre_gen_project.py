@@ -9,7 +9,7 @@ GITHUB_USERNAME_REGEX = r'^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$'
 
 namespace = '{{ cookiecutter.namespace }}'
 email = '{{ cookiecutter.email }}'
-github_name = '{{ cookiecutter.github_name }}'
+github_username = '{{ cookiecutter.github_username }}'
 
 
 def _validate():
@@ -27,9 +27,9 @@ def _validate():
     if '@' not in parseaddr(email)[1]:
         print('WARNING: The email address you entered "{email}" does not appear to '
               'be a valid email address. Are you sure you entered it correctly?'.format(email=email))
-    if not re.match(GITHUB_USERNAME_REGEX, github_name):
-        print('WARNING: The GitHub username you entered "{github_name}" does not appear '
-              'to be a valid GitHub username. Are you sure you entered it correctly?'.format(github_name=github_name))
+    if not re.match(GITHUB_USERNAME_REGEX, github_username):
+        print('WARNING: The GitHub username you entered "{github_username}" does not appear '
+              'to be a valid GitHub username. Are you sure you entered it correctly?'.format(github_username=github_username))
 
 
 def main():
