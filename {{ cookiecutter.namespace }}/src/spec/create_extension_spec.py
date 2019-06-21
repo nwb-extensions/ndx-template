@@ -3,6 +3,8 @@ from pynwb.spec import (
     NWBNamespaceBuilder,
     NWBGroupSpec,
     NWBAttributeSpec,
+    NWBDatasetSpec,
+    NWBLinkSpec
 )
 from export_spec import export_spec
 
