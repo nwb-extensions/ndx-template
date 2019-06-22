@@ -39,7 +39,6 @@ def main():
     Runs the post gen project hook main entry point.
     """
 
-    _select_dev_language()
     _generate_doc()
     _create_extension_spec()
     _initialize_git()
