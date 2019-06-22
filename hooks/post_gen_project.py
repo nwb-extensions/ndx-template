@@ -7,14 +7,6 @@ from nwb_docutils.init_sphinx_extension_doc import main as init_sphinx_extension
 from subprocess import check_call
 
 
-def _select_dev_language():
-    dev_language = '{{ cookiecutter.dev_language }}'
-    if dev_language != 'Python':
-        shutil.rmtree(os.path.join(os.getcwd(), 'src', 'pynwb'))
-    if dev_language != 'MATLAB':
-        shutil.rmtree(os.path.join(os.getcwd(), 'src', 'matnwb'))
-
-
 def _generate_doc():
     init_sphinx_extension_doc([
         "--project", "{{ cookiecutter.namespace }}",
