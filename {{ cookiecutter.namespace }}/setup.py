@@ -14,7 +14,7 @@ setup_args = {
     'author': '{{ cookiecutter.author }}',
     'author_email': '{{ cookiecutter.email }}',
     'url': '',
-    'license': '',
+    'license': '{{ cookiecutter.license }}',
     'install_requires': [
         'pynwb'
     ],
