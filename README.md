@@ -51,5 +51,6 @@ greater neuroscience community! :)
 ## Maintainers
 - [@rly](https://github.com/rly)
 - [@oruebel](https://github.com/oruebel)
-- [@ajtritt](https://github.com/ajtritt)
+- [@jcfr](https://github.com/jcfr)
 - [@bendichter](https://github.com/bendichter)
+- [@ajtritt](https://github.com/ajtritt)
