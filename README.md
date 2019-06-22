@@ -11,25 +11,26 @@ MATLAB support is in development.
 
 ## Getting started
 
-1. Install [cookiecutter](https://pypi.org/project/cookiecutter/) and [nwb-docutils](https://pypi.org/project/nwb-docutils/).
+1. Install [Python](https://www.python.org/downloads/) for your operating system if it is not already installed.
+
+2. Install [cookiecutter](https://pypi.org/project/cookiecutter/) (see [here](https://cookiecutter.readthedocs.io/en/latest/installation.html) for Windows install instructions) and [nwb-docutils](https://pypi.org/project/nwb-docutils/).
 `cookiecutter` is a Python-based command-line utility that creates projects from templates.
 ```bash
 python -m pip install cookiecutter "nwb-docutils>=0.3.1"
 ```
-2. Run cookiecutter on your local working directory:
+3. Run cookiecutter on your local working directory:
 ```bash
 cookiecutter gh:nwb-extensions/ndx-template
 ```
-3. Answer the prompts, which will be used to fill in the blanks throughout the
+4. Answer the prompts, which will be used to fill in the blanks throughout the
 template automatically. You will be prompted for:
     - `namespace` - The name of the namespace for your NDX. This could be a
     description of the extension (e.g. "ndx-cortical-surface") or the name of your
-    lab or group (e.g. "ndx-allen-institute")
-      - Namespaces should generally follow the following naming conventions:
+    lab or group (e.g. "ndx-allen-institute"). **Namespaces MUST start with "ndx-".**
+      - The name should generally follow the following naming conventions:
         - Use only lower-case ASCII letters (no special characters)
         - Use "-" to separate different parts of the name (no spaces allowed)
-        - Use the naming schema "ndx-myname", e.g., "ndx-cortical-surface"
-        - Use short and descriptive names
+        - Be short and descriptive
     - `description` - A description of your extension in simple terms
     - `author` - Your name
     - `email` - Your email address
@@ -37,13 +38,15 @@ template automatically. You will be prompted for:
     - `copyright` - Copyright statement, if desired
     - `version` - Version of your extension. Versioning should start at 0.1.0.
     - `release` - Release category, e.g. alpha, beta, official
-4. A new directory with the same name as your entered `namespace` will be
-created. See `NEXTSTEPS.md` in that directory for the next steps in creating
+    - `license` - Name of license used for your extension source code.
+    A permissive license should be used if possible.
+5. A new folder with the same name as your entered `namespace` will be
+created. See `NEXTSTEPS.md` in that folder for the next steps in creating
 your awesome new Neurodata Extension.
 
 When you are done creating your extension, we encourage you to follow the steps
-to publish your Neurodata Extension for the benefit of the greater neuroscience
-community! :)
+to publish your Neurodata Extension in the [NDX Catalog](https://github.com/nwb-extensions/) for the benefit of the
+greater neuroscience community! :)
 
 ## Maintainers
 - [@rly](https://github.com/rly)

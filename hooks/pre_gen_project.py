@@ -14,7 +14,8 @@ github_username = '{{ cookiecutter.github_username }}'
 
 def _validate():
     if namespace[:4] != 'ndx-':
-        print('WARNING: It is recommended to prefix your NDX namespace with "ndx-".')
+        print('ERROR: The name of your NDX extension should start with "ndx-".')
+        sys.exit(1)
     if not re.match(PREF_NAMESPACE_REGEX, namespace):
         print('WARNING: It is recommended to use only lower-case ASCII letters and '
               'hyphens in your namespace.')
@@ -29,7 +30,8 @@ def _validate():
               'be a valid email address. Are you sure you entered it correctly?'.format(email=email))
     if not re.match(GITHUB_USERNAME_REGEX, github_username):
         print('WARNING: The GitHub username you entered "{github_username}" does not appear '
-              'to be a valid GitHub username. Are you sure you entered it correctly?'.format(github_username=github_username))
+              'to be a valid GitHub username. Are you sure you entered it correctly?'
+              .format(github_username=github_username))
 
 
 def main():
