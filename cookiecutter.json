@@ -9,5 +9,4 @@
   "version": "0.1.0",
   "release": "alpha",
   "license": "BSD 3-Clause",
-  "py_pkg_name": "{{ cookiecutter.namespace|replace('-', '_') }}"
 }
