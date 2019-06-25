@@ -39,7 +39,7 @@ template automatically. You will be prompted for:
     - `version` - Version of your extension. Versioning should start at 0.1.0.
     - `release` - Release category, e.g. alpha, beta, official
     - `license` - Name of license used for your extension source code.
-    A permissive license should be used if possible.
+    A permissive license, such as BSD, should be used if possible.
 5. A new folder with the same name as your entered `namespace` will be
 created. See `NEXTSTEPS.md` in that folder for the next steps in creating
 your awesome new Neurodata Extension.
