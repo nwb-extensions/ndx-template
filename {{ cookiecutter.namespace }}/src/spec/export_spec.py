@@ -17,8 +17,8 @@ def export_spec(ns_builder, new_data_types):
         warnings.warn('No data types specified. Exiting.')
         return
 
-    if ns_builder.name is None:
-        raise RuntimeError('Namespace name is required to export specs')
+    #if ns_builder.name is None:
+    #    raise RuntimeError('Namespace name is required to export specs')
 
     project_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
     output_dir = os.path.join(project_dir, 'spec')
