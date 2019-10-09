@@ -1,5 +1,3 @@
-import os
-import shutil
 import sys
 import textwrap
 
@@ -45,7 +43,7 @@ def main():
 
     print(textwrap.dedent(
         """
-        Success! Directory {{ cookiecutter.namespace }} was created with a skeleton for your new NWB:N extension.
+        Success! Directory {{ cookiecutter.namespace }} was created with a skeleton for your new NWB extension.
         Please see {{ cookiecutter.namespace }}/NEXTSTEPS.md for creating and publishing your extension.
         """
     ))
