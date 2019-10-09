@@ -3,9 +3,10 @@ from pynwb.spec import (
     NWBGroupSpec,
     NWBAttributeSpec,
     NWBDatasetSpec,
-    NWBLinkSpec
+    NWBLinkSpec,
+    export_spec
 )
-from export_spec import export_spec
+import os.path
 
 
 def main():
@@ -37,7 +38,8 @@ def main():
     # TODO: include the types that are used by the extension and their namespaces (where to find them)
     ns_builder.include_type('ElectricalSeries', namespace='core')
 
-    export_spec(ns_builder, new_data_types)
+    output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'spec'))
+    export_spec(ns_builder, new_data_types, output_dir)
 
 
 if __name__ == "__main__":
