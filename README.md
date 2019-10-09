@@ -44,6 +44,8 @@ template automatically. You will be prompted for:
 created. See `NEXTSTEPS.md` in that folder for the next steps in creating
 your awesome new Neurodata Extension.
 
+See the [PyNWB tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html) for guidance on how to write your extension.
+
 When you are done creating your extension, we encourage you to follow the steps
 to publish your Neurodata Extension in the [NDX Catalog](https://github.com/nwb-extensions/) for the benefit of the
 greater neuroscience community! :)
