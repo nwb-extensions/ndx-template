@@ -52,8 +52,9 @@ def _validate():
               'defaults, run:')
         print('cookiecutter gh:nwb-extensions/ndx-template')
         print('BUT 1) when prompted to delete and re-download ndx-template, '
-              'enter "no" and 2) when prompted to re-use the existing '
-              'version, enter "yes".\n')
+              'enter "no"')
+        print('and 2) when prompted to re-use the existing version, '
+              'enter "yes".\n')
 
     if errors:
         sys.exit(1)
@@ -64,9 +65,10 @@ def _write_new_defaults():
     replay_context = cookiecutter.replay.load(user_config['replay_dir'],
                                               'ndx-template')
     new_default_context = replay_context['cookiecutter']
-    template_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
-                                                 '..'
-                                                 'cookiecutter.json'))
+    # user_config['cookiecutters_dir'] probably only works with repo arg
+    template_path = os.path.join(user_config['cookiecutters_dir'],
+                                 'ndx-template',
+                                 'cookiecutter.json'))
     print('Writing new defaults to ', template_path)
     with open(template_path, 'w') as outfile:
         json.dump(new_default_context, outfile)
