@@ -24,7 +24,7 @@ cookiecutter gh:nwb-extensions/ndx-template
 ```
 4. Answer the prompts, which will be used to fill in the blanks throughout the
 template automatically. You will be prompted for:
-    - `namespace` - The name of the namespace for your NDX. This could be a
+    - `namespace` - The name of the namespace for your extension. This could be a
     description of the extension (e.g. "ndx-cortical-surface") or the name of your
     lab or group (e.g. "ndx-allen-institute"). **Namespaces MUST start with "ndx-".**
       - The name should generally follow the following naming conventions:
@@ -32,11 +32,11 @@ template automatically. You will be prompted for:
         - Use "-" to separate different parts of the name (no spaces allowed)
         - Be short and descriptive
     - `description` - A description of your extension in simple terms
-    - `author` - Your name
-    - `email` - Your email address
+    - `author` - Your name. This can also be a comma-separated list of names.
+    - `email` - Your email address. This can also be a comma-separated list of email addresses.
     - `github_username` - Your username on GitHub
     - `copyright` - Copyright statement, if desired
-    - `version` - Version of your extension. Versioning should start at 0.1.0.
+    - `version` - Version of your extension. Versioning should start at 0.1.0 and follow [semantic versioning] (https://semver.org/) guidelines
     - `release` - Release category, e.g. alpha, beta, official
     - `license` - Name of license used for your extension source code.
     A permissive license, such as BSD, should be used if possible.
