@@ -69,7 +69,6 @@ def _write_new_defaults():
     template_path = os.path.join(user_config['cookiecutters_dir'],
                                  'ndx-template',
                                  'cookiecutter.json')
-    print('Writing new defaults to ', template_path)
     with open(template_path, 'w') as outfile:
         json.dump(new_default_context, outfile)
 
