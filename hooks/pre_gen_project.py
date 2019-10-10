@@ -1,6 +1,7 @@
 import re
 import sys
 import json
+import os.path
 
 import cookiecutter.config
 import cookiecutter.replay
@@ -26,7 +27,7 @@ def _validate():
     if '@' not in parseaddr(email)[1]:
         warnings.append(('The email address you entered "{email}" does not '
                          'appear to be a valid email address. Are you sure you'
-                         'entered it correctly?').format(email=email))
+                         ' entered it correctly?').format(email=email))
     if not re.match(GITHUB_USERNAME_REGEX, github_username):
         warnings.append(('The GitHub username you entered "{github_username}" '
                          'does not appear to be a valid GitHub username. Are '
@@ -46,6 +47,13 @@ def _validate():
     for e in errors:
         print('ERROR: ' + e)
 
+    if warnings or errors:
+        print('To re-run cookiecutter with your entered values as the '
+              'defaults, run: cookiecutter gh:nwb-extensions/ndx-template '
+              'BUT 1) when prompted to delete and re-download ndx-template, '
+              'enter "no" and 2) when prompted to re-use the existing '
+              'version, enter "yes".\n')
+
     if errors:
         sys.exit(1)
 
@@ -55,7 +63,10 @@ def _write_new_defaults():
     replay_context = cookiecutter.replay.load(user_config['replay_dir'],
                                               'ndx-template')
     new_default_context = replay_context['cookiecutter']
-    with open('cookiecutter.json', 'w') as outfile:
+    template_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                                 '..'
+                                                 'cookiecutter.json'))
+    with open(template_path, 'w') as outfile:
         json.dump(new_default_context, outfile)
 
 
