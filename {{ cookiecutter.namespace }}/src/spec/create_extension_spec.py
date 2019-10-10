@@ -1,15 +1,14 @@
-from pynwb.spec import (
-    NWBNamespaceBuilder,
-    NWBGroupSpec,
-    NWBAttributeSpec,
-    NWBDatasetSpec,
-    NWBLinkSpec
-)
+# -*- coding: utf-8 -*-
+
+from pynwb.spec import NWBNamespaceBuilder, NWBGroupSpec, NWBAttributeSpec
+# TODO: import the following spec classes as needed
+# from pynwb.spec import NWBDatasetSpec, NWBLinkSpec, NWBDtypeSpec, NWBRefSpec
+
 from export_spec import export_spec
 
 
 def main():
-    # the values for ns_builder are auto-generated from your cookiecutter inputs
+    # these arguments were auto-generated from your cookiecutter inputs
     ns_builder = NWBNamespaceBuilder(
         doc='{{ cookiecutter.description }}',
         name='{{ cookiecutter.namespace }}',
@@ -18,29 +17,34 @@ def main():
         contact=list(map(str.strip, '{{ cookiecutter.email }}'.split(',')))
     )
 
-    # TODO: define the new data types
-    # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb for more information
-    custom_electrical_series = NWBGroupSpec(
+    # TODO: define your new data types
+    # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
+    # for more information
+    tetrode_series = NWBGroupSpec(
         neurodata_type_def='TetrodeSeries',
         neurodata_type_inc='ElectricalSeries',
-        doc='An extension of ElectricalSeries to include information about the tetrode ID for each time series.',
+        doc=('An extension of ElectricalSeries to include the tetrode ID for '
+             'each time series.'),
         attributes=[
             NWBAttributeSpec(
                 name='trode_id',
-                doc='The tetrode ID',
-                dtype='int'
+                doc='The tetrode ID.',
+                dtype='int32'
             )
         ],
     )
 
-    # TODO: add the new data types to this list
-    new_data_types = [custom_electrical_series]
+    # TODO: add all of your new data types to this list
+    new_data_types = [tetrode_series]
 
-    # TODO: include the types that are used by the extension and their namespaces (where to find them)
+    # TODO: specify the types that are used by the extension and their
+    # namespaces
     ns_builder.include_type('ElectricalSeries', namespace='core')
 
+    # export the spec to namespace and extensions files in the spec folder
     export_spec(ns_builder, new_data_types)
 
 
 if __name__ == "__main__":
+    # usage: python create_extension_spec.py
     main()
