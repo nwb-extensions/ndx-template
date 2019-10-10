@@ -48,9 +48,10 @@ def _validate():
         print('ERROR: ' + e)
 
     if warnings or errors:
-        print('To re-run cookiecutter with your entered values as the '
-              'defaults, run: cookiecutter gh:nwb-extensions/ndx-template '
-              'BUT 1) when prompted to delete and re-download ndx-template, '
+        print('\nTo re-run cookiecutter with your entered values as the '
+              'defaults, run:')
+        print('cookiecutter gh:nwb-extensions/ndx-template')
+        print('BUT 1) when prompted to delete and re-download ndx-template, '
               'enter "no" and 2) when prompted to re-use the existing '
               'version, enter "yes".\n')
 
@@ -66,6 +67,7 @@ def _write_new_defaults():
     template_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
                                                  '..'
                                                  'cookiecutter.json'))
+    print('Writing new defaults to ', template_path)
     with open(template_path, 'w') as outfile:
         json.dump(new_default_context, outfile)
 
