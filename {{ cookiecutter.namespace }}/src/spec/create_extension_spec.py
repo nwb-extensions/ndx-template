@@ -14,8 +14,8 @@ def main():
         doc='{{ cookiecutter.description }}',
         name='{{ cookiecutter.namespace }}',
         version='{{ cookiecutter.version }}',
-        author='{{ cookiecutter.author }}'.split(','),
-        contact='{{ cookiecutter.email }}'.split(',')
+        author=list(map(str.strip, '{{ cookiecutter.author }}'.split(','))),
+        contact=list(map(str.strip, '{{ cookiecutter.email }}'.split(',')))
     )
 
     # TODO: define the new data types

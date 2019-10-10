@@ -12,7 +12,7 @@ REQ_NAMESPACE_REGEX = r'^[\-_a-zA-Z0-9]+$'
 GITHUB_USERNAME_REGEX = r'^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$'
 
 namespace = '{{ cookiecutter.namespace }}'
-email = '{{ cookiecutter.email }}'.split(',')
+email = map(str.strip, '{{ cookiecutter.email }}'.split(','))
 github_username = '{{ cookiecutter.github_username }}'
 
 
@@ -35,11 +35,11 @@ def _validate():
         errors.append('Namespace can only have lower-case and upper-case ASCII'
                       ' letters, hyphens (-), and underscores (_).')
     for e in email:
-        if '@' not in parseaddr(email)[1]:
+        if '@' not in parseaddr(e)[1]:
             warnings.append(
                 'The email address you entered "{email}" does not '
                 'appear to be a valid email address. Are you sure you'
-                ' entered it correctly?'.format(email=email)
+                ' entered it correctly?'.format(email=e)
             )
     if not re.match(GITHUB_USERNAME_REGEX, github_username):
         warnings.append(
