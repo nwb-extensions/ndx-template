@@ -2,11 +2,10 @@ import re
 import sys
 import json
 import os.path
+from email.utils import parseaddr
 
 import cookiecutter.config
 import cookiecutter.replay
-from email.utils import parseaddr
-
 
 PREF_NAMESPACE_REGEX = r'^[\-a-z]+$'
 REQ_NAMESPACE_REGEX = r'^[\-_a-zA-Z0-9]+$'
@@ -16,14 +15,25 @@ namespace = '{{ cookiecutter.namespace }}'
 email = '{{ cookiecutter.email }}'
 github_username = '{{ cookiecutter.github_username }}'
 
-warnings = []
-errors = []
-
 
 def _validate():
+    """
+    Validate the namespace, email address, and github username.
+    Exits if namespace does not start with "ndx" or has invalid characters.
+    """
+    warnings = []
+    errors = []
+
+    if namespace[:4] != 'ndx-':
+        errors.append('The name of your NDX extension must start with "ndx-".')
     if not re.match(PREF_NAMESPACE_REGEX, namespace):
         warnings.append('It is recommended to use only lower-case '
                         'ASCII letters and hyphens in your namespace.')
+    if not re.match(REQ_NAMESPACE_REGEX, namespace):
+        # these are the rules for naming GitHub repositories, and we want the
+        # name of the GitHub repository to match the name of the extension
+        errors.append('Namespace can only have lower-case and upper-case ASCII'
+                      ' letters, hyphens (-), and underscores (_).')
     if '@' not in parseaddr(email)[1]:
         warnings.append(('The email address you entered "{email}" does not '
                          'appear to be a valid email address. Are you sure you'
@@ -33,14 +43,8 @@ def _validate():
                          'does not appear to be a valid GitHub username. Are '
                          'you sure you entered it correctly?')
                         .format(github_username=github_username))
-    if namespace[:4] != 'ndx-':
-        errors.append('The name of your NDX extension must start with "ndx-".')
-    if not re.match(REQ_NAMESPACE_REGEX, namespace):
-        # these are the rules for naming GitHub repositories, and we want the
-        # name of the GitHub repository to match the name of the extension
-        errors.append('Namespace can only have lower-case and upper-case ASCII'
-                      ' letters, hyphens (-), and underscores (_).')
 
+    print('------------------------------------------------------------------')
     for w in warnings:
         print('WARNING: ' + w)
 
@@ -61,6 +65,10 @@ def _validate():
 
 
 def _write_new_defaults():
+    """
+    Overwrite the default values of the cached template with the values entered
+    by the user.
+    """
     user_config = cookiecutter.config.get_user_config()
     replay_context = cookiecutter.replay.load(user_config['replay_dir'],
                                               'ndx-template')
