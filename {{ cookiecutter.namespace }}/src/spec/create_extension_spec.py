@@ -10,11 +10,13 @@ from export_spec import export_spec
 
 def main():
     # the values for ns_builder are auto-generated from your cookiecutter inputs
-    ns_builder = NWBNamespaceBuilder(doc='{{ cookiecutter.description }}',
-                                     name='{{ cookiecutter.namespace }}',
-                                     version='{{ cookiecutter.version }}',
-                                     author='{{ cookiecutter.author }}',
-                                     contact='{{ cookiecutter.email }}')
+    ns_builder = NWBNamespaceBuilder(
+        doc='{{ cookiecutter.description }}',
+        name='{{ cookiecutter.namespace }}',
+        version='{{ cookiecutter.version }}',
+        author='{{ cookiecutter.author }}'.split(','),
+        contact='{{ cookiecutter.email }}'.split(',')
+    )
 
     # TODO: define the new data types
     # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb for more information
