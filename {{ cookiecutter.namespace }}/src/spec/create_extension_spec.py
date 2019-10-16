@@ -17,6 +17,12 @@ def main():
         contact=list(map(str.strip, '{{ cookiecutter.email }}'.split(',')))
     )
 
+    # TODO: specify the neurodata_types that are used by the extension as well
+    # as in which namespace they are found
+    # this is similar to specifying the Python modules that need to be imported
+    # to use your new data types
+    ns_builder.include_type('ElectricalSeries', namespace='core')
+
     # TODO: define your new data types
     # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
     # for more information
@@ -36,10 +42,6 @@ def main():
 
     # TODO: add all of your new data types to this list
     new_data_types = [tetrode_series]
-
-    # TODO: specify the types that are used by the extension and their
-    # namespaces
-    ns_builder.include_type('ElectricalSeries', namespace='core')
 
     # export the spec to namespace and extensions files in the spec folder
     export_spec(ns_builder, new_data_types)
