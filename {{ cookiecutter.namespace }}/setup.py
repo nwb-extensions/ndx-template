@@ -14,7 +14,7 @@ setup_args = {
     'url': '',
     'license': '{{ cookiecutter.license }}',
     'install_requires': [
-        'pynwb'
+        'pynwb>=1.1.2'
     ],
     'packages': find_packages('src/pynwb'),
     'package_dir': {'': 'src/pynwb'},
