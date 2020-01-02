@@ -5,10 +5,15 @@ import os
 from setuptools import setup, find_packages
 from shutil import copy2
 
+with open('README.md', 'r') as fp:
+    readme = fp.read()
+
 setup_args = {
     'name': '{{ cookiecutter.namespace }}',
     'version': '{{ cookiecutter.version }}',
     'description': '{{ cookiecutter.description }}',
+    'long_description': readme,
+    'long_description_content_type': 'text/markdown',
     'author': '{{ cookiecutter.author }}',
     'author_email': '{{ cookiecutter.email }}',
     'url': '',
