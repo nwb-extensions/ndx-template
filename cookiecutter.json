@@ -4,7 +4,7 @@
   "author": "My Name",
   "email": "my_email@example.com",
   "github_username": "myname",
-  "copyright": "2019, {{ cookiecutter.author }}",
+  "copyright": "2020, {{ cookiecutter.author }}",
   "version": "0.1.0",
   "release": "alpha",
   "license": "BSD 3-Clause",
