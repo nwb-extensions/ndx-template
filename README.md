@@ -13,10 +13,10 @@ MATLAB support is in development.
 
 1. Install [Python](https://www.python.org/downloads/) for your operating system if it is not already installed.
 
-2. Install [cookiecutter](https://pypi.org/project/cookiecutter/) (see [here](https://cookiecutter.readthedocs.io/en/latest/installation.html) for Windows install instructions) and [nwb-docutils](https://pypi.org/project/nwb-docutils/).
+2. Install [cookiecutter](https://pypi.org/project/cookiecutter/) (see [here](https://cookiecutter.readthedocs.io/en/latest/installation.html) for Windows install instructions) and [hdmf-docutils](https://pypi.org/project/hdmf-docutils/).
 `cookiecutter` is a Python-based command-line utility that creates projects from templates.
 ```bash
-python -m pip install cookiecutter "nwb-docutils>=0.3.1"
+python -m pip install cookiecutter hdmf-docutils
 ```
 3. Run cookiecutter on your local working directory:
 ```bash

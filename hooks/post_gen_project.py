@@ -1,7 +1,7 @@
 import sys
 import textwrap
 
-from nwb_docutils.init_sphinx_extension_doc import main as init_sphinx_extension_doc
+from hdmf_docutils.init_sphinx_extension_doc import main as init_sphinx_extension_doc
 from subprocess import check_call
 
 
