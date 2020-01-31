@@ -41,19 +41,13 @@ jobs:
   - script: |
       python -m pip install --upgrade pip
       python -m pip install --upgrade setuptools
-      # python -m pip install cookiecutter "hdmf-docutils>=0.4.1"
-      python -m pip install "hdmf-docutils>=0.4.1"
+      python -m pip install cookiecutter "hdmf-docutils>=0.4.1"
     displayName: 'Install build dependencies'
 
   - bash: |
       git config --global user.email "you@example.com"
       git config --global user.name "Your Name"
     displayName: 'Configure git'
-
-  - bash: |
-      git clone https://github.com/rly/cookiecutter.git
-      cd cookiecutter
-      python setup.py install
 
   - bash: |
       cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
