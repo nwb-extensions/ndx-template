@@ -85,7 +85,9 @@ def _write_new_defaults():
     replay_context = cookiecutter.replay.load(replay_dir, template_name)
     new_default_context = replay_context['cookiecutter']
 
-    # user_config['cookiecutters_dir'] probably only works with repo arg
+    # the below only works if cookiecutter downloads and caches the template
+    # from github. this will not work for the command:
+    # cookiecutter {ndx-template source dir}
     template_path = os.path.join(user_config['cookiecutters_dir'],
                                  template_name,
                                  'cookiecutter.json')

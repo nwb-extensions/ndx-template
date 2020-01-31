@@ -53,8 +53,8 @@ jobs:
     displayName: 'Configure git'
 
   - bash: |
-      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
-      # cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template
+      # cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
+      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template --checkout "$(Build.SourceBranchName)"
     displayName: 'Evaluate template'
 
   - bash: |
