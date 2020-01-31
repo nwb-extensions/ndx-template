@@ -50,8 +50,8 @@ jobs:
     displayName: 'Configure git'
 
   - bash: |
-      python -m cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
-      #cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template
+      cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
+      # cookiecutter --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template
     displayName: 'Evaluate template'
 
   - bash: |
