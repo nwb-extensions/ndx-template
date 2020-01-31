@@ -78,8 +78,9 @@ def _write_new_defaults():
     replay_dir = user_config['replay_dir']
 
     # the template name used by cookiecutter.replay is the name of the repo dir
-    repo_dir = os.path.join(os.path.dirname(__file__), os.pardir)
-    template_name = os.path.basename(os.path.abspath(repo_dir))
+    # this code assumes that the template repo was checked out into a dir
+    # called "ndx-template".
+    template_name = 'ndx-template'
 
     replay_context = cookiecutter.replay.load(replay_dir, template_name)
     new_default_context = replay_context['cookiecutter']
