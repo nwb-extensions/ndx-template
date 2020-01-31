@@ -1,6 +1,7 @@
 import re
 import sys
 import json
+import os
 import os.path
 from email.utils import parseaddr
 
@@ -74,8 +75,10 @@ def _write_new_defaults():
     by the user.
     """
     user_config = cookiecutter.config.get_user_config()
-    replay_context = cookiecutter.replay.load(user_config['replay_dir'],
-                                              'ndx-template')
+    replay_dir = user_config['replay_dir']
+    if not os.path.exists(replay_dir):
+        os.makedirs(replay_dir)
+    replay_context = cookiecutter.replay.load(replay_dir, 'ndx-template')
     new_default_context = replay_context['cookiecutter']
     # user_config['cookiecutters_dir'] probably only works with repo arg
     template_path = os.path.join(user_config['cookiecutters_dir'],
