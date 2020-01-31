@@ -76,12 +76,17 @@ def _write_new_defaults():
     """
     user_config = cookiecutter.config.get_user_config()
     replay_dir = user_config['replay_dir']
-    print(os.path.exists(replay_dir))
-    replay_context = cookiecutter.replay.load(replay_dir, 'ndx-template')
+
+    # the template name used by cookiecutter.replay is the name of the repo dir
+    repo_dir = os.path.join(os.path.dirname(__file__), '..')
+    template_name = os.path.basename(os.path.abspath(repo_dir))
+
+    replay_context = cookiecutter.replay.load(replay_dir, template_name)
     new_default_context = replay_context['cookiecutter']
+
     # user_config['cookiecutters_dir'] probably only works with repo arg
     template_path = os.path.join(user_config['cookiecutters_dir'],
-                                 'ndx-template',
+                                 template_name,
                                  'cookiecutter.json')
     with open(template_path, 'w') as outfile:
         json.dump(new_default_context, outfile)
