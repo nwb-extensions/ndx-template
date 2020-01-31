@@ -33,7 +33,7 @@ jobs:
 
   steps:
 
-  - checkout
+  - checkout: self
     path: ndx-template
 
   - task: UsePythonVersion@0
