@@ -76,8 +76,7 @@ def _write_new_defaults():
     """
     user_config = cookiecutter.config.get_user_config()
     replay_dir = user_config['replay_dir']
-    if not os.path.exists(replay_dir):
-        os.makedirs(replay_dir)
+    print(os.path.exists(replay_dir))
     replay_context = cookiecutter.replay.load(replay_dir, 'ndx-template')
     new_default_context = replay_context['cookiecutter']
     # user_config['cookiecutters_dir'] probably only works with repo arg
