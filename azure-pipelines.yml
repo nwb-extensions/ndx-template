@@ -33,6 +33,9 @@ jobs:
 
   steps:
 
+  - checkout
+    path: ndx-template
+
   - task: UsePythonVersion@0
     inputs:
       versionSpec: '$(pythonVersion)'
