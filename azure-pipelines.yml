@@ -54,7 +54,7 @@ jobs:
 
   - bash: |
       # cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" "$(Build.SourcesDirectory)"
-      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template --checkout "$(Build.SourceBranchName)"
+      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template --checkout "$(System.PullRequest.SourceBranch)"
     displayName: 'Evaluate template'
 
   - bash: |
