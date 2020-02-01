@@ -1,6 +1,7 @@
 import re
 import sys
 import json
+import os
 import os.path
 from email.utils import parseaddr
 
@@ -74,12 +75,21 @@ def _write_new_defaults():
     by the user.
     """
     user_config = cookiecutter.config.get_user_config()
-    replay_context = cookiecutter.replay.load(user_config['replay_dir'],
-                                              'ndx-template')
+    replay_dir = user_config['replay_dir']
+
+    # the template name used by cookiecutter.replay is the name of the repo dir
+    # this code assumes that the template repo was checked out into a dir
+    # called "ndx-template".
+    template_name = 'ndx-template'
+
+    replay_context = cookiecutter.replay.load(replay_dir, template_name)
     new_default_context = replay_context['cookiecutter']
-    # user_config['cookiecutters_dir'] probably only works with repo arg
+
+    # the below only works if cookiecutter downloads and caches the template
+    # from github. this will not work for the command:
+    # cookiecutter {ndx-template source dir}
     template_path = os.path.join(user_config['cookiecutters_dir'],
-                                 'ndx-template',
+                                 template_name,
                                  'cookiecutter.json')
     with open(template_path, 'w') as outfile:
         json.dump(new_default_context, outfile)

@@ -32,10 +32,7 @@ use any dependencies.
 
 ## Documenting and Publishing Your Extension to the Community
 
-1. Clone the latest nwb-docutils repository https://github.com/nwb-extensions-test/ndx-template.git
-or install the latest release:
-`python -m pip install nwb-docutils`
-    - If you cloned the latest version, run `python setup.py install` to install nwb-docutils locally.
+1. Install the latest release of hdmf_docutils: `python -m pip install hdmf-docutils`
 
 2. Start a git repository for your extension directory {{ cookiecutter.namespace }}
  and push it to GitHub. You will need a GitHub account.
