@@ -10,11 +10,11 @@ from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBAttrib
 def main():
     # these arguments were auto-generated from your cookiecutter inputs
     ns_builder = NWBNamespaceBuilder(
-        doc='{{ cookiecutter.description }}',
-        name='{{ cookiecutter.namespace }}',
-        version='{{ cookiecutter.version }}',
-        author=list(map(str.strip, '{{ cookiecutter.author }}'.split(','))),
-        contact=list(map(str.strip, '{{ cookiecutter.email }}'.split(',')))
+        doc="""{{ cookiecutter.description }}""",
+        name="""{{ cookiecutter.namespace }}""",
+        version="""{{ cookiecutter.version }}""",
+        author=list(map(str.strip, """{{ cookiecutter.author }}""".split(','))),
+        contact=list(map(str.strip, """{{ cookiecutter.email }}""".split(',')))
     )
 
     # TODO: specify the neurodata_types that are used by the extension as well
