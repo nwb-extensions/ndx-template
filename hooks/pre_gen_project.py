@@ -10,11 +10,13 @@ import cookiecutter.replay
 
 PREF_NAMESPACE_REGEX = r'^[\-a-z]+$'
 REQ_NAMESPACE_REGEX = r'^[\-_a-zA-Z0-9]+$'
+REQ_VERSION_REGEX = r'^[\-_a-zA-Z0-9.+]+$'
 GITHUB_USERNAME_REGEX = r'^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$'
 
 namespace = """{{ cookiecutter.namespace }}"""
 email = map(str.strip, """{{ cookiecutter.email }}""".split(','))
 github_username = """{{ cookiecutter.github_username }}"""
+version = """{{ cookiecutter.version }}"""
 
 
 def _validate():
@@ -48,6 +50,10 @@ def _validate():
             'appear to be a valid GitHub username. Are you sure you entered it'
             ' correctly?'.format(github_username=github_username)
         )
+    if not re.match(REQ_VERSION_REGEX, version):
+        errors.append('Version can only have lower-case and upper-case ASCII'
+                      ' letters, hyphens (-), underscores (_), plus signs (+),'
+                      ' and periods (.).')
 
     print('------------------------------------------------------------------')
     for w in warnings:
