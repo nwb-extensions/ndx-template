@@ -7,14 +7,14 @@ from subprocess import check_call
 
 def _generate_doc():
     init_sphinx_extension_doc([
-        "--project", "{{ cookiecutter.namespace }}",
-        "--author", "{{ cookiecutter.author }}",
-        "--version", "{{ cookiecutter.version }}",
-        "--release", "{{ cookiecutter.release }}",
+        "--project", """{{ cookiecutter.namespace }}""",
+        "--author", """{{ cookiecutter.author }}""",
+        "--version", """{{ cookiecutter.version }}""",
+        "--release", """{{ cookiecutter.release }}""",
         "--output", "docs",
         "--spec_dir", "spec",
-        "--namespace_filename", "{{ cookiecutter.namespace }}.namespace.yaml",
-        "--default_namespace", "{{ cookiecutter.namespace }}",
+        "--namespace_filename", """{{ cookiecutter.namespace }}.namespace.yaml""",
+        "--default_namespace", """{{ cookiecutter.namespace }}""",
         "--custom_description", "description.rst",
         "--custom_release_notes", "release_notes.rst",
     ])
