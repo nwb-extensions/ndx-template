@@ -16,11 +16,9 @@ and any other packages required by your extension.
       - If present, the `src/pynwb` folder MUST contain the following:
         - `{{ cookiecutter.namespace }}` - Folder with the sources of the NWB extension
         - `{{ cookiecutter.namespace }}/__init__.py` - Python file that may be empty
-        - `requirements.txt` - Text file listing the Python package requirements for the extension
-        - `README.md` - Markdown file describing the NWB extension
       - If present, the `src/pynwb` folder MAY contain the following files/folders:
         - `test` - Folder for unit tests for the extensions
-        - `jupyter-widgets` - Optional package with custom widgets for use with Jupyter
+        - `jupyter_widgets` - Optional package with custom widgets for use with Jupyter
 
 5. Run `python src/spec/create_extension_spec.py` to generate the
 `spec/{{ cookiecutter.namespace }}.namespace.yaml` and
