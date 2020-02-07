@@ -5,9 +5,18 @@ import os
 from setuptools import setup, find_packages
 from shutil import copy2
 
+# load README.md/README.rst file
 try:
-    with open('README.rst', 'r') as fp:
-        readme = fp.read()
+    if os.path.exists('README.md'):
+        with open('README.md', 'r') as fp:
+            readme = fp.read()
+            readme_type = 'text/markdown; charset=UTF-8'
+    elif os.path.exists('README.rst'):
+        with open('README.rst', 'r') as fp:
+            readme = fp.read()
+            readme_type = 'text/x-rst; charset=UTF-8'
+    else:
+        readme = ""
 except:
     readme = ""
 
@@ -16,7 +25,7 @@ setup_args = {
     'version': '{{ cookiecutter.version }}',
     'description': '{{ cookiecutter.description }}',
     'long_description': readme,
-    'long_description_content_type': 'text/x-rst; charset=UTF-8',
+    'long_description_content_type': readme_type,
     'author': '{{ cookiecutter.author }}',
     'author_email': '{{ cookiecutter.email }}',
     'url': '',
