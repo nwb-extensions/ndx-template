@@ -5,10 +5,18 @@ import os
 from setuptools import setup, find_packages
 from shutil import copy2
 
+try:
+    with open('README.rst', 'r') as fp:
+        readme = fp.read()
+except:
+    readme = ""
+
 setup_args = {
     'name': '{{ cookiecutter.namespace }}',
     'version': '{{ cookiecutter.version }}',
     'description': '{{ cookiecutter.description }}',
+    'long_description': readme,
+    'long_description_content_type': 'text/x-rst; charset=UTF-8',
     'author': '{{ cookiecutter.author }}',
     'author_email': '{{ cookiecutter.email }}',
     'url': '',
