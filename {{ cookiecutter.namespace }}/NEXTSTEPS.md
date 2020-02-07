@@ -50,26 +50,32 @@ your extension.
 
 7. Add a license file. Permissive licenses should be used if possible. **A [BSD license](https://opensource.org/licenses/BSD-3-Clause) is recommended.**
 
-8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }}
+8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
 
 9. Publish your updated extension on PyPi.
     - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
     - You may need to modify `setup.py`
     - If your extension version is {{ cookiecutter.version }}, then this page should exist: https://pypi.org/project/{{ cookiecutter.namespace }}/{{ cookiecutter.version }}
 
+   Once your GitHub release and ``setup.py`` are ready, publishing on PyPi:
+    ```bash
+    python setup.py sdist bdist_wheel
+    twine upload dist/*
+    ```
+
 10. Go to https://github.com/nwb-extensions/staged-extensions and fork the
 repository.
 
-10. Clone the fork onto your local filesystem.
+11. Clone the fork onto your local filesystem.
 
-10. Copy the directory `staged-extensions/example` to a new directory
+12. Copy the directory `staged-extensions/example` to a new directory
 `staged-extensions/{{ cookiecutter.namespace }}`:
 
     ```bash
-cp -r staged-extensions/example staged-extensions/{{ cookiecutter.namespace }}
-```
+    cp -r staged-extensions/example staged-extensions/{{ cookiecutter.namespace }}
+    ```
 
-11. Edit `staged-extensions/{{ cookiecutter.namespace }}/ndx-meta.yaml`
+13. Edit `staged-extensions/{{ cookiecutter.namespace }}/ndx-meta.yaml`
 with information on where to find your NWB extension.
     - The YAML file MUST contain a dict with the following keys:
       - name: extension namespace name
@@ -92,7 +98,7 @@ maintainers:
   - {{ cookiecutter.github_username }}
 ```
 
-12. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`
+14. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`
 to add information about your extension. You may copy it from
 `{{ cookiecutter.namespace }}/README.md`.
 
@@ -100,13 +106,19 @@ to add information about your extension. You may copy it from
 cp {{ cookiecutter.namespace }}/README.md staged-extensions/{{ cookiecutter.namespace }}/README.md
 ```
 
-13. Git commit and push your changes to GitHub.
+15. Add and commit your changes to Git and push your changes to GitHub.
+```
+cd staged-extensions
+git add {{ cookiecutter.namespace }}
+git commit -m "Add new catalog entry for {{ cookiecutter.namespace }}" .
+git push
+```
 
-14. Open a pull request. Building of your extension will be tested on Windows,
+16. Open a pull request. Building of your extension will be tested on Windows,
 Mac, and Linux. The technical team will review your extension shortly after
 and provide feedback and request changes, if any.
 
-15. When your pull request is merged, a new repository, called
+17. When your pull request is merged, a new repository, called
 {{ cookiecutter.namespace }}-feedstock will be created in the nwb-extensions
 GitHub organization and you will be added as a maintainer for that repository.
 
