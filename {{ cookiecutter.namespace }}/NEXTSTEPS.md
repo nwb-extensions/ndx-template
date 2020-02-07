@@ -50,7 +50,7 @@ your extension.
 
 7. Add a license file. Permissive licenses should be used if possible. **A [BSD license](https://opensource.org/licenses/BSD-3-Clause) is recommended.**
 
-8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }}
+8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
 
 9. Publish your updated extension on PyPi.
     - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
@@ -100,7 +100,13 @@ to add information about your extension. You may copy it from
 cp {{ cookiecutter.namespace }}/README.md staged-extensions/{{ cookiecutter.namespace }}/README.md
 ```
 
-13. Git commit and push your changes to GitHub.
+13. Add and commit your changes to Git and push your changes to GitHub.
+```
+cd staged-extensions
+git add {{ cookiecutter.namespace }}
+git commit -m "Add new catalog entry for {{ cookiecutter.namespace }}" .
+git push
+```
 
 14. Open a pull request. Building of your extension will be tested on Windows,
 Mac, and Linux. The technical team will review your extension shortly after
