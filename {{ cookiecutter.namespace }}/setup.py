@@ -17,7 +17,7 @@ try:
             readme_type = 'text/x-rst; charset=UTF-8'
     else:
         readme = ""
-except:
+except Exception    :
     readme = ""
 
 setup_args = {
