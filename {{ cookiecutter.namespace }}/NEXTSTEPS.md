@@ -50,12 +50,12 @@ your extension.
 
 8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
 
-9. Publish your updated extension on PyPi.
+9. Publish your updated extension on [PyPI](https://pypi.org/).
     - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
     - You may need to modify `setup.py`
     - If your extension version is {{ cookiecutter.version }}, then this page should exist: https://pypi.org/project/{{ cookiecutter.namespace }}/{{ cookiecutter.version }}
 
-   Once your GitHub release and ``setup.py`` are ready, publishing on PyPi:
+   Once your GitHub release and ``setup.py`` are ready, publishing on PyPI:
     ```bash
     python setup.py sdist bdist_wheel
     twine upload dist/*
@@ -125,7 +125,7 @@ GitHub organization and you will be added as a maintainer for that repository.
 
 1. Update your {{ cookiecutter.namespace }} GitHub repository.
 
-2. Publish your updated extension on PyPi.
+2. Publish your updated extension on PyPI.
 
 3. Fork the {{ cookiecutter.namespace }}-feedstock repository on GitHub.
 
