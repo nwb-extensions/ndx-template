@@ -44,6 +44,10 @@ template automatically. You will be prompted for:
 created. See `NEXTSTEPS.md` in that folder for the next steps in creating
 your awesome new Neurodata Extension.
 
+In case cookiecutter runs into problems and you want to avoid reentering
+all the information, you can edit the file `~/.cookiecutter_replay/ndx-template.json`,
+and use that via `cookiecutter --replay gh:nwb-extensions/ndx-template`.
+
 See the [PyNWB tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html) for guidance on how to write your extension.
 
 When you are done creating your extension, we encourage you to follow the steps
