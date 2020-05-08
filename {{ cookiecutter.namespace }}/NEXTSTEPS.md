@@ -9,7 +9,7 @@
 3. Run `python -m pip install -r requirements.txt` to install the `pynwb` package
 and any other packages required by your extension.
 
-4. Modify `src/create_extension_spec.py` to define your extension.
+4. Modify `src/spec/create_extension_spec.py` to define your extension.
 
     - If you want to create any custom classes for interacting with the extension,
       add them to the `src/pynwb`.
