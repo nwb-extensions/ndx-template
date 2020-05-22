@@ -6,7 +6,7 @@ trigger:
 jobs:
 
 - job: 'Test'
-  displayName: "Evaluate cookiecutter template"
+  displayName: "Test template"
 
   strategy:
     matrix:
@@ -15,7 +15,7 @@ jobs:
         pythonVersion: '3.7'
 
       macOS-py3.7:
-        imageName: 'macos-10.13'
+        imageName: 'macos-10.15'
         pythonVersion: '3.7'
 
       Windows-py3.7:
@@ -59,6 +59,12 @@ jobs:
   - bash: |
       python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/" "ndx-my-namespace"
     displayName: 'Check files'
+
+  - bash: |
+      cd "$(Agent.BuildDirectory)/ndx-my-namespace"
+      python setup.py install
+      python -m unittest src/pynwb/tests/test_tetrodeseries.py
+    displayName: 'Run PyNWB test'
 
   - bash: |
       set -e
