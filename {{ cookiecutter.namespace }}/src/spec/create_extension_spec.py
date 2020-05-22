@@ -21,7 +21,17 @@ def main():
     # as in which namespace they are found
     # this is similar to specifying the Python modules that need to be imported
     # to use your new data types
+    # as of HDMF 1.6.1, the full ancestry of the neurodata_types that are used by
+    # the extension should be included, i.e., the neurodata_type and its parent
+    # type and its parent type and so on. this will be addressed in a future
+    # release of HDMF.
     ns_builder.include_type('ElectricalSeries', namespace='core')
+    ns_builder.include_type('TimeSeries', namespace='core')
+    ns_builder.include_type('NWBDataInterface', namespace='core')
+    ns_builder.include_type('NWBContainer', namespace='core')
+    ns_builder.include_type('DynamicTableRegion', namespace='hdmf-common')
+    ns_builder.include_type('VectorData', namespace='hdmf-common')
+    ns_builder.include_type('Data', namespace='hdmf-common')
 
     # TODO: define your new data types
     # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
