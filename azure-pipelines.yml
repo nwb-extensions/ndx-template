@@ -62,7 +62,7 @@ jobs:
 
   - bash: |
       python "$(Agent.BuildDirectory)/ndx-my-namespace/setup.py install
-      python "$(Agent.BuildDirectory)/ndx-my-namespace/src/pynwb/tests/test_tetrodeseries.py
+      python -m unittest "$(Agent.BuildDirectory)/ndx-my-namespace/src/pynwb/tests/test_tetrodeseries.py
     displayName: 'Run PyNWB test'
 
   - bash: |
