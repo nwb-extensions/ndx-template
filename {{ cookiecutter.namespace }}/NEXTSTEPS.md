@@ -1,4 +1,4 @@
-# Next Steps for {{ cookiecutter.namespace }} Extension for NWB:N
+# Next Steps for {{ cookiecutter.namespace }} Extension for NWB
 
 ## Creating Your Extension
 
@@ -11,20 +11,25 @@ and any other packages required by your extension.
 
 4. Modify `src/spec/create_extension_spec.py` to define your extension.
 
-    - If you want to create any custom classes for interacting with the extension,
-      add them to the `src/pynwb`.
-      - If present, the `src/pynwb` folder MUST contain the following:
-        - `{{ cookiecutter.namespace }}` - Folder with the sources of the NWB extension
-        - `{{ cookiecutter.namespace }}/__init__.py` - Python file that may be empty
-      - If present, the `src/pynwb` folder MAY contain the following files/folders:
-        - `test` - Folder for unit tests for the extensions
-        - `jupyter_widgets` - Optional package with custom widgets for use with Jupyter
-
 5. Run `python src/spec/create_extension_spec.py` to generate the
 `spec/{{ cookiecutter.namespace }}.namespace.yaml` and
 `spec/{{ cookiecutter.namespace }}.extensions.yaml` files.
 
-6. You may need to modify `setup.py` and re-run `python setup.py install` if you
+6. Define API classes for your new extension data types.
+    - As a starting point, `src/pynwb/__init__.py` includes an example for how to use
+      the `pynwb.get_class` to get a basic Python class for your new extension data
+      type. This class contains a constructor and properties for the new data type.
+    - Instead of using `pynwb.get_class`, you can define your own custom class for the
+      new type, which will allow you to customize the class methods, customize the
+      object mapping, and create convenience functions. See
+      [https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html](https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html)
+      for more details.
+
+7. Define tests for your new extension classes in `src/pynwb/tests` or `src/matnwb/tests`.
+   A test for the example `TetrodeSeries` data type is provided as a reference and
+   should be replaced or removed.
+
+8. You may need to modify `setup.py` and re-run `python setup.py install` if you
 use any dependencies.
 
 
