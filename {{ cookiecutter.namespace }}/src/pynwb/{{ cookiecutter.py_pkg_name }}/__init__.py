@@ -1,5 +1,5 @@
 import os
-from pynwb import load_namespaces
+from pynwb import load_namespaces, get_class
 
 # Set path of the namespace.yaml file to the expected install location
 {{ cookiecutter.py_pkg_name }}_specpath = os.path.join(
@@ -20,3 +20,7 @@ if not os.path.exists({{ cookiecutter.py_pkg_name }}_specpath):
 
 # Load the namespace
 load_namespaces({{ cookiecutter.py_pkg_name }}_specpath)
+
+# TODO: import your classes here or define your class using get_class to make
+# them accessible at the package level
+TetrodeSeries = get_class('TetrodeSeries', '{{ cookiecutter.namespace }}')
