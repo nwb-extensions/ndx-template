@@ -61,8 +61,9 @@ jobs:
     displayName: 'Check files'
 
   - bash: |
-      python "$(Agent.BuildDirectory)/ndx-my-namespace/setup.py install
-      python -m unittest "$(Agent.BuildDirectory)/ndx-my-namespace/src/pynwb/tests/test_tetrodeseries.py
+      cd "$(Agent.BuildDirectory)/ndx-my-namespace"
+      python setup.py install
+      python -m unittest src/pynwb/tests/test_tetrodeseries.py
     displayName: 'Run PyNWB test'
 
   - bash: |
