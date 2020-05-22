@@ -61,6 +61,11 @@ jobs:
     displayName: 'Check files'
 
   - bash: |
+      python "$(Agent.BuildDirectory)/ndx-my-namespace/setup.py install
+      python "$(Agent.BuildDirectory)/ndx-my-namespace/src/pynwb/tests/test_tetrodeseries.py
+    displayName: 'Run PyNWB test'
+
+  - bash: |
       set -e
       cd "$(Agent.BuildDirectory)/ndx-my-namespace/docs"
       make apidoc
