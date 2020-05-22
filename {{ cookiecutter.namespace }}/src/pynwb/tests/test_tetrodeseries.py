@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 import numpy as np
 
 from pynwb import NWBHDF5IO, NWBFile
@@ -15,7 +15,7 @@ def set_up_nwbfile():
     nwbfile = NWBFile(
         session_description='session_description',
         identifier='identifier',
-        session_start_time=datetime.now().astimezone()
+        session_start_time=datetime.datetime.now(datetime.timezone.utc)
     )
 
     device = nwbfile.create_device(
