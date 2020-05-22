@@ -6,7 +6,7 @@ trigger:
 jobs:
 
 - job: 'Test'
-  displayName: "Evaluate cookiecutter template"
+  displayName: "Test template"
 
   strategy:
     matrix:
