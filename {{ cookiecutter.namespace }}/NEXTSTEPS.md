@@ -16,6 +16,7 @@ and any other packages required by your extension.
 `spec/{{ cookiecutter.namespace }}.extensions.yaml` files.
 
 6. Define API classes for your new extension data types.
+
     - As a starting point, `src/pynwb/__init__.py` includes an example for how to use
       the `pynwb.get_class` to get a basic Python class for your new extension data
       type. This class contains a constructor and properties for the new data type.
@@ -25,9 +26,18 @@ and any other packages required by your extension.
       [https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html](https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html)
       for more details.
 
-7. Define tests for your new extension classes in `src/pynwb/tests` or `src/matnwb/tests`.
-   A test for the example `TetrodeSeries` data type is provided as a reference and
-   should be replaced or removed.
+7. Define tests for your new extension data types in `src/pynwb/tests` or `src/matnwb/tests`.
+A test for the example `TetrodeSeries` data type is provided as a reference and should be
+replaced or removed.
+
+     - Python tests should be runnable by executing [`pytest`](https://docs.pytest.org/en/latest/)
+     from the root of the extension directory. Use of PyNWB testing infrastructure from
+     `pynwb.testing` is encouraged (see
+    [documentation](https://pynwb.readthedocs.io/en/stable/pynwb.testing.html)).
+     - Creating both **unit tests** (e.g., testing initialization of new data type classes and
+     new functions) and **integration tests** (e.g., write the new data types to file, read
+     the file, and confirm the read data types are equal to the written data types) is
+     highly encouraged.
 
 8. You may need to modify `setup.py` and re-run `python setup.py install` if you
 use any dependencies.
