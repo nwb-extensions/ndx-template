@@ -34,7 +34,7 @@ template automatically. You will be prompted for:
     - `description` - A description of your extension in simple terms
     - `author` - Your name. This can also be a comma-separated list of names.
     - `email` - Your email address. This can also be a comma-separated list of email addresses.
-    - `github_username` - Your username on GitHub
+    - `github_username` - Your username on GitHub. This can also be a comma-separated list of usernames.
     - `copyright` - Copyright statement, if desired
     - `version` - Version of your extension. Versioning should start at 0.1.0 and follow [semantic versioning](https://semver.org/) guidelines
     - `release` - Release category, e.g. alpha, beta, official

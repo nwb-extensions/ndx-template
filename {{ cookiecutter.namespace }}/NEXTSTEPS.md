@@ -1,3 +1,5 @@
+{% set github_username_list = cookiecutter.github_username.split(', ') %}
+
 # Next Steps for {{ cookiecutter.namespace }} Extension for NWB
 
 ## Creating Your Extension
@@ -63,7 +65,7 @@ your extension.
 
 7. Add a license file. Permissive licenses should be used if possible. **A [BSD license](https://opensource.org/licenses/BSD-3-Clause) is recommended.**
 
-8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
+8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ github_username_list[0] }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
 
 9. Publish your updated extension on [PyPI](https://pypi.org/).
     - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
@@ -104,18 +106,19 @@ with information on where to find your NWB extension.
 ```yaml
 name: {{ cookiecutter.namespace }}
 version: {{ cookiecutter.version }}
-src: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.namespace }}
+src: https://github.com/{{ github_username_list[0] }}/{{ cookiecutter.namespace }}
 pip: https://pypi.org/project/{{ cookiecutter.namespace }}/
 license: {{ cookiecutter.license }}
-maintainers:
-  - {{ cookiecutter.github_username }}
+maintainers: {% for username in github_username_list %}
+  - {{ username }}
+{%- endfor %}
 ```
 
 14. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`
 to add information about your extension. You may copy it from
 `{{ cookiecutter.namespace }}/README.md`.
 
-  ```bash
+```bash
 cp {{ cookiecutter.namespace }}/README.md staged-extensions/{{ cookiecutter.namespace }}/README.md
 ```
 
