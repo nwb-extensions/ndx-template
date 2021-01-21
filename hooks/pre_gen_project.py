@@ -15,7 +15,7 @@ GITHUB_USERNAME_REGEX = r'^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$'
 
 namespace = """{{ cookiecutter.namespace }}"""
 email = map(str.strip, """{{ cookiecutter.email }}""".split(','))
-github_username = """{{ cookiecutter.github_username }}"""
+github_username = map(str.strip, """{{ cookiecutter.github_username }}""".split(','))
 version = """{{ cookiecutter.version }}"""
 
 
@@ -44,12 +44,13 @@ def _validate():
                 'appear to be a valid email address. Are you sure you'
                 ' entered it correctly?'.format(email=e)
             )
-    if not re.match(GITHUB_USERNAME_REGEX, github_username):
-        warnings.append(
-            'The GitHub username you entered "{github_username}" does not '
-            'appear to be a valid GitHub username. Are you sure you entered it'
-            ' correctly?'.format(github_username=github_username)
-        )
+    for u in github_username:
+        if not re.match(GITHUB_USERNAME_REGEX, u):
+            warnings.append(
+                'The GitHub username you entered "{u}" does not '
+                'appear to be a valid GitHub username. Are you sure you entered it'
+                ' correctly?'.format(github_username=u)
+            )
     if not re.match(REQ_VERSION_REGEX, version):
         errors.append('Version can only have lower-case and upper-case ASCII'
                       ' letters, hyphens (-), underscores (_), plus signs (+),'
