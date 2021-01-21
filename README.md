@@ -37,7 +37,7 @@ template automatically. You will be prompted for:
     - `github_username` - Your username on GitHub. This can also be a comma-separated list of usernames.
     - `copyright` - Copyright statement, if desired
     - `version` - Version of your extension. Versioning should start at 0.1.0 and follow [semantic versioning](https://semver.org/) guidelines
-    - `release` - Release category, e.g. alpha, beta, official
+    - `release` - Release category, e.g. "alpha", "beta", "official"
     - `license` - Name of license used for your extension source code.
     A permissive license, such as BSD, should be used if possible.
 5. A new folder with the same name as your entered `namespace` will be
@@ -63,7 +63,7 @@ greater neuroscience community! :)
 
 ## Copyright
 
-Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2020,
+Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021,
 The Regents of the University of California, through Lawrence
 Berkeley National Laboratory (subject to receipt of any required
 approvals from the U.S. Dept. of Energy).  All rights reserved.
