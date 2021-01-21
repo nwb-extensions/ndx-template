@@ -11,7 +11,7 @@ import cookiecutter.replay
 PREF_NAMESPACE_REGEX = r'^[\-a-z]+$'
 REQ_NAMESPACE_REGEX = r'^[\-_a-zA-Z0-9]+$'
 REQ_VERSION_REGEX = r'^[\-_a-zA-Z0-9.+]+$'
-GITHUB_USERNAME_REGEX = r'^[a-z\d](?:[a-z\d]|-(?=[a-z\d])){0,38}$'
+GITHUB_USERNAME_REGEX = r'^[a-zA-Z\d](?:[a-zA-Z\d]|-(?=[a-zA-Z\d])){0,38}$'
 
 namespace = """{{ cookiecutter.namespace }}"""
 email = map(str.strip, """{{ cookiecutter.email }}""".split(','))
