@@ -48,8 +48,8 @@ def _validate():
         if not re.match(GITHUB_USERNAME_REGEX, u):
             warnings.append(
                 'The GitHub username you entered "{u}" does not '
-                'appear to be a valid GitHub username. Are you sure you entered it'
-                ' correctly?'.format(github_username=u)
+                'appear to be a valid GitHub username. Are you sure you '
+                'entered it correctly?'.format(u=u)
             )
     if not re.match(REQ_VERSION_REGEX, version):
         errors.append('Version can only have lower-case and upper-case ASCII'
