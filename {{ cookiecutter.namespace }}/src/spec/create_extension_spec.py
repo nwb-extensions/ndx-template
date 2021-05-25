@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
-
 import os.path
 
 from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBAttributeSpec
-# TODO: import the following spec classes as needed
+# TODO: import other spec classes as needed
 # from pynwb.spec import NWBDatasetSpec, NWBLinkSpec, NWBDtypeSpec, NWBRefSpec
 
 
@@ -50,6 +49,6 @@ def main():
     export_spec(ns_builder, new_data_types, output_dir)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     # usage: python create_extension_spec.py
     main()

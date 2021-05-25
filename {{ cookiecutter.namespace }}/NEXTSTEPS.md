@@ -35,7 +35,7 @@ replaced or removed.
      - Python tests should be runnable by executing [`pytest`](https://docs.pytest.org/en/latest/)
      from the root of the extension directory. Use of PyNWB testing infrastructure from
      `pynwb.testing` is encouraged (see
-    [documentation](https://pynwb.readthedocs.io/en/stable/pynwb.testing.html)).
+     [documentation](https://pynwb.readthedocs.io/en/stable/pynwb.testing.html)).
      - Creating both **unit tests** (e.g., testing initialization of new data type classes and
      new functions) and **integration tests** (e.g., write the new data types to file, read
      the file, and confirm the read data types are equal to the written data types) is
@@ -98,29 +98,27 @@ with information on where to find your NWB extension.
       - src: URL for the main page of the public repository (e.g. on GitHub, BitBucket, GitLab) that contains the sources of the extension
       - pip: URL for the main page of the extension on PyPI
       - license: name of the license of the extension
-      - maintainers: list of GitHub
-      usernames of those who will reliably maintain the extension
-    -
+      - maintainers: list of GitHub usernames of those who will reliably maintain the extension
+    - You may copy and modify the following YAML that was auto-generated:
 
-  You may copy and modify the following YAML that was auto-generated:
-```yaml
-name: {{ cookiecutter.namespace }}
-version: {{ cookiecutter.version }}
-src: https://github.com/{{ github_username_list[0] }}/{{ cookiecutter.namespace }}
-pip: https://pypi.org/project/{{ cookiecutter.namespace }}/
-license: {{ cookiecutter.license }}
-maintainers: {% for username in github_username_list %}
-  - {{ username }}
-{%- endfor %}
-```
+      ```yaml
+      name: {{ cookiecutter.namespace }}
+      version: {{ cookiecutter.version }}
+      src: https://github.com/{{ github_username_list[0] }}/{{ cookiecutter.namespace }}
+      pip: https://pypi.org/project/{{ cookiecutter.namespace }}/
+      license: {{ cookiecutter.license }}
+      maintainers: {% for username in github_username_list %}
+        - {{ username }}
+      {%- endfor %}
+      ```
 
 14. Edit `staged-extensions/{{ cookiecutter.namespace }}/README.md`
 to add information about your extension. You may copy it from
 `{{ cookiecutter.namespace }}/README.md`.
 
-```bash
-cp {{ cookiecutter.namespace }}/README.md staged-extensions/{{ cookiecutter.namespace }}/README.md
-```
+  ```bash
+  cp {{ cookiecutter.namespace }}/README.md staged-extensions/{{ cookiecutter.namespace }}/README.md
+  ```
 
 15. Add and commit your changes to Git and push your changes to GitHub.
 ```
@@ -135,7 +133,7 @@ Mac, and Linux. The technical team will review your extension shortly after
 and provide feedback and request changes, if any.
 
 17. When your pull request is merged, a new repository, called
-{{ cookiecutter.namespace }}-feedstock will be created in the nwb-extensions
+{{ cookiecutter.namespace }}-record will be created in the nwb-extensions
 GitHub organization and you will be added as a maintainer for that repository.
 
 
@@ -145,10 +143,10 @@ GitHub organization and you will be added as a maintainer for that repository.
 
 2. Publish your updated extension on PyPI.
 
-3. Fork the {{ cookiecutter.namespace }}-feedstock repository on GitHub.
+3. Fork the {{ cookiecutter.namespace }}-record repository on GitHub.
 
 4. Open a pull request to test the changes automatically. The technical team
 will review your changes shortly after and provide feedback and request changes,
- if any.
+if any.
 
 5. Your updated extension is approved.
