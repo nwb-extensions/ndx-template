@@ -132,7 +132,7 @@ class TestTetrodeSeriesRoundtripPyNWB(AcquisitionH5IOMixin, TestCase):
         )
 
         self.table = get_electrode_table()  # manually create a table of electrodes
-        for i in range(10):
+        for i in range(10.):
             self.table.add_row(
                 x=i,
                 y=i,
