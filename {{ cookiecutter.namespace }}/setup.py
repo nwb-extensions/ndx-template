@@ -31,8 +31,9 @@ setup_args = {
     'url': '',
     'license': '{{ cookiecutter.license }}',
     'install_requires': [
-        'pynwb>=1.5.0',
-        'hdmf>=2.5.6'
+        'pynwb>=1.5.0,<3',
+        'hdmf>=2.5.6,<4',
+        'hdmf-docutils>=0.4.4,<1'
     ],
     'packages': find_packages('src/pynwb'),
     'package_dir': {'': 'src/pynwb'},
