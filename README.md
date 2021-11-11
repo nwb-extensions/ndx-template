@@ -3,7 +3,7 @@
 [![Build Status](https://dev.azure.com/nwb-extensions/ndx-template/_apis/build/status/nwb-extensions.ndx-template?branchName=master)](https://dev.azure.com/nwb-extensions/ndx-template/_build/latest?definitionId=1&branchName=master)
 
 This repo provides a template for creating Neurodata Extensions (NDX) for the
-[Neurodata Without Borders: Neurophysiology](http://neurodatawithoutborders.github.io/)
+[Neurodata Without Borders](https://nwb.org/)
  data standard.
 
 We currently support creating Neurodata Extensions only using Python.
@@ -16,7 +16,7 @@ MATLAB support is in development.
 2. Install [cookiecutter](https://pypi.org/project/cookiecutter/) (see [here](https://cookiecutter.readthedocs.io/en/latest/installation.html) for Windows install instructions), [pynwb](https://pypi.org/project/pynwb/), and [hdmf-docutils](https://pypi.org/project/hdmf-docutils/).
 `cookiecutter` is a Python-based command-line utility that creates projects from templates.
 ```bash
-python -m pip install cookiecutter "pynwb>=1.3.0" hdmf-docutils
+python -m pip install cookiecutter "pynwb>=1.5.0" "hdmf-docutils>=0.4.4"
 ```
 3. Run cookiecutter on your local working directory:
 ```bash
