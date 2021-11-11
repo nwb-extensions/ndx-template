@@ -3,7 +3,7 @@
 [![Build Status](https://dev.azure.com/nwb-extensions/ndx-template/_apis/build/status/nwb-extensions.ndx-template?branchName=master)](https://dev.azure.com/nwb-extensions/ndx-template/_build/latest?definitionId=1&branchName=master)
 
 This repo provides a template for creating Neurodata Extensions (NDX) for the
-[Neurodata Without Borders: Neurophysiology](http://neurodatawithoutborders.github.io/)
+[Neurodata Without Borders](https://nwb.org/)
  data standard.
 
 We currently support creating Neurodata Extensions only using Python.
