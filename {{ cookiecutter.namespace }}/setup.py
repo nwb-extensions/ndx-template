@@ -35,7 +35,7 @@ setup_args = {
         'hdmf>=2.5.6,<4',
         'hdmf-docutils>=0.4.4,<1'
     ],
-    'packages': find_packages('src/pynwb'),
+    'packages': find_packages('src/pynwb', exclude=["tests", "tests.*"]),
     'package_dir': {'': 'src/pynwb'},
     'package_data': {'{{ cookiecutter.py_pkg_name }}': [
         'spec/{{ cookiecutter.namespace }}.namespace.yaml',
