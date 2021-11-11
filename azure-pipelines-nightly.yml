@@ -1,7 +1,12 @@
-trigger:
+trigger: none
+
+pr: none
+
+schedules:
+- cron: "0 5 * * *"
+  displayName: nightly
   branches:
-    include:
-    - main
+    include: main
 
 jobs:
 
