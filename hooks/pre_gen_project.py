@@ -79,25 +79,32 @@ def _validate():
 def _write_new_defaults():
     """
     Overwrite the default values of the cached template with the values entered
-    by the user.
+    by the user. Overwrites only if cookiecutter downloads and caches the
+    template from GitHub.
     """
-    user_config = cookiecutter.config.get_user_config()
-    replay_dir = user_config['replay_dir']
 
     # the template name used by cookiecutter.replay is the name of the repo dir
     # this code assumes that the template repo was checked out into a dir
     # called "ndx-template".
     template_name = 'ndx-template'
 
-    replay_context = cookiecutter.replay.load(replay_dir, template_name)
-    new_default_context = replay_context['cookiecutter']
-
-    # the below only works if cookiecutter downloads and caches the template
-    # from github. this will not work for the command:
-    # cookiecutter {ndx-template source dir}
+    user_config = cookiecutter.config.get_user_config()
     template_path = os.path.join(user_config['cookiecutters_dir'],
                                  template_name,
                                  'cookiecutter.json')
+
+    # the below will only work if cookiecutter downloads and caches the
+    # template from github or has previously downloaded and cached this
+    # template. this will not work for the following command on a clean
+    # system:
+    # cookiecutter {ndx-template source dir}
+    if not os.path.exists(template_path):
+        return
+
+    replay_dir = user_config['replay_dir']
+    replay_context = cookiecutter.replay.load(replay_dir, template_name)
+    new_default_context = replay_context['cookiecutter']
+
     with open(template_path, 'w') as outfile:
         json.dump(new_default_context, outfile)
 

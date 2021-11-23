@@ -65,8 +65,9 @@ jobs:
     displayName: 'Configure git'
 
   - bash: |
-      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template --checkout "$(System.PullRequest.SourceBranch)"
-    displayName: 'Evaluate template'
+      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template"
+      # note that this differs from azure-pipelinse.yml which installs from local source dir
+    displayName: 'Evaluate template from GitHub repo'
 
   - bash: |
       python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/" "ndx-my-namespace"
