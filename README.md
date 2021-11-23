@@ -1,6 +1,7 @@
 ## About
 
 Per-PR/Per-Commit CI: [![Build Status](https://dev.azure.com/nwb-extensions/ndx-template/_apis/build/status/ndx-template?branchName=main)](https://dev.azure.com/nwb-extensions/ndx-template/_build/latest?definitionId=1&branchName=main)
+
 Nightly CI: [![Build Status](https://dev.azure.com/nwb-extensions/ndx-template/_apis/build/status/nwb-extensions.ndx-template?branchName=main)](https://dev.azure.com/nwb-extensions/ndx-template/_build/latest?definitionId=5&branchName=main)
 
 This repo provides a template for creating Neurodata Extensions (NDX) for the
