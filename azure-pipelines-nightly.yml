@@ -65,8 +65,8 @@ jobs:
     displayName: 'Configure git'
 
   - bash: |
-      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template"
-      # note that this differs from azure-pipelinse.yml which installs from local source dir
+      cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" gh:nwb-extensions/ndx-template
+      # note that this differs from azure-pipelines.yml which installs from local source dir
     displayName: 'Evaluate template from GitHub repo'
 
   - bash: |
