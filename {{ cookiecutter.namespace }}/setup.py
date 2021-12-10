@@ -44,6 +44,19 @@ setup_args = {
     'classifiers': [
         "Intended Audience :: Developers",
         "Intended Audience :: Science/Research",
+        {%- if cookiecutter.license == 'BSD-3' %}
+        "License :: OSI Approved :: BSD License"
+        {%- elif cookiecutter.license == 'MIT' %}
+        "License :: OSI Approved :: MIT License"
+        {%- elif cookiecutter.license == 'Apache Software License 2.0' %}
+        "License :: OSI Approved :: Apache Software License"
+        {%- endif %}
+    ],
+    'keywords': [
+        'NeurodataWithoutBorders',
+        'NWB',
+        'nwb-extension',
+        'ndx-extension'
     ],
     'zip_safe': False
 }
