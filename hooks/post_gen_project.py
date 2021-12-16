@@ -30,6 +30,7 @@ def _initialize_git():
     check_call(["git", "init"])
     check_call(["git", "add", "-A"])
     check_call(["git", "commit", "-m", "Initial commit"])
+    check_call(["git", "branch", "-m", "master", "main"])
 
 
 def main():
