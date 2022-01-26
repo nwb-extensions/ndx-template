@@ -47,6 +47,7 @@ def main():
     # export the spec to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'spec'))
     export_spec(ns_builder, new_data_types, output_dir)
+    print('Spec files generated. Please make sure to rerun `pip install .` to load the changes.')
 
 
 if __name__ == '__main__':
