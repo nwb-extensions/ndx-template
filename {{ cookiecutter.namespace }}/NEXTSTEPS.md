@@ -8,8 +8,8 @@
 
 2. Add any packages required by your extension to `requirements.txt` and `setup.py`.
 
-3. Run `python -m pip install -r requirements.txt` to install the `pynwb` package
-and any other packages required by your extension.
+3. Run `python -m pip install -r requirements.txt -r requirements-dev.txt` to install the `pynwb` package
+and any other packages required to install, develop, and document your extension.
 
 4. Modify `src/spec/create_extension_spec.py` to define your extension.
 
