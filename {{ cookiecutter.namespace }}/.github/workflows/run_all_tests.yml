@@ -1,9 +1,9 @@
 name: Run all tests
 on:
+  push:
+  pull_request:
   schedule:
     - cron: '0 5 * * *'  # once per day at midnight ET
-  pull_request:
-  push:
   workflow_dispatch:
 
 jobs:
