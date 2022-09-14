@@ -1,0 +1,3 @@
+# minimum versions of package dependencies for installation
+pynwb==1.5.0
+hdmf==2.5.6
