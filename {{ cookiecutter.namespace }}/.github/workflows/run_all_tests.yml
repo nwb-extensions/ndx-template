@@ -59,25 +59,25 @@ jobs:
           python -m pip check
 
       - name: Install run requirements (minimal)
-        if: ${{ "{{" }} matrix.requirements == "minimum" }}
+        if: ${{ "{{" }} matrix.requirements == 'minimum' }}
         run: |
           python -m pip install -r requirements-min.txt -r requirements-dev.txt
           python -m pip install -e .
 
       - name: Install run requirements (pinned)
-        if: ${{ "{{" }} matrix.requirements }} == "pinned" }}
+        if: ${{ "{{" }} matrix.requirements == 'pinned' }}
         run: |
           python -m pip install -r requirements.txt -r requirements-dev.txt
           python -m pip install -e .
 
       - name: Install run requirements (pinned, optional)
-        if: ${{ "{{" }} matrix.requirements == "optional" }}
+        if: ${{ "{{" }} matrix.requirements == 'optional' }}
         run: |
           python -m pip install -r requirements.txt -r requirements-opt.txt -r requirements-dev.txt
           python -m pip install -e .
 
       - name: Install run requirements (upgraded, optional)
-        if: ${{ "{{" }} matrix.requirements == "upgraded" }}
+        if: ${{ "{{" }} matrix.requirements == 'upgraded' }}
         run: |
           python -m pip install -r requirements-opt.txt -r requirements-dev.txt
           python -m pip install -U -e .
@@ -93,7 +93,7 @@ jobs:
           ls -1 dist
 
       - name: Test installation from a wheel (POSIX)
-        if: ${{ "{{" }} matrix.os != "windows-latest" }}
+        if: ${{ "{{" }} matrix.os != 'windows-latest' }}
         run: |
           python -m venv test-wheel-env
           source test-wheel-env/bin/activate
@@ -101,7 +101,7 @@ jobs:
           python -c "import hdmf"
 
       - name: Test installation from a wheel (windows)
-        if: ${{ "{{" }} matrix.os == "windows-latest" }}
+        if: ${{ "{{" }} matrix.os == 'windows-latest' }}
         run: |
           python -m venv test-wheel-env
           test-wheel-env/Scripts/activate.bat
@@ -150,25 +150,25 @@ jobs:
           conda list
 
       - name: Install run requirements (minimal)
-        if: ${{ "{{" }} matrix.requirements == "minimum" }}
+        if: ${{ "{{" }} matrix.requirements == 'minimum' }}
         run: |
           python -m pip install -r requirements-min.txt -r requirements-dev.txt
           python -m pip install -e .
 
       - name: Install run requirements (pinned)
-        if: ${{ "{{" }} matrix.requirements == "pinned" }}
+        if: ${{ "{{" }} matrix.requirements == 'pinned' }}
         run: |
           python -m pip install -r requirements.txt -r requirements-dev.txt
           python -m pip install -e .
 
       - name: Install run requirements (pinned, optional)
-        if: ${{ "{{" }} matrix.requirements == "optional" }}
+        if: ${{ "{{" }} matrix.requirements == 'optional' }}
         run: |
           python -m pip install -r requirements.txt -r requirements-opt.txt -r requirements-dev.txt
           python -m pip install -e .
 
       - name: Install run requirements (upgraded, optional)
-        if: ${{ "{{" }} matrix.requirements == "upgraded" }}
+        if: ${{ "{{" }} matrix.requirements == 'upgraded' }}
         run: |
           python -m pip install -r requirements-opt.txt -r requirements-dev.txt
           python -m pip install -U -e .
@@ -184,7 +184,7 @@ jobs:
           ls -1 dist
 
       - name: Test installation from a wheel (POSIX)
-        if: ${{ "{{" }} matrix.os != "windows-latest" }}
+        if: ${{ "{{" }} matrix.os != 'windows-latest' }}
         run: |
           python -m venv test-wheel-env
           source test-wheel-env/bin/activate
@@ -192,7 +192,7 @@ jobs:
           python -c "import hdmf"
 
       - name: Test installation from a wheel (windows)
-        if: ${{ "{{" }} matrix.os == "windows-latest" }}
+        if: ${{ "{{" }} matrix.os == 'windows-latest' }}
         run: |
           python -m venv test-wheel-env
           test-wheel-env/Scripts/activate.bat
