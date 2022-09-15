@@ -32,7 +32,6 @@ def set_up_nwbfile():
     for i in np.arange(10.):
         nwbfile.add_electrode(
             location='location',
-            filtering='filtering',
             group=electrode_group
         )
 
@@ -131,8 +130,8 @@ class TestTetrodeSeriesRoundtripPyNWB(AcquisitionH5IOMixin, TestCase):
         for i in np.arange(10.):
             self.table.add_row(
                 location='location',
-                filtering='filtering',
                 group=self.group,
+                group_name='electrode_group'  # necessary when using add_row instead of NWBFile.add_electrode
             )
 
         all_electrodes = DynamicTableRegion(
