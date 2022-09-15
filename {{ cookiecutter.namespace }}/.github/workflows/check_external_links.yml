@@ -32,4 +32,6 @@ jobs:
           python -m pip install .
 
       - name: Check Sphinx external links
-        run: sphinx-build -b linkcheck ./docs/source ./test_build
+        run: |
+          cd docs  # run_doc_autogen assumes spec is found in ../spec/
+          sphinx-build -b linkcheck ./source ./test_build

@@ -31,10 +31,6 @@ def set_up_nwbfile():
 
     for i in np.arange(10.):
         nwbfile.add_electrode(
-            x=i,
-            y=i,
-            z=i,
-            imp=np.nan,
             location='location',
             filtering='filtering',
             group=electrode_group
@@ -56,7 +52,7 @@ class TestTetrodeSeriesConstructor(TestCase):
             description='all the electrodes'
         )
 
-        data = np.random.rand(100, 3)
+        data = np.random.rand(100, 10)
         tetrode_series = TetrodeSeries(
             name='name',
             description='description',
@@ -95,7 +91,7 @@ class TestTetrodeSeriesRoundtrip(TestCase):
             description='all the electrodes'
         )
 
-        data = np.random.rand(100, 3)
+        data = np.random.rand(100, 10)
         tetrode_series = TetrodeSeries(
             name='TetrodeSeries',
             description='description',
@@ -134,14 +130,9 @@ class TestTetrodeSeriesRoundtripPyNWB(AcquisitionH5IOMixin, TestCase):
         self.table = get_electrode_table()  # manually create a table of electrodes
         for i in np.arange(10.):
             self.table.add_row(
-                x=i,
-                y=i,
-                z=i,
-                imp=np.nan,
                 location='location',
                 filtering='filtering',
                 group=self.group,
-                group_name='electrode_group'
             )
 
         all_electrodes = DynamicTableRegion(
@@ -151,7 +142,7 @@ class TestTetrodeSeriesRoundtripPyNWB(AcquisitionH5IOMixin, TestCase):
             table=self.table
         )
 
-        data = np.random.rand(100, 3)
+        data = np.random.rand(100, 10)
         tetrode_series = TetrodeSeries(
             name='name',
             description='description',

@@ -31,7 +31,7 @@ setup_args = {
     'url': '',
     'license': '{{ cookiecutter.license }}',
     'install_requires': [
-        'pynwb>=1.5.0,<3',
+        'pynwb>=2.1.0,<3',
         'hdmf>=2.5.6,<4',
     ],
     'packages': find_packages('src/pynwb', exclude=["tests", "tests.*"]),
