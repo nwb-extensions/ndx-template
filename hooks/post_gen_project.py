@@ -2,7 +2,7 @@ import sys
 import textwrap
 
 from hdmf_docutils.init_sphinx_extension_doc import main as init_sphinx_extension_doc
-from subprocess import check_call
+from subprocess import check_call, CalledProcessError
 
 
 def _generate_doc():
@@ -30,7 +30,10 @@ def _initialize_git():
     check_call(["git", "init"])
     check_call(["git", "add", "-A"])
     check_call(["git", "commit", "-m", "Initial commit"])
-    check_call(["git", "branch", "-m", "master", "main"])
+    try:
+        check_call(["git", "branch", "-m", "master", "main"])
+    except CalledProcessError:
+        pass  # probably the master branch does not exist
 
 
 def main():
