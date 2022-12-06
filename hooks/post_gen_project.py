@@ -30,10 +30,7 @@ def _initialize_git():
     check_call(["git", "init"])
     check_call(["git", "add", "-A"])
     check_call(["git", "commit", "-m", "Initial commit"])
-    try:
-        check_call(["git", "branch", "-m", "master", "main"])
-    except CalledProcessError:
-        pass  # probably the master branch does not exist
+    check_call(["git", "branch", "-M", "main"])
 
 
 def main():
