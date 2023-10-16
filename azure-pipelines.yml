@@ -49,8 +49,7 @@ jobs:
 
   - script: |
       python -m pip install --upgrade pip
-      python -m pip install --upgrade setuptools
-      python -m pip install cookiecutter "pynwb>=1.5.0" "hdmf-docutils>=0.4.4"
+      python -m pip install --upgrade cookiecutter pynwb hdmf-docutils
     displayName: 'Install build dependencies'
 
   - bash: |
@@ -68,7 +67,7 @@ jobs:
 
   - bash: |
       cd "$(Agent.BuildDirectory)/ndx-my-namespace"
-      python setup.py install
+      python -m pip install .
       python -m unittest src/pynwb/tests/test_tetrodeseries.py
     displayName: 'Run PyNWB test'
 
