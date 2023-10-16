@@ -2,6 +2,7 @@
 import os.path
 
 from pynwb.spec import NWBNamespaceBuilder, export_spec, NWBGroupSpec, NWBAttributeSpec
+
 # TODO: import other spec classes as needed
 # from pynwb.spec import NWBDatasetSpec, NWBLinkSpec, NWBDtypeSpec, NWBRefSpec
 
@@ -13,7 +14,7 @@ def main():
         name="""{{ cookiecutter.namespace }}""",
         version="""{{ cookiecutter.version }}""",
         author=list(map(str.strip, """{{ cookiecutter.author }}""".split(","))),
-        contact=list(map(str.strip, """{{ cookiecutter.email }}""".split(",")))
+        contact=list(map(str.strip, """{{ cookiecutter.email }}""".split(","))),
     )
 
     # TODO: specify the neurodata_types that are used by the extension as well
@@ -30,15 +31,8 @@ def main():
     tetrode_series = NWBGroupSpec(
         neurodata_type_def="TetrodeSeries",
         neurodata_type_inc="ElectricalSeries",
-        doc=("An extension of ElectricalSeries to include the tetrode ID for "
-             "each time series."),
-        attributes=[
-            NWBAttributeSpec(
-                name="trode_id",
-                doc="The tetrode ID.",
-                dtype="int32"
-            )
-        ],
+        doc="An extension of ElectricalSeries to include the tetrode ID for each time series.",
+        attributes=[NWBAttributeSpec(name="trode_id", doc="The tetrode ID.", dtype="int32")],
     )
 
     # TODO: add all of your new data types to this list
