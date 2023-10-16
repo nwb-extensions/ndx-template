@@ -17,13 +17,13 @@ def main():
         contact=list(map(str.strip, """{{ cookiecutter.email }}""".split(","))),
     )
 
-    # TODO: specify the neurodata_types that are used by the extension as well
-    # as in which namespace they are found.
-    # this is similar to specifying the Python modules that need to be imported
+    # TODO: specify either the neurodata types that are used by the extension
+    # or the namespaces that contain the neurodata types used. Including the
+    # namespace will include all neurodata types in that namespace.
+    # This is similar to specifying the Python modules that need to be imported
     # to use your new data types.
-    # all types included or used by the types specified here will also be
-    # included.
-    ns_builder.include_type("ElectricalSeries", namespace="core")
+    # ns_builder.include_type("ElectricalSeries", namespace="core")
+    ns_builder.include_namespace("core")
 
     # TODO: define your new data types
     # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
