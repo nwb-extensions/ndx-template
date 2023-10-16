@@ -44,6 +44,8 @@ replaced or removed.
 8. You may need to modify `pyproject.toml` and re-run `python -m pip install -e .` if you
 use any dependencies.
 
+9. Update the `CHANGELOG.md` regularly to document changes to your extension.
+
 
 ## Documenting and Publishing Your Extension to the Community
 
@@ -64,6 +66,8 @@ your extension.
 6. Modify `README.md` to describe this extension for interested developers.
 
 7. Add a license file. Permissive licenses should be used if possible. **A [BSD license](https://opensource.org/licenses/BSD-3-Clause) is recommended.**
+
+8. Update the `CHANGELOG.md` to document changes to your extension.
 
 8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ github_username_list[0] }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
 
