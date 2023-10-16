@@ -64,6 +64,7 @@ jobs:
       run: |
         cd ./out/ndx-my-namespace
         # cd "$(Agent.BuildDirectory)/ndx-my-namespace"
+        python -m pip install -r requirements-dev.txt
         python -m pip install .
         pytest
 
