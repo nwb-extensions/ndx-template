@@ -1,13 +1,13 @@
-import datetime
+"""Unit and integration tests for the example TetrodeSeries extension neurodata type.
+
+TODO: Modify these tests to test your extension neurodata type.
+"""
+
 import numpy as np
 
 from pynwb import NWBHDF5IO, NWBFile
-from pynwb.core import DynamicTableRegion
-from pynwb.device import Device
-from pynwb.ecephys import ElectrodeGroup
-from pynwb.file import ElectrodeTable as get_electrode_table
 from pynwb.testing.mock.device import mock_Device
-from pynwb.testing.mock.ecephys import mock_ElectrodeGroup, mock_ElectrodeTable, mock_electrodes
+from pynwb.testing.mock.ecephys import mock_ElectrodeGroup, mock_ElectrodeTable
 from pynwb.testing.mock.file import mock_NWBFile
 from pynwb.testing import TestCase, remove_test_file, NWBH5IOFlexMixin
 
