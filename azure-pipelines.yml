@@ -27,12 +27,6 @@ jobs:
       Windows-py3.8:
         imageName: 'windows-2019'
         pythonVersion: '3.8'
-      Windows-py3.7:
-        imageName: 'windows-2019'
-        pythonVersion: '3.7'
-      Windows-py3.6:
-        imageName: 'windows-2019'
-        pythonVersion: '3.6'
 
   pool:
     vmImage: $(imageName)

@@ -8,7 +8,7 @@ This repo provides a template for creating Neurodata Extensions (NDX) for the
 [Neurodata Without Borders](https://nwb.org/)
  data standard.
 
-We currently support creating Neurodata Extensions only using Python.
+We currently support creating Neurodata Extensions only using Python 3.8+.
 MATLAB support is in development.
 
 ## Getting started
