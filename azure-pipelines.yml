@@ -14,9 +14,9 @@ jobs:
         imageName: 'ubuntu-20.04'
         pythonVersion: '3.10'
 
-      macOS-py3.10:
-        imageName: 'macos-10.15'
-        pythonVersion: '3.10'
+      # macOS-py3.10:
+      #   imageName: 'macos-10.15'
+      #   pythonVersion: '3.10'
 
       Windows-py3.10:
         imageName: 'windows-2019'
@@ -27,12 +27,6 @@ jobs:
       Windows-py3.8:
         imageName: 'windows-2019'
         pythonVersion: '3.8'
-      Windows-py3.7:
-        imageName: 'windows-2019'
-        pythonVersion: '3.7'
-      Windows-py3.6:
-        imageName: 'windows-2019'
-        pythonVersion: '3.6'
 
   pool:
     vmImage: $(imageName)
@@ -49,8 +43,7 @@ jobs:
 
   - script: |
       python -m pip install --upgrade pip
-      python -m pip install --upgrade setuptools
-      python -m pip install cookiecutter "pynwb>=1.5.0" "hdmf-docutils>=0.4.4"
+      python -m pip install --upgrade cookiecutter pynwb hdmf-docutils
     displayName: 'Install build dependencies'
 
   - bash: |
@@ -68,7 +61,7 @@ jobs:
 
   - bash: |
       cd "$(Agent.BuildDirectory)/ndx-my-namespace"
-      python setup.py install
+      python -m pip install .
       python -m unittest src/pynwb/tests/test_tetrodeseries.py
     displayName: 'Run PyNWB test'
 

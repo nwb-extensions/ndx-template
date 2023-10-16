@@ -8,5 +8,20 @@
   "version": "0.1.0",
   "release": "alpha",
   "license": ["BSD-3", "MIT", "Apache Software License 2.0", "Other"],
-  "py_pkg_name": "{{ cookiecutter.namespace|replace('-', '_') }}"
+  "py_pkg_name": "{{ cookiecutter.namespace|replace('-', '_') }}",
+  "initialize_git": true,
+  "_extensions": ["local_extensions.ZipExtension"],
+  "__prompts__": {
+    "namespace": "Select a name for your extension. It must start with 'ndx-'",
+    "description": "Describe your extension",
+    "author": "Enter your full name or a comma-separated list of names",
+    "email": "Enter your email address or a comma-separated list of email addresses",
+    "github_username": "Enter your GitHub username or a comma-separated list of usernames",
+    "copyright": "Copyright",
+    "version": "Select an initial version string",
+    "release": "Select an initial release level",
+    "license": "Select a license",
+    "py_pkg_name": "Select a name for the Python package",
+    "initialize_git": "Initialize a git repository?"
+  }
 }

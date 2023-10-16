@@ -1,12 +1,3 @@
-# output NWB files
-*.nwb
-
-# generated docs
-docs/source/_format_auto_docs
-
-# copied spec files
-src/pynwb/{{ cookiecutter.py_pkg_name }}/spec/*.yaml
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

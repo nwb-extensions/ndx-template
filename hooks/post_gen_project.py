@@ -1,23 +1,33 @@
-import sys
-import textwrap
-
 from hdmf_docutils.init_sphinx_extension_doc import main as init_sphinx_extension_doc
-from subprocess import check_call, CalledProcessError
+from subprocess import check_call
+import sys
 
 
 def _generate_doc():
-    init_sphinx_extension_doc([
-        "--project", """{{ cookiecutter.namespace }}""",
-        "--author", """{{ cookiecutter.author }}""",
-        "--version", """{{ cookiecutter.version }}""",
-        "--release", """{{ cookiecutter.release }}""",
-        "--output", "docs",
-        "--spec_dir", "spec",
-        "--namespace_filename", """{{ cookiecutter.namespace }}.namespace.yaml""",
-        "--default_namespace", """{{ cookiecutter.namespace }}""",
-        "--custom_description", "description.rst",
-        "--custom_release_notes", "release_notes.rst",
-    ])
+    init_sphinx_extension_doc(
+        [
+            "--project",
+            """{{ cookiecutter.namespace }}""",
+            "--author",
+            """{{ cookiecutter.author }}""",
+            "--version",
+            """{{ cookiecutter.version }}""",
+            "--release",
+            """{{ cookiecutter.release }}""",
+            "--output",
+            "docs",
+            "--spec_dir",
+            "spec",
+            "--namespace_filename",
+            """{{ cookiecutter.namespace }}.namespace.yaml""",
+            "--default_namespace",
+            """{{ cookiecutter.namespace }}""",
+            "--custom_description",
+            "description.rst",
+            "--custom_release_notes",
+            "release_notes.rst",
+        ]
+    )
 
 
 def _create_extension_spec():
@@ -34,20 +44,18 @@ def _initialize_git():
 
 
 def main():
-    """
-    Runs the post gen project hook main entry point.
-    """
+    """Run the post gen project hook main entry point."""
 
     _generate_doc()
     _create_extension_spec()
-    _initialize_git()
+    if "{{ cookiecutter.initialize_git }}" == "True":
+        _initialize_git()
 
-    print(textwrap.dedent(
+    print(
         """
-        Success! Directory {{ cookiecutter.namespace }} was created with a skeleton for your new NWB extension.
-        Please see {{ cookiecutter.namespace }}/NEXTSTEPS.md for creating and publishing your extension.
-        """
-    ))
+Success! Directory {{ cookiecutter.namespace }} was created with a skeleton for your new NWB extension.
+Please see {{ cookiecutter.namespace }}/NEXTSTEPS.md for creating and publishing your extension."""
+    )
 
 
 if __name__ == "__main__":
