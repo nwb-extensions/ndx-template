@@ -41,6 +41,12 @@ replaced or removed.
      the file, and confirm the read data types are equal to the written data types) is
      highly encouraged.
 
+7. Define custom visualization widgets for your new extension data types in
+`src/pynwb/widgets` so that the visualizations can be displayed with
+[nwbwidgets](https://github.com/NeurodataWithoutBorders/nwbwidgets). Register your widget
+with your extension Python class in `src/pynwb/__init__.py` or wherever your extension
+Python class is defined.
+
 8. You may need to modify `pyproject.toml` and re-run `python -m pip install -e .` if you
 use any dependencies.
 
