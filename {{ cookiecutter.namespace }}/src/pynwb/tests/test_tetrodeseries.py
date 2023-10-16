@@ -6,37 +6,20 @@ from pynwb.core import DynamicTableRegion
 from pynwb.device import Device
 from pynwb.ecephys import ElectrodeGroup
 from pynwb.file import ElectrodeTable as get_electrode_table
-from pynwb.testing import TestCase, remove_test_file, AcquisitionH5IOMixin
+from pynwb.testing.mock.device import mock_Device
+from pynwb.testing.mock.ecephys import mock_ElectrodeGroup, mock_ElectrodeTable, mock_electrodes
+from pynwb.testing.mock.file import mock_NWBFile
+from pynwb.testing import TestCase, remove_test_file, NWBH5IOFlexMixin
 
 from {{ cookiecutter.py_pkg_name }} import TetrodeSeries
 
 
-def set_up_nwbfile():
-    nwbfile = NWBFile(
-        session_description="session_description",
-        identifier="identifier",
-        session_start_time=datetime.datetime.now(datetime.timezone.utc),
-    )
-
-    device = nwbfile.create_device(name="device_name")
-
-    electrode_group = nwbfile.create_electrode_group(
-        name="electrode_group",
-        description="description",
-        location="location",
-        device=device,
-    )
-
-    for i in np.arange(10.0):
-        nwbfile.add_electrode(
-            x=i,
-            y=i,
-            z=i,
-            imp=np.nan,
-            location="location",
-            filtering="filtering",
-            group=electrode_group,
-        )
+def set_up_nwbfile(nwbfile: NWBFile = None):
+    """Create an NWBFile with a Device, ElectrodeGroup, and 10 electrodes in the ElectrodeTable."""
+    nwbfile = nwbfile or mock_NWBFile()
+    device = mock_Device(nwbfile=nwbfile)
+    electrode_group = mock_ElectrodeGroup(device=device, nwbfile=nwbfile)
+    _ = mock_ElectrodeTable(n_rows=10, group=electrode_group, nwbfile=nwbfile)
 
     return nwbfile
 
@@ -55,7 +38,7 @@ class TestTetrodeSeriesConstructor(TestCase):
             description="all the electrodes",
         )
 
-        data = np.random.rand(100, 3)
+        data = np.random.rand(100, 10)
         tetrode_series = TetrodeSeries(
             name="name",
             description="description",
@@ -74,7 +57,7 @@ class TestTetrodeSeriesConstructor(TestCase):
         self.assertEqual(tetrode_series.trode_id, 1)
 
 
-class TestTetrodeSeriesRoundtrip(TestCase):
+class TestTetrodeSeriesSimpleRoundtrip(TestCase):
     """Simple roundtrip test for TetrodeSeries."""
 
     def setUp(self):
@@ -94,7 +77,7 @@ class TestTetrodeSeriesRoundtrip(TestCase):
             description="all the electrodes",
         )
 
-        data = np.random.rand(100, 3)
+        data = np.random.rand(100, 10)
         tetrode_series = TetrodeSeries(
             name="TetrodeSeries",
             description="description",
@@ -114,54 +97,30 @@ class TestTetrodeSeriesRoundtrip(TestCase):
             self.assertContainerEqual(tetrode_series, read_nwbfile.acquisition["TetrodeSeries"])
 
 
-class TestTetrodeSeriesRoundtripPyNWB(AcquisitionH5IOMixin, TestCase):
+class TestTetrodeSeriesRoundtripPyNWB(NWBH5IOFlexMixin, TestCase):
     """Complex, more complete roundtrip test for TetrodeSeries using pynwb.testing infrastructure."""
 
-    def setUpContainer(self):
-        """Return the test TetrodeSeries to read/write"""
-        self.device = Device(name="device_name")
+    def getContainerType(self):
+        return "TetrodeSeries"
 
-        self.group = ElectrodeGroup(
-            name="electrode_group",
-            description="description",
-            location="location",
-            device=self.device,
-        )
+    def addContainer(self):
+        set_up_nwbfile(self.nwbfile)
 
-        self.table = get_electrode_table()  # manually create a table of electrodes
-        for i in np.arange(10.0):
-            self.table.add_row(
-                x=i,
-                y=i,
-                z=i,
-                imp=np.nan,
-                location="location",
-                filtering="filtering",
-                group=self.group,
-                group_name="electrode_group",
-            )
-
-        all_electrodes = DynamicTableRegion(
-            data=list(range(0, 10)),
+        all_electrodes = self.nwbfile.create_electrode_table_region(
+            region=list(range(0, 10)),
             description="all the electrodes",
-            name="electrodes",
-            table=self.table,
         )
 
-        data = np.random.rand(100, 3)
+        data = np.random.rand(100, 10)
         tetrode_series = TetrodeSeries(
-            name="name",
+            name="TetrodeSeries",
             description="description",
             data=data,
             rate=1000.0,
             electrodes=all_electrodes,
             trode_id=1,
         )
-        return tetrode_series
+        self.nwbfile.add_acquisition(tetrode_series)
 
-    def addContainer(self, nwbfile):
-        """Add the test TetrodeSeries and related objects to the given NWBFile."""
-        nwbfile.add_device(self.device)
-        nwbfile.add_electrode_group(self.group)
-        nwbfile.set_electrode_table(self.table)
-        nwbfile.add_acquisition(self.container)
+    def getContainer(self, nwbfile: NWBFile):
+        return nwbfile.acquisition["TetrodeSeries"]
