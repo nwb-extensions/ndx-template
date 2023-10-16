@@ -24,6 +24,12 @@ python -m pip install -U cookiecutter pynwb hdmf-docutils
 ```bash
 cookiecutter gh:nwb-extensions/ndx-template
 ```
+
+   To overwrite the contents of an existing directory, use the `--overwrite-if-exists` flag:
+```bash
+cookiecutter --overwrite-if-exists gh:nwb-extensions/ndx-template
+```
+   This can be useful if you want to populate an existing empty git repository with a new extension.
 4. Answer the prompts, which will be used to fill in the blanks throughout the
 template automatically. You will be prompted for:
     - `namespace` - The name of the namespace for your extension. This could be a
