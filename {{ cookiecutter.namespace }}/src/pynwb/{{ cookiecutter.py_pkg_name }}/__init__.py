@@ -24,22 +24,11 @@ load_namespaces(str(__spec_path))
 # `@register_class("TetrodeSeries", "{{ cookiecutter.namespace }}")`
 TetrodeSeries = get_class("TetrodeSeries", "{{ cookiecutter.namespace }}")
 
-# If NWBWidgets is installed, create a custom widget for the TetrodeSeries
-# neurodata type that displays the trode_id field
-# Usage:
-#   from nwbwidgets import nwb2widget, default_neurodata_vis_spec
-#   vis_spec = default_neurodata_vis_spec
-#   vis_spec[TetrodeSeries] = TetrodeSeries.widget
-#   nwb2widget(nwbfile, vis_spec)
-try:
-    from .widgets import TetrodeSeriesWidget
-
-    # add the widget class to the TetrodeSeries class
-    TetrodeSeries.widget = TetrodeSeriesWidget
-
-except ImportError:
-    # NWBWidgets is not installed, so we cannot create a new widget
-    pass
+# NOTE: `widgets/tetrode_series_widget.py` adds a "widget"
+# attribute to the TetrodeSeries class. This attribute is used by NWBWidgets.
+# Delete the `widgets` package or the `tetrode_series_widget.py` module
+# if you do not want to define a custom widget for your extension neurodata
+# type.
 
 # Remove these functions from the package
 del load_namespaces, get_class
