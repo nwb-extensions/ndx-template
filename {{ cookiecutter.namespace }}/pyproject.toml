@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "{{ cookiecutter.namespace }}"
 version = "{{ cookiecutter.version }}"
-authors = [{% for name, email in zip(cookiecutter.author.split(', '), cookiecutter.email.split(',')) %}
+authors = [{% for name, email in zip(cookiecutter.author.split(','), cookiecutter.email.split(',')) %}
     { name="{{ name.strip() }}", email="{{ email.strip() }}" },{% endfor %}
 ]
 description = "{{ cookiecutter.description }}"
