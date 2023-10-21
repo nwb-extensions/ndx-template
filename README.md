@@ -15,19 +15,20 @@ MATLAB support is in development.
 
 2. Install [cookiecutter](https://pypi.org/project/cookiecutter/) (see [here](https://cookiecutter.readthedocs.io/en/latest/installation.html) for Windows install instructions), [pynwb](https://pypi.org/project/pynwb/), and [hdmf-docutils](https://pypi.org/project/hdmf-docutils/).
 `cookiecutter` is a Python-based command-line utility that creates projects from templates.
-```bash
-python -m pip install -U cookiecutter pynwb hdmf-docutils
-```
+   ```bash
+   python -m pip install -U cookiecutter pynwb hdmf-docutils
+   ```
 3. Run cookiecutter on your local working directory:
-```bash
-cookiecutter gh:nwb-extensions/ndx-template
-```
+   ```bash
+   cookiecutter gh:nwb-extensions/ndx-template
+   ```
 
    To overwrite the contents of an existing directory, use the `--overwrite-if-exists` flag:
-```bash
-cookiecutter --overwrite-if-exists gh:nwb-extensions/ndx-template
-```
+   ```bash
+   cookiecutter --overwrite-if-exists gh:nwb-extensions/ndx-template
+   ```
    This can be useful if you want to populate an existing empty git repository with a new extension.
+   
 4. Answer the prompts, which will be used to fill in the blanks throughout the
 template automatically. You will be prompted for:
     - `namespace` - The name of the namespace for your extension. This could be a
@@ -69,7 +70,7 @@ greater neuroscience community! :)
 
 ## Copyright
 
-Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021,
+Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2023,
 The Regents of the University of California, through Lawrence
 Berkeley National Laboratory (subject to receipt of any required
 approvals from the U.S. Dept. of Energy).  All rights reserved.
