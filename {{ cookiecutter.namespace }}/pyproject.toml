@@ -47,7 +47,7 @@ dependencies = [
 # "Documentation" = "https://package.readthedocs.io/"
 # "Bug Tracker" = "https://github.com/organization/package/issues"
 # "Discussions" = "https://github.com/organization/package/discussions"
-# "Changelog" = "https://package.readthedocs.io/en/latest/changelog.html"
+# "Changelog" = "https://github.com/organization/package/blob/main/CHANGELOG.md"
 
 [tool.hatch.build]
 include = [
