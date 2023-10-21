@@ -18,7 +18,7 @@ MATLAB support is in development.
    ```bash
    python -m pip install -U cookiecutter pynwb hdmf-docutils
    ```
-3. Run cookiecutter on your local working directory:
+3. Run cookiecutter in the directory where you want to create a new directory with the extension:
    ```bash
    cookiecutter gh:nwb-extensions/ndx-template
    ```
