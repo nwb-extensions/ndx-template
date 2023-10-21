@@ -66,7 +66,7 @@ packages = [
 ]
 
 [tool.hatch.build.targets.wheel.sources]
-"spec" = "ndx_my_namespace/spec"
+"spec" = "{{ cookiecutter.py_pkg_name }}/spec"
 
 [tool.hatch.build.targets.sdist]
 include = [
