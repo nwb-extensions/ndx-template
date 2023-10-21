@@ -1,6 +1,6 @@
 ## About
 
-CI Status: [![Run tests](https://github.com/nwb-extensions/ndx-template/actions/workflows/run_tests.yml/badge.svg)](https://github.com/nwb-extensions/ndx-template/actions/workflows/run_tests.yml)
+[![Run tests](https://github.com/nwb-extensions/ndx-template/actions/workflows/run_tests.yml/badge.svg)](https://github.com/nwb-extensions/ndx-template/actions/workflows/run_tests.yml)
 
 This repo provides a template for creating Neurodata Extensions (NDX) for the
 [Neurodata Without Borders](https://nwb.org/)
