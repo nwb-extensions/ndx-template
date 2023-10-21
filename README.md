@@ -1,14 +1,12 @@
 ## About
 
-Per-PR/Per-Commit CI: [![Build Status](https://dev.azure.com/nwb-extensions/ndx-template/_apis/build/status/ndx-template?branchName=main)](https://dev.azure.com/nwb-extensions/ndx-template/_build/latest?definitionId=1&branchName=main)
-
-Nightly CI: [![Build Status](https://dev.azure.com/nwb-extensions/ndx-template/_apis/build/status/nwb-extensions.ndx-template?branchName=main)](https://dev.azure.com/nwb-extensions/ndx-template/_build/latest?definitionId=5&branchName=main)
+[![Run tests](https://github.com/nwb-extensions/ndx-template/actions/workflows/run_tests.yml/badge.svg)](https://github.com/nwb-extensions/ndx-template/actions/workflows/run_tests.yml)
 
 This repo provides a template for creating Neurodata Extensions (NDX) for the
 [Neurodata Without Borders](https://nwb.org/)
  data standard.
 
-We currently support creating Neurodata Extensions only using Python.
+We currently support creating Neurodata Extensions only using Python 3.8+.
 MATLAB support is in development.
 
 ## Getting started
@@ -17,31 +15,30 @@ MATLAB support is in development.
 
 2. Install [cookiecutter](https://pypi.org/project/cookiecutter/) (see [here](https://cookiecutter.readthedocs.io/en/latest/installation.html) for Windows install instructions), [pynwb](https://pypi.org/project/pynwb/), and [hdmf-docutils](https://pypi.org/project/hdmf-docutils/).
 `cookiecutter` is a Python-based command-line utility that creates projects from templates.
-```bash
-python -m pip install cookiecutter "pynwb>=1.5.0" "hdmf-docutils>=0.4.4"
-```
-3. Run cookiecutter on your local working directory:
-```bash
-cookiecutter gh:nwb-extensions/ndx-template
-```
+   ```bash
+   python -m pip install -U cookiecutter pynwb hdmf-docutils
+   ```
+3. Run cookiecutter in the directory where you want to create a new directory with the extension:
+   ```bash
+   cookiecutter gh:nwb-extensions/ndx-template
+   ```
+
+   To overwrite the contents of an existing directory, use the `--overwrite-if-exists` flag:
+   ```bash
+   cookiecutter --overwrite-if-exists gh:nwb-extensions/ndx-template
+   ```
+   This can be useful if you want to populate an existing empty git repository with a new extension.
+   
 4. Answer the prompts, which will be used to fill in the blanks throughout the
-template automatically. You will be prompted for:
-    - `namespace` - The name of the namespace for your extension. This could be a
+template automatically. Guidelines:
+    - `Select a name for your extension. It must start with 'ndx-'` - The name of the namespace for your extension. This could be a
     description of the extension (e.g., "ndx-cortical-surface") or the name of your
-    lab or group (e.g., "ndx-allen-institute"). **Namespaces MUST start with "ndx-".**
-      - The name should generally follow the following naming conventions:
-        - Use only lower-case ASCII letters (no special characters)
-        - Use "-" to separate different parts of the name (no spaces allowed)
-        - Be short and descriptive
-    - `description` - A description of your extension in simple terms
-    - `author` - Your name. This can also be a comma-separated list of names.
-    - `email` - Your email address. This can also be a comma-separated list of email addresses.
-    - `github_username` - Your username on GitHub. This can also be a comma-separated list of usernames.
-    - `copyright` - Copyright statement, if desired
-    - `version` - Version of your extension. Versioning should start at 0.1.0 and follow [semantic versioning](https://semver.org/) guidelines
-    - `release` - Release category, e.g. "alpha", "beta", "official"
-    - `license` - Name of license used for your extension source code.
-    A permissive license, such as BSD, should be used if possible.
+    lab or group (e.g., "ndx-allen-institute"). The name should generally follow the following naming conventions:
+      - Use only lower-case ASCII letters (no special characters)
+      - Use "-" to separate different parts of the name (no spaces allowed)
+      - Be short and descriptive
+    - `Select an initial version string` - Version of your extension. Versioning should start at 0.1.0 and follow [semantic versioning](https://semver.org/) guidelines
+    - `Select a license` - Name of license used for your extension source code. A permissive license, such as BSD, should be used if possible.
 5. A new folder with the same name as your entered `namespace` will be
 created. See `NEXTSTEPS.md` in that folder for the next steps in creating
 your awesome new Neurodata Extension.
@@ -65,7 +62,7 @@ greater neuroscience community! :)
 
 ## Copyright
 
-Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021,
+Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2023,
 The Regents of the University of California, through Lawrence
 Berkeley National Laboratory (subject to receipt of any required
 approvals from the U.S. Dept. of Energy).  All rights reserved.

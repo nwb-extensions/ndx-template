@@ -1,9 +1,3 @@
-# output NWB files
-*.nwb
-
-# generated docs
-docs/source/_format_auto_docs
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

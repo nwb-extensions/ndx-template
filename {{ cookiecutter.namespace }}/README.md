@@ -1,6 +1,6 @@
 # {{ cookiecutter.namespace }} Extension for NWB
 
-Description of the extension
+{{ cookiecutter.description }}
 
 ## Installation
 

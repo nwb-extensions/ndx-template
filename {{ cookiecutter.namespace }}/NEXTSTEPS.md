@@ -4,12 +4,12 @@
 
 ## Creating Your Extension
 
-1. In a terminal, change directory into the new {{ cookiecutter.namespace }} directory.
+1. In a terminal, change directory into the new {{ cookiecutter.namespace }} directory: `cd {{ cookiecutter.namespace }}`
 
-2. Add any packages required by your extension to `requirements.txt` and `setup.py`.
+2. Add any packages required by your extension to the `dependencies` key in `pyproject.toml`.
 
-3. Run `python -m pip install -r requirements.txt -r requirements-dev.txt` to install the `pynwb` package
-and any other packages required to install, develop, and document your extension.
+3. Run `python -m pip install -e .` to install your new extension Python package
+and any other packages required to develop, document, and run your extension.
 
 4. Modify `src/spec/create_extension_spec.py` to define your extension.
 
@@ -20,12 +20,12 @@ and any other packages required to install, develop, and document your extension
 6. Define API classes for your new extension data types.
 
     - As a starting point, `src/pynwb/__init__.py` includes an example for how to use
-      the `pynwb.get_class` to get a basic Python class for your new extension data
+      the `pynwb.get_class` to generate a basic Python class for your new extension data
       type. This class contains a constructor and properties for the new data type.
     - Instead of using `pynwb.get_class`, you can define your own custom class for the
       new type, which will allow you to customize the class methods, customize the
-      object mapping, and create convenience functions. See
-      [https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html](https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html)
+      object mapping, and create convenience functions. See the
+      [Extending NWB tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html)
       for more details.
 
 7. Define tests for your new extension data types in `src/pynwb/tests` or `src/matnwb/tests`.
@@ -41,8 +41,10 @@ replaced or removed.
      the file, and confirm the read data types are equal to the written data types) is
      highly encouraged.
 
-8. You may need to modify `setup.py` and re-run `python setup.py install` if you
+8. You may need to modify `pyproject.toml` and re-run `python -m pip install -e .` if you
 use any dependencies.
+
+9. Update the `CHANGELOG.md` regularly to document changes to your extension.
 
 
 ## Documenting and Publishing Your Extension to the Community
@@ -65,16 +67,19 @@ your extension.
 
 7. Add a license file. Permissive licenses should be used if possible. **A [BSD license](https://opensource.org/licenses/BSD-3-Clause) is recommended.**
 
+8. Update the `CHANGELOG.md` to document changes to your extension.
+
 8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ github_username_list[0] }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
 
 9. Publish your updated extension on [PyPI](https://pypi.org/).
-    - Follow these directions: https://packaging.python.org/tutorials/packaging-projects/
-    - You may need to modify `setup.py`
+    - Follow these directions: https://packaging.python.org/en/latest/tutorials/packaging-projects/
+    - You may need to modify `pyproject.toml`
     - If your extension version is {{ cookiecutter.version }}, then this page should exist: https://pypi.org/project/{{ cookiecutter.namespace }}/{{ cookiecutter.version }}
 
-   Once your GitHub release and ``setup.py`` are ready, publishing on PyPI:
+   Once your GitHub release and `pyproject.toml` are ready, publishing on PyPI:
     ```bash
-    python setup.py sdist bdist_wheel
+    python -m pip install --upgrade build twine
+    python -m build
     twine upload dist/*
     ```
 
