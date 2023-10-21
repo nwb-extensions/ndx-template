@@ -1,4 +1,4 @@
 # minimum versions of package dependencies for installation
 # NOTE: it may be possible to relax these minimum requirements
-pynwb==2.1.0
-hdmf==3.4.3
+pynwb==2.5.0
+hdmf==3.11.0
