@@ -19,15 +19,17 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { name: linux-python3.8   , os: ubuntu-latest , python-ver: "3.8"  }
-        - { name: linux-python3.11  , os: ubuntu-latest , python-ver: "3.11" }
-        - { name: windows-python3.8 , os: windows-latest, python-ver: "3.8"  }
-        - { name: windows-python3.9 , os: windows-latest, python-ver: "3.9"  }
-        - { name: windows-python3.10, os: windows-latest, python-ver: "3.10" }
-        - { name: windows-python3.11, os: windows-latest, python-ver: "3.11" }
-        - { name: windows-python3.12, os: windows-latest, python-ver: "3.12" }
-        - { name: macos-python3.8   , os: macos-latest  , python-ver: "3.8"  }
-        - { name: macos-python3.11  , os: macos-latest  , python-ver: "3.11" }
+        - { name: linux-python3.8    , os: ubuntu-latest  , python-ver: "3.8"  }
+        - { name: linux-python3.11   , os: ubuntu-latest  , python-ver: "3.11" }
+        - { name: linux-python3.12   , os: ubuntu-latest  , python-ver: "3.12" }
+        - { name: windows-python3.8  , os: windows-latest , python-ver: "3.8"  }
+        - { name: windows-python3.9  , os: windows-latest , python-ver: "3.9"  }
+        - { name: windows-python3.10 , os: windows-latest , python-ver: "3.10" }
+        - { name: windows-python3.11 , os: windows-latest , python-ver: "3.11" }
+        - { name: windows-python3.12 , os: windows-latest , python-ver: "3.12" }
+        - { name: macos-python3.8    , os: macos-latest   , python-ver: "3.8"  }
+        - { name: macos-python3.11   , os: macos-latest   , python-ver: "3.11" }
+        - { name: macos-python3.12   , os: macos-latest   , python-ver: "3.12" }
     steps:
     - name: Cancel non-latest runs
       uses: styfle/cancel-workflow-action@0.12.0

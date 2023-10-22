@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "{{ cookiecutter.namespace }}"
 version = "{{ cookiecutter.version }}"
-authors = [{% for name, email in zip(cookiecutter.author.split(', '), cookiecutter.email.split(',')) %}
+authors = [{% for name, email in zip(cookiecutter.author.split(','), cookiecutter.email.split(',')) %}
     { name="{{ name.strip() }}", email="{{ email.strip() }}" },{% endfor %}
 ]
 description = "{{ cookiecutter.description }}"
@@ -38,7 +38,8 @@ keywords = [
     'ndx-extension',
 ]
 dependencies = [
-    "pynwb>=2",
+    "pynwb>=2.5.0",
+    "hdmf>=3.10.0",
 ]
 
 # TODO: add URLs before release
@@ -47,7 +48,7 @@ dependencies = [
 # "Documentation" = "https://package.readthedocs.io/"
 # "Bug Tracker" = "https://github.com/organization/package/issues"
 # "Discussions" = "https://github.com/organization/package/discussions"
-# "Changelog" = "https://package.readthedocs.io/en/latest/changelog.html"
+# "Changelog" = "https://github.com/organization/package/blob/main/CHANGELOG.md"
 
 [tool.hatch.build]
 include = [
@@ -66,7 +67,7 @@ packages = [
 ]
 
 [tool.hatch.build.targets.wheel.sources]
-"spec" = "ndx_my_namespace/spec"
+"spec" = "{{ cookiecutter.py_pkg_name }}/spec"
 
 [tool.hatch.build.targets.sdist]
 include = [
