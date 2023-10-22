@@ -2,4 +2,4 @@
 # these should match the minimum versions specified in pyproject.toml
 # NOTE: it may be possible to relax these minimum requirements
 pynwb==2.5.0
-hdmf==3.11.0
+hdmf==3.10.0

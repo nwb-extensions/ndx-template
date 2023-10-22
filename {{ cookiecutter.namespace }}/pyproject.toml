@@ -39,7 +39,7 @@ keywords = [
 ]
 dependencies = [
     "pynwb>=2.5.0",
-    "hdmf>=3.11.0",
+    "hdmf>=3.10.0",
 ]
 
 # TODO: add URLs before release
