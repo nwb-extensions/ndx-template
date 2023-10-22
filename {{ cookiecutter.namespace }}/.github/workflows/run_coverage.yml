@@ -53,7 +53,8 @@ jobs:
           python -m coverage xml  # codecov uploader requires xml format
           python -m coverage report -m
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          fail_ci_if_error: true
+      # TODO uncomment after setting up repo on codecov.io
+      # - name: Upload coverage to Codecov
+      #   uses: codecov/codecov-action@v3
+      #   with:
+      #     fail_ci_if_error: true

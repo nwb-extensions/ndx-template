@@ -76,6 +76,7 @@ jobs:
       - name: Install run requirements (upgraded)
         if: ${{ "{{" }} matrix.requirements == 'upgraded' }}
         run: |
+          python -m pip install -r requirements-dev.txt
           python -m pip install -U -e .
 
       - name: Run tests
@@ -156,7 +157,7 @@ jobs:
       - name: Install run requirements (pinned)
         if: ${{ "{{" }} matrix.requirements == 'pinned' }}
         run: |
-          python -m pip install -r requirements.txt -r requirements-dev.txt
+          python -m pip install -r requirements-dev.txt
           python -m pip install -e .
 
       - name: Install run requirements (upgraded)
