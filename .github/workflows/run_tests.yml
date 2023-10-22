@@ -58,12 +58,12 @@ jobs:
     - name: Evaluate template from local source
       run: |
         cookiecutter -v --no-input --output-dir ./out .
-        # cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" .
 
-    - name: Check files
+    - name: Check files and run local tests
       run: |
-        python tests/test_template_evaluation.py ./out/ndx-my-namespace/ ndx-my-namespace
-        # python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/" "ndx-my-namespace"
+        python -m pip install pytest pytest-cookies
+        pytest tests
+        python tests/test_back_project.py ./out/ndx-my-namespace/ ndx-my-namespace
 
     - name: Run PyNWB tests from generated extension
       run: |
