@@ -8,10 +8,6 @@ on:
 
 jobs:
   run-all-tests:
-    # the only differences between this job and "run_tests.yml" is the "strategy.matrix.include" and the upload
-    # distributions step.
-    # GitHub Actions does not yet support YAML anchors, easily reusable components, or easy dynamic matrix
-    # configurations based on the github event, so this job is duplicated for the most part
     name: ${{ "{{" }} matrix.name }}
     runs-on: ${{ "{{" }} matrix.os }}
     defaults:
@@ -21,34 +17,41 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { name: linux-python3.7-minimum      , requirements: minimum    , python-ver: "3.7" , os: ubuntu-latest }
-          - { name: linux-python3.7              , requirements: pinned     , python-ver: "3.7" , os: ubuntu-latest }
+          - { name: linux-python3.8-minimum      , requirements: minimum    , python-ver: "3.8" , os: ubuntu-latest }
           - { name: linux-python3.8              , requirements: pinned     , python-ver: "3.8" , os: ubuntu-latest }
           - { name: linux-python3.9              , requirements: pinned     , python-ver: "3.9" , os: ubuntu-latest }
           - { name: linux-python3.10             , requirements: pinned     , python-ver: "3.10", os: ubuntu-latest }
-          # - { name: linux-python3.10-optional    , requirements: optional   , python-ver: "3.10", os: ubuntu-latest }
-          - { name: linux-python3.10-upgraded    , requirements: upgraded   , python-ver: "3.10", os: ubuntu-latest }
-          - { name: windows-python3.7-minimum    , requirements: minimum    , python-ver: "3.7" , os: windows-latest }
-          - { name: windows-python3.7            , requirements: pinned     , python-ver: "3.7" , os: windows-latest }
+          - { name: linux-python3.11             , requirements: pinned     , python-ver: "3.11", os: ubuntu-latest }
+          - { name: linux-python3.12             , requirements: pinned     , python-ver: "3.12", os: ubuntu-latest }
+          - { name: linux-python3.12-upgraded    , requirements: upgraded   , python-ver: "3.12", os: ubuntu-latest }
+          - { name: windows-python3.8-minimum    , requirements: minimum    , python-ver: "3.8" , os: windows-latest }
           - { name: windows-python3.8            , requirements: pinned     , python-ver: "3.8" , os: windows-latest }
           - { name: windows-python3.9            , requirements: pinned     , python-ver: "3.9" , os: windows-latest }
           - { name: windows-python3.10           , requirements: pinned     , python-ver: "3.10", os: windows-latest }
-          # - { name: windows-python3.10-optional  , requirements: optional   , python-ver: "3.10", os: windows-latest }
-          - { name: windows-python3.10-upgraded  , requirements: upgraded   , python-ver: "3.10", os: windows-latest }
-          - { name: macos-python3.7-minimum      , requirements: pinned     , python-ver: "3.7" , os: macos-latest }
-          - { name: macos-python3.7              , requirements: pinned     , python-ver: "3.7" , os: macos-latest }
+          - { name: windows-python3.11           , requirements: pinned     , python-ver: "3.11", os: windows-latest }
+          - { name: windows-python3.12           , requirements: pinned     , python-ver: "3.12", os: windows-latest }
+          - { name: windows-python3.12-upgraded  , requirements: upgraded   , python-ver: "3.12", os: windows-latest }
+          - { name: macos-python3.8-minimum      , requirements: minimum    , python-ver: "3.8" , os: macos-latest }
           - { name: macos-python3.8              , requirements: pinned     , python-ver: "3.8" , os: macos-latest }
           - { name: macos-python3.9              , requirements: pinned     , python-ver: "3.9" , os: macos-latest }
           - { name: macos-python3.10             , requirements: pinned     , python-ver: "3.10", os: macos-latest }
-          # - { name: macos-python3.10-optional    , requirements: optional   , python-ver: "3.10", os: macos-latest }
-          - { name: macos-python3.10-upgraded    , requirements: upgraded   , python-ver: "3.10", os: macos-latest }
+          - { name: macos-python3.11             , requirements: pinned     , python-ver: "3.11", os: macos-latest }
+          - { name: macos-python3.12             , requirements: pinned     , python-ver: "3.12", os: macos-latest }
+          - { name: macos-python3.12-upgraded    , requirements: upgraded   , python-ver: "3.12", os: macos-latest }
     steps:
+      - name: Cancel non-latest runs
+        uses: styfle/cancel-workflow-action@0.11.0
+        with:
+          all_but_latest: true
+          access_token: ${{ github.token }}
+
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
+          fetch-depth: 0  # fetch tags
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ "{{" }} matrix.python-ver }}
 
@@ -58,7 +61,7 @@ jobs:
           python -m pip list
           python -m pip check
 
-      - name: Install run requirements (minimal)
+      - name: Install run requirements (minimum)
         if: ${{ "{{" }} matrix.requirements == 'minimum' }}
         run: |
           python -m pip install -r requirements-min.txt -r requirements-dev.txt
@@ -67,19 +70,12 @@ jobs:
       - name: Install run requirements (pinned)
         if: ${{ "{{" }} matrix.requirements == 'pinned' }}
         run: |
-          python -m pip install -r requirements.txt -r requirements-dev.txt
+          python -m pip install -r requirements-dev.txt
           python -m pip install -e .
 
-      - name: Install run requirements (pinned, optional)
-        if: ${{ "{{" }} matrix.requirements == 'optional' }}
-        run: |
-          python -m pip install -r requirements.txt -r requirements-opt.txt -r requirements-dev.txt
-          python -m pip install -e .
-
-      - name: Install run requirements (upgraded, optional)
+      - name: Install run requirements (upgraded)
         if: ${{ "{{" }} matrix.requirements == 'upgraded' }}
         run: |
-          python -m pip install -r requirements-opt.txt -r requirements-dev.txt
           python -m pip install -U -e .
 
       - name: Run tests
@@ -118,22 +114,23 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - { name: conda-linux-python3.7-minimum    , requirements: minimum    , python-ver: "3.7" , os: ubuntu-latest }
-          - { name: conda-linux-python3.7            , requirements: pinned     , python-ver: "3.7" , os: ubuntu-latest }
+          - { name: conda-linux-python3.8-minimum    , requirements: minimum    , python-ver: "3.8" , os: ubuntu-latest }
           - { name: conda-linux-python3.8            , requirements: pinned     , python-ver: "3.8" , os: ubuntu-latest }
           - { name: conda-linux-python3.9            , requirements: pinned     , python-ver: "3.9" , os: ubuntu-latest }
           - { name: conda-linux-python3.10           , requirements: pinned     , python-ver: "3.10", os: ubuntu-latest }
-          # - { name: conda-linux-python3.10-optional  , requirements: optional   , python-ver: "3.10", os: ubuntu-latest }
-          - { name: conda-linux-python3.10-upgraded  , requirements: upgraded   , python-ver: "3.10", os: ubuntu-latest }
+          - { name: conda-linux-python3.11           , requirements: pinned     , python-ver: "3.11", os: ubuntu-latest }
+          - { name: conda-linux-python3.12           , requirements: pinned     , python-ver: "3.12", os: ubuntu-latest }
+          - { name: conda-linux-python3.12-upgraded  , requirements: upgraded   , python-ver: "3.12", os: ubuntu-latest }
     steps:
       - name: Cancel any previous incomplete runs
-        uses: styfle/cancel-workflow-action@0.9.1
+        uses: styfle/cancel-workflow-action@0.11.0
         with:
           access_token: ${{ "{{" }} github.token }}
 
       - uses: actions/checkout@v3
         with:
           submodules: 'recursive'
+          fetch-depth: 0  # fetch tags
 
       - name: Set up Conda
         uses: conda-incubator/setup-miniconda@v2
@@ -147,9 +144,10 @@ jobs:
         run: |
           conda config --set always_yes yes --set changeps1 no
           conda info
-          conda list
+          conda config --show-sources
+          conda list --show-channel-urls
 
-      - name: Install run requirements (minimal)
+      - name: Install run requirements (minimum)
         if: ${{ "{{" }} matrix.requirements == 'minimum' }}
         run: |
           python -m pip install -r requirements-min.txt -r requirements-dev.txt
@@ -161,16 +159,10 @@ jobs:
           python -m pip install -r requirements.txt -r requirements-dev.txt
           python -m pip install -e .
 
-      - name: Install run requirements (pinned, optional)
-        if: ${{ "{{" }} matrix.requirements == 'optional' }}
-        run: |
-          python -m pip install -r requirements.txt -r requirements-opt.txt -r requirements-dev.txt
-          python -m pip install -e .
-
-      - name: Install run requirements (upgraded, optional)
+      - name: Install run requirements (upgraded)
         if: ${{ "{{" }} matrix.requirements == 'upgraded' }}
         run: |
-          python -m pip install -r requirements-opt.txt -r requirements-dev.txt
+          python -m pip install -r requirements-dev.txt
           python -m pip install -U -e .
 
       - name: Run tests
@@ -184,17 +176,8 @@ jobs:
           ls -1 dist
 
       - name: Test installation from a wheel (POSIX)
-        if: ${{ "{{" }} matrix.os != 'windows-latest' }}
         run: |
           python -m venv test-wheel-env
           source test-wheel-env/bin/activate
-          python -m pip install dist/*-none-any.whl
-          python -c "import {{ cookiecutter.py_pkg_name }}"
-
-      - name: Test installation from a wheel (windows)
-        if: ${{ "{{" }} matrix.os == 'windows-latest' }}
-        run: |
-          python -m venv test-wheel-env
-          test-wheel-env/Scripts/activate.bat
           python -m pip install dist/*-none-any.whl
           python -c "import {{ cookiecutter.py_pkg_name }}"
