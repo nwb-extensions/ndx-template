@@ -1,4 +1,3 @@
-
 import os
 import sys
 
@@ -22,11 +21,12 @@ def test_post_gen_project_hook(project_dir, namespace):
         "spec/%s.namespace.yaml" % namespace,
     ]:
         expected_file = os.path.join(project_dir, expected_file)
-        assert os.path.exists(expected_file)
+        assert os.path.exists(expected_file), f"Missing file: {expected_file}"
 
         with open(expected_file, "r") as fp:
-            assert fp.read().strip() != ""
+            assert fp.read().strip() != "", f"Empty file: {expected_file}"
 
 
 if __name__ == "__main__":
+    # python test_template_evaluation.py ndx-my-namespace ndx-my-namespace
     test_post_gen_project_hook(sys.argv[1], sys.argv[2])
