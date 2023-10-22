@@ -55,20 +55,22 @@ jobs:
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
 
+    - name: Run template tests
+      run: |
+        python -m pip install pytest pytest-cookies
+        pytest tests
+
     - name: Evaluate template from local source
       run: |
         cookiecutter -v --no-input --output-dir ./out .
 
-    - name: Check files and run local tests
+    - name: Check generated files
       run: |
-        python -m pip install pytest pytest-cookies
-        pytest tests
         python tests/test_bake_project.py ./out/ndx-my-namespace/ ndx-my-namespace
 
     - name: Run PyNWB tests from generated extension
       run: |
         cd ./out/ndx-my-namespace
-        # cd "$(Agent.BuildDirectory)/ndx-my-namespace"
         python -m pip install -r requirements-dev.txt
         python -m pip install .
         pytest
@@ -77,6 +79,5 @@ jobs:
       run: |
         set -e
         cd ./out/ndx-my-namespace/docs
-        # cd "$(Agent.BuildDirectory)/ndx-my-namespace/docs"
         make apidoc
         make html
