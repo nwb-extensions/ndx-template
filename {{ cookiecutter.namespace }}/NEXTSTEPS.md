@@ -69,6 +69,11 @@ your extension.
 
 8. Update the `CHANGELOG.md` to document changes to your extension.
 
+8. Push your repository to GitHub. A default set of GitHub Actions workflows is set up to
+test your code on Linux, Windows, Mac OS, and Linux using conda; upload code coverage
+stats to codecov; check for spelling errors; check for style errors; and check for broken
+links in the documentation.
+
 8. Make a release for the extension on GitHub with the version number specified. e.g. if version is {{ cookiecutter.version }}, then this page should exist: https://github.com/{{ github_username_list[0] }}/{{ cookiecutter.namespace }}/releases/tag/{{ cookiecutter.version }} . For instructions on how to make a release on GitHub see [here](https://help.github.com/en/github/administering-a-repository/creating-releases).
 
 9. Publish your updated extension on [PyPI](https://pypi.org/).
