@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 5 * * *'  # once per day at midnight ET
+    - cron: '0 5 * * 0'  # once every Sunday at midnight ET
   workflow_dispatch:
 
 jobs:
