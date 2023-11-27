@@ -20,17 +20,14 @@ def main():
             "{{ email.strip() }}", {% endfor %}
         ],
     )
-
-    # TODO: specify either the neurodata types that are used by the extension
-    # or the namespaces that contain the neurodata types used. Including the
-    # namespace will include all neurodata types in that namespace.
-    # This is similar to specifying the Python modules that need to be imported
-    # to use your new data types.
-    # ns_builder.include_type("ElectricalSeries", namespace="core")
     ns_builder.include_namespace("core")
+    
+    # TODO: if your extension builds on another extension, include the namespace
+    # of the other extension below
+    # ns_builder.include_namespace("ndx-other-extension")
 
     # TODO: define your new data types
-    # see https://pynwb.readthedocs.io/en/latest/extensions.html#extending-nwb
+    # see https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html
     # for more information
     tetrode_series = NWBGroupSpec(
         neurodata_type_def="TetrodeSeries",
@@ -45,7 +42,6 @@ def main():
     # export the spec to yaml files in the spec folder
     output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "spec"))
     export_spec(ns_builder, new_data_types, output_dir)
-    print("Spec files generated. Please make sure to run `pip install .` to load the changes.")
 
 
 if __name__ == "__main__":
