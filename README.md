@@ -62,7 +62,7 @@ greater neuroscience community! :)
 
 ## Copyright
 
-Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2023,
+Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2024,
 The Regents of the University of California, through Lawrence
 Berkeley National Laboratory (subject to receipt of any required
 approvals from the U.S. Dept. of Energy).  All rights reserved.
