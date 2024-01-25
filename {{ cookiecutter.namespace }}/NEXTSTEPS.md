@@ -44,7 +44,8 @@ replaced or removed.
      Code coverage reporting is useful to help with creation of tests and report test coverage.
      However, with this option enabled, breakpoints for debugging with pdb are being ignored.
      To enable this option for code coverage reporting, uncomment out the following line in
-     your `pyproject.toml`: [line]()
+     your `pyproject.toml`: [line](https://github.com/nwb-extensions/ndx-template/blob/11ae225b3fd3934fa3c56e6e7b563081793b3b43/%7B%7B%20cookiecutter.namespace%20%7D%7D/pyproject.toml#L82-L83
+)
 
 8. You may need to modify `pyproject.toml` and re-run `python -m pip install -e .` if you
 use any dependencies.
