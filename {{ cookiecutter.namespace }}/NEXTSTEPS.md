@@ -40,9 +40,11 @@ replaced or removed.
      new functions) and **integration tests** (e.g., write the new data types to file, read
      the file, and confirm the read data types are equal to the written data types) is
      highly encouraged.
-     - By default, running `pytest` with `coverage` to measure code coverage is disabled.
-     Enabling `coverage will prevent `pytest` from stopping at breakpoints. You can enable
-     running `pytest` with `coverage` in `pyproject.toml`.
+     - By default, the project is configured NOT to run code coverage as part of the tests.
+     Code coverage reporting is useful to help with creation of tests and report test coverage.
+     However, with this option enabled, breakpoints for debugging with pdb are being ignored.
+     To enable this option for code coverage reporting, uncomment out the following line in
+     your `pyproject.toml`: [line]()
 
 8. You may need to modify `pyproject.toml` and re-run `python -m pip install -e .` if you
 use any dependencies.
