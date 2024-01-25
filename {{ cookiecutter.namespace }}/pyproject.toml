@@ -79,7 +79,7 @@ include = [
 exclude = []
 
 [tool.pytest.ini_options]
-# TODO uncomment below to run pytest with code coverage reporting. NOTE: breakpoints may not work
+# uncomment below to run pytest with code coverage reporting. NOTE: breakpoints may not work
 # addopts = "--cov --cov-report html"
 
 [tool.codespell]
