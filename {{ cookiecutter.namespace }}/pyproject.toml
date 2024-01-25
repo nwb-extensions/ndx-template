@@ -79,7 +79,8 @@ include = [
 exclude = []
 
 [tool.pytest.ini_options]
-addopts = "--cov --cov-report html"
+# TODO uncomment below to run pytest with coverage. NOTE: breakpoints will not work
+# addopts = "--cov --cov-report html"
 
 [tool.codespell]
 skip = "htmlcov,.git,.mypy_cache,.pytest_cache,.coverage,*.pdf,*.svg,venvs,.tox,hdmf-common-schema,./docs/_build/*,*.ipynb"
