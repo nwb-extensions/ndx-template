@@ -40,6 +40,9 @@ replaced or removed.
      new functions) and **integration tests** (e.g., write the new data types to file, read
      the file, and confirm the read data types are equal to the written data types) is
      highly encouraged.
+     - By default, running `pytest` with `coverage` to measure code coverage is disabled
+     because enabling it will prevent pytest from stopping at breakpoints. You can enable
+     running `coverage` in `pyproject.toml`. 
 
 8. You may need to modify `pyproject.toml` and re-run `python -m pip install -e .` if you
 use any dependencies.
