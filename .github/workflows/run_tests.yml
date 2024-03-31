@@ -3,9 +3,6 @@ on:
   schedule:
     - cron: '0 5 * * *'  # once per day at midnight ET
   push:
-    branches:
-      - main
-  pull_request:
   workflow_dispatch:
 
 jobs:
