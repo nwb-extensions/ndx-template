@@ -38,8 +38,8 @@ keywords = [
     'ndx-extension',
 ]
 dependencies = [
-    "pynwb>=2.5.0",
-    "hdmf>=3.10.0",
+    "pynwb>=2.6.0",
+    "hdmf>=3.13.0",
 ]
 
 # TODO: add URLs before release
@@ -108,10 +108,12 @@ exclude = [
   "__pycache__",
   "build/",
   "dist/",
+  "docs/source/conf.py",
 ]
 line-length = 120
 
 [tool.ruff.per-file-ignores]
+"src/pynwb/{{ cookiecutter.py_pkg_name }}/__init__.py" = ["E402", "F401"]
 "src/spec/create_extension_spec.py" = ["T201"]
 
 [tool.ruff.mccabe]
