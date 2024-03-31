@@ -4,7 +4,7 @@
   "author": "My Name",
   "email": "my_email@example.com",
   "github_username": "myname",
-  "copyright": "2023, {{ cookiecutter.author }}",
+  "copyright": "2024, {{ cookiecutter.author }}",
   "version": "0.1.0",
   "release": "alpha",
   "license": ["BSD-3", "MIT", "Apache Software License 2.0", "Other"],

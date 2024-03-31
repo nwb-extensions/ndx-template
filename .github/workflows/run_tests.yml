@@ -3,9 +3,6 @@ on:
   schedule:
     - cron: '0 5 * * *'  # once per day at midnight ET
   push:
-    branches:
-      - main
-  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -15,6 +12,9 @@ jobs:
     defaults:
       run:
         shell: bash
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.name }}
+      cancel-in-progress: true
     strategy:
       fail-fast: false
       matrix:
@@ -31,16 +31,11 @@ jobs:
         - { name: macos-python3.11   , os: macos-latest   , python-ver: "3.11" }
         - { name: macos-python3.12   , os: macos-latest   , python-ver: "3.12" }
     steps:
-    - name: Cancel non-latest runs
-      uses: styfle/cancel-workflow-action@0.12.0
-      with:
-        all_but_latest: true
-        access_token: ${{ github.token }}
-
-    - uses: actions/checkout@v4
+    - name: Checkout repo
+      uses: actions/checkout@v4
 
     - name: Set up Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-ver }}
 
@@ -55,20 +50,22 @@ jobs:
         git config --global user.email "you@example.com"
         git config --global user.name "Your Name"
 
+    - name: Run template tests
+      run: |
+        python -m pip install pytest pytest-cookies
+        pytest tests
+
     - name: Evaluate template from local source
       run: |
         cookiecutter -v --no-input --output-dir ./out .
-        # cookiecutter -v --no-input --output-dir "$(Agent.BuildDirectory)" .
 
-    - name: Check files
+    - name: Check generated files
       run: |
-        python tests/test_template_evaluation.py ./out/ndx-my-namespace/ ndx-my-namespace
-        # python tests/test_template_evaluation.py "$(Agent.BuildDirectory)/ndx-my-namespace/" "ndx-my-namespace"
+        python tests/test_bake_project.py ./out/ndx-my-namespace/ ndx-my-namespace
 
     - name: Run PyNWB tests from generated extension
       run: |
         cd ./out/ndx-my-namespace
-        # cd "$(Agent.BuildDirectory)/ndx-my-namespace"
         python -m pip install -r requirements-dev.txt
         python -m pip install .
         pytest
@@ -77,6 +74,5 @@ jobs:
       run: |
         set -e
         cd ./out/ndx-my-namespace/docs
-        # cd "$(Agent.BuildDirectory)/ndx-my-namespace/docs"
         make apidoc
         make html

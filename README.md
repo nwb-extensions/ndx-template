@@ -53,6 +53,12 @@ When you are done creating your extension, we encourage you to follow the steps
 to publish your Neurodata Extension in the [NDX Catalog](https://github.com/nwb-extensions/) for the benefit of the
 greater neuroscience community! :)
 
+## Running tests with breakpoint debugging
+
+By default, to aid with debugging, the project is configured NOT to run code coverage as part of the tests. Code coverage testing is useful to help with creation of tests and report test coverage. However, with this option enabled, breakpoints for debugging with pdb are being ignored. To enable this option for code coverage reporting, uncomment out the following line in your `pyproject.toml`:
+
+https://github.com/nwb-extensions/ndx-template/blob/11ae225b3fd3934fa3c56e6e7b563081793b3b43/%7B%7B%20cookiecutter.namespace%20%7D%7D/pyproject.toml#L82-L83
+
 ## Maintainers
 - [@rly](https://github.com/rly)
 - [@oruebel](https://github.com/oruebel)
@@ -62,7 +68,7 @@ greater neuroscience community! :)
 
 ## Copyright
 
-Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2023,
+Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2024,
 The Regents of the University of California, through Lawrence
 Berkeley National Laboratory (subject to receipt of any required
 approvals from the U.S. Dept. of Energy).  All rights reserved.

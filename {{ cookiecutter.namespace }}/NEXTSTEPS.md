@@ -40,6 +40,13 @@ replaced or removed.
      new functions) and **integration tests** (e.g., write the new data types to file, read
      the file, and confirm the read data types are equal to the written data types) is
      highly encouraged.
+     - By default, to aid with debugging, the project is configured NOT to run code coverage as
+     part of the tests.
+     Code coverage reporting is useful to help with creation of tests and report test coverage.
+     However, with this option enabled, breakpoints for debugging with pdb are being ignored.
+     To enable this option for code coverage reporting, uncomment out the following line in
+     your `pyproject.toml`: [line](https://github.com/nwb-extensions/ndx-template/blob/11ae225b3fd3934fa3c56e6e7b563081793b3b43/%7B%7B%20cookiecutter.namespace%20%7D%7D/pyproject.toml#L82-L83
+)
 
 7. Define custom visualization widgets for your new extension data types in
 `src/pynwb/widgets` so that the visualizations can be displayed with
