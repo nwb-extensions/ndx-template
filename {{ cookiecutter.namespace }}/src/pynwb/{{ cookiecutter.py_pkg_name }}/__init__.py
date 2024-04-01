@@ -24,5 +24,11 @@ load_namespaces(str(__spec_path))
 # `@register_class("TetrodeSeries", "{{ cookiecutter.namespace }}")`
 TetrodeSeries = get_class("TetrodeSeries", "{{ cookiecutter.namespace }}")
 
+# NOTE: `widgets/tetrode_series_widget.py` adds a "widget"
+# attribute to the TetrodeSeries class. This attribute is used by NWBWidgets.
+# Delete the `widgets` subpackage or the `tetrode_series_widget.py` module
+# if you do not want to define a custom widget for your extension neurodata
+# type.
+
 # Remove these functions from the package
 del load_namespaces, get_class
