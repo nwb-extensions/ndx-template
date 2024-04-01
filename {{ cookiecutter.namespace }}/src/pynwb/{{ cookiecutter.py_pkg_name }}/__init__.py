@@ -26,7 +26,7 @@ TetrodeSeries = get_class("TetrodeSeries", "{{ cookiecutter.namespace }}")
 
 # NOTE: `widgets/tetrode_series_widget.py` adds a "widget"
 # attribute to the TetrodeSeries class. This attribute is used by NWBWidgets.
-# Delete the `widgets` package or the `tetrode_series_widget.py` module
+# Delete the `widgets` subpackage or the `tetrode_series_widget.py` module
 # if you do not want to define a custom widget for your extension neurodata
 # type.
 
