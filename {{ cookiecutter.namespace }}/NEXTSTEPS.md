@@ -48,7 +48,7 @@ replaced or removed.
      your `pyproject.toml`: [line](https://github.com/nwb-extensions/ndx-template/blob/11ae225b3fd3934fa3c56e6e7b563081793b3b43/%7B%7B%20cookiecutter.namespace%20%7D%7D/pyproject.toml#L82-L83
 )
 
-7. Define custom visualization widgets for your new extension data types in
+7. (Optional) Define custom visualization widgets for your new extension data types in
 `src/pynwb/widgets` so that the visualizations can be displayed with
 [nwbwidgets](https://github.com/NeurodataWithoutBorders/nwbwidgets).
 You will also need to update the `vis_spec` dictionary in `__init__.py` so that
