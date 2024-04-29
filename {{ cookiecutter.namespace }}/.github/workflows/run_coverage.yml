@@ -45,7 +45,7 @@ jobs:
 
       - name: Run tests and generate coverage report
         run: |
-          pytest --cov --cov-report=xml --cov-report=term # codecov uploader requires xml format
+          pytest --cov --cov-report=xml --cov-report=term  # codecov uploader requires xml format
 
       # TODO uncomment after setting up repo on codecov.io and adding token
       # - name: Upload coverage to Codecov
