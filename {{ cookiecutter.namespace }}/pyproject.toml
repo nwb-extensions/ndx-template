@@ -79,7 +79,7 @@ include = [
 exclude = []
 
 [tool.pytest.ini_options]
-# uncomment below to run pytest with code coverage reporting. NOTE: breakpoints may not work
+# uncomment below to run pytest always with code coverage reporting. NOTE: breakpoints may not work
 # addopts = "--cov --cov-report html"
 
 [tool.codespell]
@@ -87,7 +87,7 @@ skip = "htmlcov,.git,.mypy_cache,.pytest_cache,.coverage,*.pdf,*.svg,venvs,.tox,
 
 [tool.coverage.run]
 branch = true
-source = ["src/pynwb"]
+source = ["{{ cookiecutter.py_pkg_name }}"]
 
 [tool.coverage.report]
 exclude_lines = [
