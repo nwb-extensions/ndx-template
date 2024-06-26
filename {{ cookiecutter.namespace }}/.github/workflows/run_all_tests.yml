@@ -73,7 +73,8 @@ jobs:
         if: ${{ "{{" }} matrix.requirements == 'upgraded' }}
         run: |
           python -m pip install -r requirements-dev.txt
-          python -m pip install -U .
+          # force upgrade of all dependencies to latest versions within allowed range
+          python -m pip install -U --upgrade-strategy eager .
 
       - name: Run tests
         run: |
