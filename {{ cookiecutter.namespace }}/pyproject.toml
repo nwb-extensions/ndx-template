@@ -38,8 +38,8 @@ keywords = [
     'ndx-extension',
 ]
 dependencies = [
-    "pynwb>=2.6.0",
-    "hdmf>=3.13.0",
+    "pynwb>=2.8.0",
+    "hdmf>=3.14.1",
 ]
 
 # TODO: add URLs before release
