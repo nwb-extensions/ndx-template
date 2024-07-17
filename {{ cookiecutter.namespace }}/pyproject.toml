@@ -65,6 +65,7 @@ packages = [
 [tool.hatch.build.targets.sdist]
 exclude = [
     ".git*",
+    "src/matnwb",
 ]
 
 [tool.pytest.ini_options]
