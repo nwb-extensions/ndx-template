@@ -50,33 +50,31 @@ dependencies = [
 # "Discussions" = "https://github.com/organization/package/discussions"
 # "Changelog" = "https://github.com/organization/package/blob/main/CHANGELOG.md"
 
-[tool.hatch.build]
-include = [
-    "src/pynwb",
-    "spec/{{ cookiecutter.namespace }}.extensions.yaml",
-    "spec/{{ cookiecutter.namespace }}.namespace.yaml",
-]
-exclude = [
-    "src/pynwb/tests",
-]
-
+# Include only the source code under `src/pynwb/{{ cookiecutter.py_pkg_name }}` and the spec files under `spec`
+# in the wheel.
 [tool.hatch.build.targets.wheel]
 packages = [
     "src/pynwb/{{ cookiecutter.py_pkg_name }}",
     "spec"
 ]
 
+# Rewrite the path to the `spec` directory to `{{ cookiecutter.py_pkg_name }}/spec`.
+# `{{ cookiecutter.py_pkg_name }}/__init__.py` will look there first for the spec files.
+# The resulting directory structure within the wheel will be:
+# {{ cookiecutter.py_pkg_name }}/
+# ├── __init__.py
+# ├── spec
+# └── widgets
 [tool.hatch.build.targets.wheel.sources]
 "spec" = "{{ cookiecutter.py_pkg_name }}/spec"
 
+# The source distribution includes everything in the package except for the `src/matnwb` directory and
+# git and github-related files.
 [tool.hatch.build.targets.sdist]
-include = [
-    "src/pynwb",
-    "spec/{{ cookiecutter.namespace }}.extensions.yaml",
-    "spec/{{ cookiecutter.namespace }}.namespace.yaml",
-    "docs",
+exclude = [
+    ".git*",
+    "src/matnwb",
 ]
-exclude = []
 
 [tool.pytest.ini_options]
 # uncomment below to run pytest always with code coverage reporting. NOTE: breakpoints may not work
