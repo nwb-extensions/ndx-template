@@ -5,7 +5,7 @@ codespell==2.3.0
 coverage==7.5.4
 hdmf==3.14.1
 hdmf-docutils==0.4.7
-nwbwidgets==0.11.3
+{%- if cookiecutter.widgets -%}nwbwidgets==0.11.3{% endif %}
 pre-commit==3.5.0  # latest pre-commit does not support py3.8
 pynwb==2.8.0
 pytest==8.2.2
