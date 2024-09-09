@@ -10,6 +10,7 @@
   "license": ["BSD-3", "MIT", "Apache Software License 2.0", "Other"],
   "py_pkg_name": "{{ cookiecutter.namespace|replace('-', '_') }}",
   "initialize_git": true,
+  "widgets": false,
   "_extensions": ["local_extensions.ZipExtension"],
   "__prompts__": {
     "namespace": "Select a name for your extension. It must start with 'ndx-'",
@@ -22,6 +23,7 @@
     "release": "Select an initial release level",
     "license": "Select a license",
     "py_pkg_name": "Select a name for the Python package",
-    "initialize_git": "Initialize a git repository?"
+    "initialize_git": "Initialize a git repository?",
+    "widgets": "Create templates for integration with NWB Widgets (interactive visualization)?"
   }
 }

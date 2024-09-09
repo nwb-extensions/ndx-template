@@ -6,7 +6,7 @@ This repo provides a template for creating Neurodata Extensions (NDX) for the
 [Neurodata Without Borders](https://nwb.org/)
  data standard.
 
-We currently support creating Neurodata Extensions only using Python 3.8+.
+This template currently supports creating Neurodata Extensions only using Python 3.8+.
 MATLAB support is in development.
 
 ## Getting started
@@ -58,6 +58,17 @@ greater neuroscience community! :)
 By default, to aid with debugging, the project is configured NOT to run code coverage as part of the tests. Code coverage testing is useful to help with creation of tests and report test coverage. However, with this option enabled, breakpoints for debugging with pdb are being ignored. To enable this option for code coverage reporting, uncomment out the following line in your `pyproject.toml`:
 
 https://github.com/nwb-extensions/ndx-template/blob/11ae225b3fd3934fa3c56e6e7b563081793b3b43/%7B%7B%20cookiecutter.namespace%20%7D%7D/pyproject.toml#L82-L83
+
+## Integrating with NWB Widgets
+
+When answering the cookiecutter prompts, you will be asked whether you would like to create templates for integration with [NWB Widgets](https://github.com/NeurodataWithoutBorders/nwbwidgets), a library of plotting widgets for interactive visualization of NWB neurodata types within a Jupyter notebook. If you answer "yes", then an example widget and example notebook will be created for you. If you answer "no", but would like to add a widget later on, follow the instructions below:
+
+1. Create a directory named `widgets` in `src/pynwb/{your_python_package_name}/`.
+2. Copy [`__init__.py`](https://github.com/nwb-extensions/ndx-template/blob/main/%7B%7B%20cookiecutter.namespace%20%7D%7D/src/pynwb/%7B%7B%20cookiecutter.py_pkg_name%20%7D%7D/widgets/__init__.py) to that directory and adapt the contents to your extension.
+3. Copy [`tetrode_series_widget.py`](https://github.com/nwb-extensions/ndx-template/blob/main/%7B%7B%20cookiecutter.namespace%20%7D%7D/src/pynwb/%7B%7B%20cookiecutter.py_pkg_name%20%7D%7D/widgets/tetrode_series_widget.py) to that directory and adapt the contents to your extension.
+4. Create a directory named `notebooks` in the root of the repository.
+5. Copy [example.ipynb](https://github.com/nwb-extensions/ndx-template/blob/main/%7B%7B%20cookiecutter.namespace%20%7D%7D/notebooks/example.ipynb) to that directory and adapt the contents to your extension.
+6. Add `nwbwidgets` to `requirements-dev.txt`.
 
 ## Maintainers
 - [@rly](https://github.com/rly)

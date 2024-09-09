@@ -19,7 +19,8 @@ and any other packages required to develop, document, and run your extension.
 
 6. Define API classes for your new extension data types.
 
-    - As a starting point, `src/pynwb/__init__.py` includes an example for how to use
+    - As a starting point, `src/pynwb/{{ cookiecutter.py_pkg_name }}/__init__.py` includes an
+      example for how to use
       the `pynwb.get_class` to generate a basic Python class for your new extension data
       type. This class contains a constructor and properties for the new data type.
     - Instead of using `pynwb.get_class`, you can define your own custom class for the
@@ -28,7 +29,8 @@ and any other packages required to develop, document, and run your extension.
       [Extending NWB tutorial](https://pynwb.readthedocs.io/en/stable/tutorials/general/extensions.html)
       for more details.
 
-7. Define tests for your new extension data types in `src/pynwb/tests` or `src/matnwb/tests`.
+7. Define tests for your new extension data types in 
+`src/pynwb/{{ cookiecutter.py_pkg_name }}/tests` or `src/matnwb/tests`.
 A test for the example `TetrodeSeries` data type is provided as a reference and should be
 replaced or removed.
 
@@ -49,9 +51,10 @@ replaced or removed.
 )
 
 7. (Optional) Define custom visualization widgets for your new extension data types in
-`src/pynwb/widgets` so that the visualizations can be displayed with
+`src/pynwb/{{ cookiecutter.py_pkg_name }}/widgets` so that the visualizations can be displayed with
 [nwbwidgets](https://github.com/NeurodataWithoutBorders/nwbwidgets).
-You will also need to update the `vis_spec` dictionary in `__init__.py` so that
+You will also need to update the `vis_spec` dictionary in 
+`src/pynwb/{{ cookiecutter.py_pkg_name }}/widgets/__init__.py` so that
 nwbwidgets can find your custom visualizations.
 
 8. You may need to modify `pyproject.toml` and re-run `python -m pip install -e .` if you

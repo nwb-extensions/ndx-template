@@ -30,6 +30,26 @@ def test_bake_project_extra(cookies):
     _check_gen_files(result.project_path, "ndx-test")
 
 
+def test_bake_project_widgets(cookies):
+    """Test evaluating the template with widgets."""
+    result = cookies.bake(extra_context={"widgets": "yes"})
+
+    assert result.exit_code == 0
+    assert result.exception is None
+
+    for expected_file in [
+        "notebooks/example.ipynb",
+        "src/pynwb/ndx_my_namespace/widgets/__init__.py",
+        "src/pynwb/ndx_my_namespace/widgets/tetrode_series_widget.py",
+        "src/pynwb/ndx_my_namespace/widgets/README.md",
+    ]:
+        expected_file = os.path.join(project_dir, expected_file)
+        assert os.path.exists(expected_file), f"Missing file: {expected_file}"
+
+        with open(expected_file, "r") as fp:
+            assert fp.read().strip() != "", f"Empty file: {expected_file}"
+
+
 def _check_gen_files(project_dir: str, namespace: str):
     """Test that the correct files are generated after the template is evaluated."""
     for expected_file in [
