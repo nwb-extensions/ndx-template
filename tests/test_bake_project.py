@@ -32,7 +32,7 @@ def test_bake_project_extra(cookies):
 
 def test_bake_project_widgets(cookies):
     """Test evaluating the template with widgets."""
-    result = cookies.bake(extra_context={"widgets": "yes"})
+    result = cookies.bake(extra_context={"widgets": True})
 
     assert result.exit_code == 0
     assert result.exception is None
@@ -74,6 +74,16 @@ def _check_gen_files(project_dir: str, namespace: str):
 
         with open(expected_file, "r") as fp:
             assert fp.read().strip() != "", f"Empty file: {expected_file}"
+
+    # Widgets = False by default, so these files should not exist
+    for unexpected file in [
+        "notebooks/example.ipynb",
+        "src/pynwb/ndx_my_namespace/widgets/__init__.py",
+        "src/pynwb/ndx_my_namespace/widgets/tetrode_series_widget.py",
+        "src/pynwb/ndx_my_namespace/widgets/README.md",
+    ]:
+        expected_file = os.path.join(project_dir, expected_file)
+        assert not os.path.exists(expected_file), f"Unexpected file: {expected_file}"
 
 
 if __name__ == "__main__":

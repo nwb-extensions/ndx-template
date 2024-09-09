@@ -50,7 +50,7 @@ def _remove_widget_files():
     # user specifies that they do not want to add widgets, remove these files from the template.
     # This is easier than adding the files only if they want to add widgets.
     dirs_to_remove = {
-        "./notebooks",  # currently contains only widget demo -- be more specific if others exist
+        "notebooks",  # currently contains only widget demo -- be more specific if others exist
         "src/pynwb/{{ cookiecutter.py_pkg_name }}/widgets"
     }
     for path in dirs_to_remove:
@@ -61,7 +61,7 @@ def _remove_widget_files():
 def main():
     """Run the post gen project hook main entry point."""
 
-    if "{{ cookiecutter.widgets }}" == "True":
+    if "{{ cookiecutter.widgets }}" != "True":
         _remove_widget_files()
 
     _generate_doc()
