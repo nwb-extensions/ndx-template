@@ -51,7 +51,7 @@ def _remove_widget_files():
     # This is easier than adding the files only if they want to add widgets.
     dirs_to_remove = {
         "./notebooks",  # currently contains only widget demo -- be more specific if others exist
-        "src/pynwb/{{ py_pkg_name }}/widgets"
+        "src/pynwb/{{ cookiecutter.py_pkg_name }}/widgets"
     }
     for path in dirs_to_remove:
         print(f"Deleting directory {path}")
