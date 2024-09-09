@@ -76,14 +76,14 @@ def _check_gen_files(project_dir: str, namespace: str):
             assert fp.read().strip() != "", f"Empty file: {expected_file}"
 
     # Widgets = False by default, so these files should not exist
-    for unexpected file in [
+    for unexpected_file in [
         "notebooks/example.ipynb",
         "src/pynwb/ndx_my_namespace/widgets/__init__.py",
         "src/pynwb/ndx_my_namespace/widgets/tetrode_series_widget.py",
         "src/pynwb/ndx_my_namespace/widgets/README.md",
     ]:
-        expected_file = os.path.join(project_dir, expected_file)
-        assert not os.path.exists(expected_file), f"Unexpected file: {expected_file}"
+        unexpected_file = os.path.join(project_dir, unexpected_file)
+        assert not os.path.exists(unexpected_file), f"Unexpected file: {unexpected_file}"
 
 
 if __name__ == "__main__":
