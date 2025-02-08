@@ -10,24 +10,28 @@ authors = [{% for name, email in zip(cookiecutter.author.split(','), cookiecutte
 ]
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
-# requires-python = ">=3.9"
-license = {text = "{{ cookiecutter.license }}"}
+requires-python = ">=3.9"
+{%- if cookiecutter.license != 'Other' %}
+license = "{{ cookiecutter.license }}"
+{%- else %}
+# license =   # TODO: add license text or identifier
+{%- endif %}
 classifiers = [
-    # TODO: add classifiers before release
-    # "Programming Language :: Python",
-    # "Programming Language :: Python :: 3.9",
-    # "Programming Language :: Python :: 3.10",
-    # "Programming Language :: Python :: 3.11",
-    # "Programming Language :: Python :: 3.12",
-    # "Programming Language :: Python :: 3.13",
-    # "Development Status :: 4 - Beta",
+    # TODO: update these classifiers before release
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
-    {%- if cookiecutter.license == 'BSD-3' %}
+    {%- if cookiecutter.license == 'BSD-3-Clause' %}
     "License :: OSI Approved :: BSD License",
     {%- elif cookiecutter.license == 'MIT' %}
     "License :: OSI Approved :: MIT License",
-    {%- elif cookiecutter.license == 'Apache Software License 2.0' %}
+    {%- elif cookiecutter.license == 'Apache-2.0' %}
     "License :: OSI Approved :: Apache Software License",
     {%- endif %}
 ]
