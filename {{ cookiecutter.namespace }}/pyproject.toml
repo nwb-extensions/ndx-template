@@ -10,24 +10,28 @@ authors = [{% for name, email in zip(cookiecutter.author.split(','), cookiecutte
 ]
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
-# requires-python = ">=3.8"
-license = {text = "{{ cookiecutter.license }}"}
+requires-python = ">=3.9"
+{%- if cookiecutter.license != 'Other' %}
+license = "{{ cookiecutter.license }}"
+{%- else %}
+# license =   # TODO: add license text or identifier
+{%- endif %}
 classifiers = [
-    # TODO: add classifiers before release
-    # "Programming Language :: Python",
-    # "Programming Language :: Python :: 3.8",
-    # "Programming Language :: Python :: 3.9",
-    # "Programming Language :: Python :: 3.10",
-    # "Programming Language :: Python :: 3.11",
-    # "Programming Language :: Python :: 3.12",
-    # "Development Status :: 4 - Beta",
+    # TODO: update these classifiers before release
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Intended Audience :: Science/Research",
-    {%- if cookiecutter.license == 'BSD-3' %}
+    {%- if cookiecutter.license == 'BSD-3-Clause' %}
     "License :: OSI Approved :: BSD License",
     {%- elif cookiecutter.license == 'MIT' %}
     "License :: OSI Approved :: MIT License",
-    {%- elif cookiecutter.license == 'Apache Software License 2.0' %}
+    {%- elif cookiecutter.license == 'Apache-2.0' %}
     "License :: OSI Approved :: Apache Software License",
     {%- endif %}
 ]
@@ -40,6 +44,36 @@ keywords = [
 dependencies = [
     "pynwb>=2.8.0",
     "hdmf>=3.14.1",
+]
+
+[project.optional-dependencies]
+test = [
+    "coverage>=7.5.4",
+    {%- if cookiecutter.widgets -%}
+    "nwbwidgets>=0.11.3",
+    {%- endif %}
+    "pytest>=8.2.2",
+    "pytest-cov>=5.0.0",
+    "pytest-subtests>=0.12.1",
+    "python-dateutil>=2.8.2",
+]
+
+docs = [
+    "hdmf-docutils>=0.4.7",
+]
+
+dev = [
+    "black>=24.4.2",
+    "codespell>=2.3.0",
+    "pre-commit>=3.5.0",
+    "ruff>=0.4.10",
+    "{{ cookiecutter.namespace }}[docs,test]",
+]
+
+# minimum requirements of project dependencies for testing (see .github/workflows/run_all_tests.yml)
+min-reqs = [
+    "pynwb==2.8.0",
+    "hdmf==3.14.1",
 ]
 
 # TODO: add URLs before release
@@ -81,7 +115,7 @@ exclude = [
 # addopts = "--cov --cov-report html"
 
 [tool.codespell]
-skip = "htmlcov,.git,.mypy_cache,.pytest_cache,.coverage,*.pdf,*.svg,venvs,.tox,hdmf-common-schema,./docs/_build/*,*.ipynb"
+skip = "htmlcov,.git,.mypy_cache,.pytest_cache,.coverage,*.pdf,*.svg,venvs,.tox,./docs/_build/*,*.ipynb"
 
 [tool.coverage.run]
 branch = true
@@ -99,13 +133,8 @@ preview = true
 exclude = ".git|.mypy_cache|.tox|.venv|venv|.ipynb_checkpoints|_build/|dist/|__pypackages__|.ipynb|docs/"
 
 [tool.ruff]
-lint.select = ["E", "F", "T100", "T201", "T203"]
+lint.select = ["E", "F", "T100", "T201", "T203", "C901"]
 exclude = [
-  ".git",
-  ".tox",
-  "__pycache__",
-  "build/",
-  "dist/",
   "docs/source/conf.py",
 ]
 line-length = 120

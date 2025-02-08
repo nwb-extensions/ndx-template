@@ -6,7 +6,8 @@
 
 1. In a terminal, change directory into the new {{ cookiecutter.namespace }} directory: `cd {{ cookiecutter.namespace }}`
 
-2. Add any packages required by your extension to the `dependencies` key in `pyproject.toml`.
+2. Add any packages required by your extension to the `[project] dependencies` or `[project.optional-dependencies]` 
+section of `pyproject.toml`.
 
 3. Run `python -m pip install -e .` to install your new extension Python package
 and any other packages required to develop, document, and run your extension.

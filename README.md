@@ -6,7 +6,7 @@ This repo provides a template for creating Neurodata Extensions (NDX) for the
 [Neurodata Without Borders](https://nwb.org/)
  data standard.
 
-This template currently supports creating Neurodata Extensions only using Python 3.8+.
+This template currently supports creating Neurodata Extensions only using Python 3.9+.
 MATLAB support is in development.
 
 ## Getting started
@@ -68,7 +68,7 @@ When answering the cookiecutter prompts, you will be asked whether you would lik
 3. Copy [`tetrode_series_widget.py`](https://github.com/nwb-extensions/ndx-template/blob/main/%7B%7B%20cookiecutter.namespace%20%7D%7D/src/pynwb/%7B%7B%20cookiecutter.py_pkg_name%20%7D%7D/widgets/tetrode_series_widget.py) to that directory and adapt the contents to your extension.
 4. Create a directory named `notebooks` in the root of the repository.
 5. Copy [example.ipynb](https://github.com/nwb-extensions/ndx-template/blob/main/%7B%7B%20cookiecutter.namespace%20%7D%7D/notebooks/example.ipynb) to that directory and adapt the contents to your extension.
-6. Add `nwbwidgets` to `requirements-dev.txt`.
+6. Add `nwbwidgets` to the `[project] dependencies` or `[project.optional-dependencies]` section of `pyproject.toml`.
 
 ## Maintainers
 - [@rly](https://github.com/rly)
@@ -79,7 +79,7 @@ When answering the cookiecutter prompts, you will be asked whether you would lik
 
 ## Copyright
 
-Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2024,
+Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2025,
 The Regents of the University of California, through Lawrence
 Berkeley National Laboratory (subject to receipt of any required
 approvals from the U.S. Dept. of Energy).  All rights reserved.

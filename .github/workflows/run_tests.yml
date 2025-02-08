@@ -19,60 +19,54 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { name: linux-python3.8    , os: ubuntu-latest  , python-ver: "3.8"  }
-        - { name: linux-python3.11   , os: ubuntu-latest  , python-ver: "3.11" }
-        - { name: linux-python3.12   , os: ubuntu-latest  , python-ver: "3.12" }
-        - { name: windows-python3.8  , os: windows-latest , python-ver: "3.8"  }
+        - { name: linux-python3.9    , os: ubuntu-latest  , python-ver: "3.9"  }
+        - { name: linux-python3.13   , os: ubuntu-latest  , python-ver: "3.13" }
         - { name: windows-python3.9  , os: windows-latest , python-ver: "3.9"  }
-        - { name: windows-python3.10 , os: windows-latest , python-ver: "3.10" }
-        - { name: windows-python3.11 , os: windows-latest , python-ver: "3.11" }
-        - { name: windows-python3.12 , os: windows-latest , python-ver: "3.12" }
-        - { name: macos-python3.8    , os: macos-latest   , python-ver: "3.8"  }
-        - { name: macos-python3.11   , os: macos-latest   , python-ver: "3.11" }
-        - { name: macos-python3.12   , os: macos-latest   , python-ver: "3.12" }
+        - { name: windows-python3.13 , os: windows-latest , python-ver: "3.13" }
+        - { name: macos-python3.9    , os: macos-latest   , python-ver: "3.9"  }
+        - { name: macos-python3.13   , os: macos-latest   , python-ver: "3.13" }
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: ${{ matrix.python-ver }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-ver }}
 
-    - name: Install build dependencies
-      run: |
-        python -m pip install --upgrade pip
-        python -m pip install cookiecutter pynwb hdmf-docutils
-        python -m pip list
+      - name: Install build dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install cookiecutter pynwb hdmf-docutils
+          python -m pip list
 
-    - name: Configure git
-      run: |
-        git config --global user.email "you@example.com"
-        git config --global user.name "Your Name"
+      - name: Configure git
+        run: |
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"
 
-    - name: Run template tests
-      run: |
-        python -m pip install pytest pytest-cookies
-        pytest tests
+      - name: Run template tests
+        run: |
+          python -m pip install pytest pytest-cookies
+          pytest tests
 
-    - name: Evaluate template from local source
-      run: |
-        cookiecutter -v --no-input --output-dir ./out .
+      - name: Evaluate template from local source
+        run: |
+          cookiecutter -v --no-input --output-dir ./out .
 
-    - name: Check generated files
-      run: |
-        python tests/test_bake_project.py ./out/ndx-my-namespace/ ndx-my-namespace
+      - name: Check generated files
+        run: |
+          python tests/test_bake_project.py ./out/ndx-my-namespace/ ndx-my-namespace
 
-    - name: Run PyNWB tests from generated extension
-      run: |
-        cd ./out/ndx-my-namespace
-        python -m pip install -r requirements-dev.txt
-        python -m pip install .
-        pytest
+      - name: Run PyNWB tests from generated extension
+        run: |
+          cd ./out/ndx-my-namespace
+          python -m pip install -U ".[test]"
+          pytest
 
-    - name: Build documentation from generated extension
-      run: |
-        set -e
-        cd ./out/ndx-my-namespace/docs
-        make apidoc
-        make html
+      - name: Build documentation from generated extension
+        run: |
+          set -e
+          cd ./out/ndx-my-namespace/docs
+          make apidoc
+          make html
