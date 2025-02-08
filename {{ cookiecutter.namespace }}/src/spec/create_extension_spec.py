@@ -14,10 +14,10 @@ def main():
         version="""{{ cookiecutter.version }}""",
         doc="""{{ cookiecutter.description }}""",
         author=[{% for name in cookiecutter.author.split(',') %}
-            "{{ name.strip() }}", {% endfor %}
+            "{{ name.strip() }}",{% endfor %}
         ],
         contact=[{% for email in cookiecutter.email.split(',') %}
-            "{{ email.strip() }}", {% endfor %}
+            "{{ email.strip() }}",{% endfor %}
         ],
     )
     ns_builder.include_namespace("core")
