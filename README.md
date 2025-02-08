@@ -79,7 +79,7 @@ When answering the cookiecutter prompts, you will be asked whether you would lik
 
 ## Copyright
 
-Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2024,
+Neurodata Extensions Catalog (NDX Catalog) Copyright (c) 2021-2025,
 The Regents of the University of California, through Lawrence
 Berkeley National Laboratory (subject to receipt of any required
 approvals from the U.S. Dept. of Energy).  All rights reserved.
