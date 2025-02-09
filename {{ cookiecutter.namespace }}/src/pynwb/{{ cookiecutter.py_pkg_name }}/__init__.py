@@ -19,5 +19,10 @@ load_namespaces(str(__spec_path))
 # `@register_class("TetrodeSeries", "{{ cookiecutter.namespace }}")`
 TetrodeSeries = get_class("TetrodeSeries", "{{ cookiecutter.namespace }}")
 
-# Remove these functions from the package
-del load_namespaces, get_class
+# TODO: Add all classes to __all__ to make them accessible at the package level
+__all__ = [
+    "TetrodeSeries",
+]
+
+# Remove these functions/modules from the package
+del load_namespaces, get_class, files, os, __location_of_this_file, __spec_path
