@@ -61,7 +61,7 @@ jobs:
       - name: Run PyNWB tests from generated extension
         run: |
           cd ./out/ndx-my-namespace
-          python -m pip install -U ".[test]"
+          python -m pip install -U ".[dev]"
           pytest
 
       - name: Run ruff on generated extension
