@@ -64,6 +64,16 @@ jobs:
           python -m pip install -U ".[test]"
           pytest
 
+      - name: Run ruff on generated extension
+        run: |
+          cd ./out/ndx-my-namespace
+          ruff check .
+
+      - name: Run codespell on generated extension
+        run: |
+          cd ./out/ndx-my-namespace
+          codespell .
+
       - name: Build documentation from generated extension
         run: |
           set -e
