@@ -1,8 +1,11 @@
 name: Run tests
 on:
+  push:
+    branches:
+      - main
+  pull_request:
   schedule:
     - cron: '0 5 * * *'  # once per day at midnight ET
-  push:
   workflow_dispatch:
 
 jobs:
