@@ -89,6 +89,6 @@ jobs:
         if: ${{ "{{" }} matrix.os == 'windows-latest' }}
         run: |
           python -m venv test-wheel-env
-          test-wheel-env/Scripts/activate.bat
+          call test-wheel-env/Scripts/activate.bat
           python -m pip install dist/*-none-any.whl
           python -c "import {{ cookiecutter.py_pkg_name }}"
