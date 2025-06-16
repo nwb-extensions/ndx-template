@@ -1,3 +1,13 @@
+# This workflow runs all tests in the extension package on the latest versions of
+# Windows/MacOS/Linux and all recent versions of Python. It also tests whether the
+# tests pass when the minimum versions of dependencies allowed are installed, and
+# tests whether the tests pass when the built wheel, source distribution, and git
+# archive are installed.
+
+# NOTE: This workflow assumes that the extension package has no platform-specific dependencies.
+# The "build" and "test-package" jobs therefore only test on ubuntu-latest with the latest
+# Python version. These jobs should be adjusted if the assumption is incorrect.
+
 name: Run all tests
 on:
   push:
