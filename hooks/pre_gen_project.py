@@ -2,6 +2,7 @@ import cookiecutter.config
 import cookiecutter.replay
 from email.utils import parseaddr
 import json
+from pathlib import Path
 import re
 import sys
 
