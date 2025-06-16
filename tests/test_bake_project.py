@@ -43,7 +43,7 @@ def test_bake_project_widgets(cookies):
         "src/pynwb/ndx_my_namespace/widgets/tetrode_series_widget.py",
         "src/pynwb/ndx_my_namespace/widgets/README.md",
     ]:
-        expected_file = Path(project_dir) / expected_file
+        expected_file = Path(result.project_path) / expected_file
         assert expected_file.exists(), f"Missing file: {expected_file}"
 
         with open(expected_file, "r") as fp:
