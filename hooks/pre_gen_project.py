@@ -2,8 +2,6 @@ import cookiecutter.config
 import cookiecutter.replay
 from email.utils import parseaddr
 import json
-import os
-import os.path
 import re
 import sys
 
@@ -93,16 +91,14 @@ def _write_new_defaults():
     template_name = "ndx-template"
 
     user_config = cookiecutter.config.get_user_config()
-    template_path = os.path.join(
-        user_config["cookiecutters_dir"], template_name, "cookiecutter.json"
-    )
+    template_path = Path(user_config["cookiecutters_dir"]) / template_name / "cookiecutter.json"
 
     # the below will only work if cookiecutter downloads and caches the
     # template from github or has previously downloaded and cached this
     # template. this will not work for the following command on a clean
     # system:
     # cookiecutter {ndx-template source dir}
-    if not os.path.exists(template_path):
+    if not template_path.exists():
         return
 
     replay_dir = user_config["replay_dir"]
