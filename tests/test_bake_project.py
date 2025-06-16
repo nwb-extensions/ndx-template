@@ -1,5 +1,5 @@
 """Test evaluating (baking) the template. Requires pytest-cookies to be installed."""
-import os
+from pathlib import Path
 import sys
 
 
@@ -43,8 +43,8 @@ def test_bake_project_widgets(cookies):
         "src/pynwb/ndx_my_namespace/widgets/tetrode_series_widget.py",
         "src/pynwb/ndx_my_namespace/widgets/README.md",
     ]:
-        expected_file = os.path.join(result.project_path, expected_file)
-        assert os.path.exists(expected_file), f"Missing file: {expected_file}"
+        expected_file = Path(result.project_path) / expected_file
+        assert expected_file.exists(), f"Missing file: {expected_file}"
 
         with open(expected_file, "r") as fp:
             assert fp.read().strip() != "", f"Empty file: {expected_file}"
@@ -69,8 +69,8 @@ def _check_gen_files(project_dir: str, namespace: str):
         "spec/%s.extensions.yaml" % namespace,
         "spec/%s.namespace.yaml" % namespace,
     ]:
-        expected_file = os.path.join(project_dir, expected_file)
-        assert os.path.exists(expected_file), f"Missing file: {expected_file}"
+        expected_file = Path(project_dir) / expected_file
+        assert expected_file.exists(), f"Missing file: {expected_file}"
 
         with open(expected_file, "r") as fp:
             assert fp.read().strip() != "", f"Empty file: {expected_file}"
@@ -82,8 +82,8 @@ def _check_gen_files(project_dir: str, namespace: str):
         "src/pynwb/ndx_my_namespace/widgets/tetrode_series_widget.py",
         "src/pynwb/ndx_my_namespace/widgets/README.md",
     ]:
-        unexpected_file = os.path.join(project_dir, unexpected_file)
-        assert not os.path.exists(unexpected_file), f"Unexpected file: {unexpected_file}"
+        unexpected_file = Path(project_dir) / unexpected_file
+        assert not unexpected_file.exists(), f"Unexpected file: {unexpected_file}"
 
 
 if __name__ == "__main__":
