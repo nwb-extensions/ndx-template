@@ -155,7 +155,7 @@ jobs:
         run: python -m pip install archive/archive.tgz
 
       - name: Check installed package
-        run: python -c "import ndx_franklab_novela"
+        run: python -c "import {{ cookiecutter.py_pkg_name }}"
 
       - name: Checkout repo to access tests
         uses: actions/checkout@v4
