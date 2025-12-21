@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: '0 5 * * *'  # once per day at midnight ET
 
+permissions:
+  contents: read
+
 jobs:
   call-run-tests:
     uses: ./.github/workflows/run_tests.yml
