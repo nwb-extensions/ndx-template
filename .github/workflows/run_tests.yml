@@ -4,9 +4,8 @@ on:
     branches:
       - main
   pull_request:
-  schedule:
-    - cron: '0 5 * * *'  # once per day at midnight ET
   workflow_dispatch:
+  workflow_call:
 
 jobs:
   run-tests:
