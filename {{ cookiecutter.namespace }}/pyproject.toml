@@ -10,7 +10,7 @@ authors = [{% for name, email in zip(cookiecutter.author.split(','), cookiecutte
 ]
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 {%- if cookiecutter.license != 'Other' %}
 license = "{{ cookiecutter.license }}"
 {%- else %}
@@ -19,7 +19,6 @@ license = "{{ cookiecutter.license }}"
 classifiers = [
     # TODO: update these classifiers before release
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -46,7 +45,14 @@ dependencies = [
     "hdmf>=3.14.1",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
+# minimum versions of project dependencies for testing (see .github/workflows/run_all_tests.yml)
+test-min-deps = [
+    "pynwb==2.8.0",
+    "hdmf==3.14.1",
+    {include-group = "test"},
+]
+
 test = [
     "coverage>=7.5.4",
     {%- if cookiecutter.widgets -%}
@@ -67,13 +73,8 @@ dev = [
     "codespell>=2.3.0",
     "pre-commit>=3.5.0",
     "ruff>=0.4.10",
-    "{{ cookiecutter.namespace }}[docs,test]",
-]
-
-# minimum requirements of project dependencies for testing (see .github/workflows/run_all_tests.yml)
-min-reqs = [
-    "pynwb==2.8.0",
-    "hdmf==3.14.1",
+    {include-group = "docs"},
+    {include-group = "test"},
 ]
 
 # TODO: add URLs before release
