@@ -4,9 +4,11 @@ on:
     branches:
       - main
   pull_request:
-  schedule:
-    - cron: '0 5 * * *'  # once per day at midnight ET
   workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
 
 jobs:
   run-tests:
@@ -22,18 +24,18 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - { name: linux-python3.9    , os: ubuntu-latest  , python-ver: "3.9"  }
+        - { name: linux-python3.10   , os: ubuntu-latest  , python-ver: "3.10" }
         - { name: linux-python3.13   , os: ubuntu-latest  , python-ver: "3.13" }
-        - { name: windows-python3.9  , os: windows-latest , python-ver: "3.9"  }
+        - { name: windows-python3.10 , os: windows-latest , python-ver: "3.10" }
         - { name: windows-python3.13 , os: windows-latest , python-ver: "3.13" }
-        - { name: macos-python3.9    , os: macos-latest   , python-ver: "3.9"  }
+        - { name: macos-python3.10   , os: macos-latest   , python-ver: "3.10" }
         - { name: macos-python3.13   , os: macos-latest   , python-ver: "3.13" }
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-ver }}
 
@@ -64,7 +66,7 @@ jobs:
       - name: Run PyNWB tests from generated extension
         run: |
           cd ./out/ndx-my-namespace
-          python -m pip install -U ".[dev]"
+          python -m pip install -U --group dev .
           pytest
 
       - name: Run ruff on generated extension

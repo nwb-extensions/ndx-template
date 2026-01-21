@@ -45,7 +45,14 @@ dependencies = [
     "hdmf>=4.0.0",  # 4.0.0 required for numpy 2.0 compatibility
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
+# minimum versions of project dependencies for testing (see .github/workflows/run_all_tests.yml)
+test-min-deps = [
+    "pynwb==3.0.0",
+    "hdmf==4.0.0",
+    {include-group = "test"},
+]
+
 test = [
     "coverage>=7.5.4",
     {%- if cookiecutter.widgets -%}
@@ -66,13 +73,8 @@ dev = [
     "codespell>=2.3.0",
     "pre-commit>=3.5.0",
     "ruff>=0.4.10",
-    "{{ cookiecutter.namespace }}[docs,test]",
-]
-
-# minimum requirements of project dependencies for testing (see .github/workflows/run_all_tests.yml)
-min-reqs = [
-    "pynwb==3.0.0",
-    "hdmf==4.0.0",
+    {include-group = "docs"},
+    {include-group = "test"},
 ]
 
 # TODO: add URLs before release
