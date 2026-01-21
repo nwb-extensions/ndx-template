@@ -10,7 +10,7 @@ authors = [{% for name, email in zip(cookiecutter.author.split(','), cookiecutte
 ]
 description = "{{ cookiecutter.description }}"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 {%- if cookiecutter.license != 'Other' %}
 license = "{{ cookiecutter.license }}"
 {%- else %}
@@ -19,7 +19,6 @@ license = "{{ cookiecutter.license }}"
 classifiers = [
     # TODO: update these classifiers before release
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -42,8 +41,8 @@ keywords = [
     'ndx-extension',
 ]
 dependencies = [
-    "pynwb>=2.8.0",
-    "hdmf>=3.14.1",
+    "pynwb>=3.0.0",  # 3.0.0 compatible with hdmf 4.0+ and numpy 2.0
+    "hdmf>=4.0.0",  # 4.0.0 required for numpy 2.0 compatibility
 ]
 
 [project.optional-dependencies]
@@ -72,8 +71,8 @@ dev = [
 
 # minimum requirements of project dependencies for testing (see .github/workflows/run_all_tests.yml)
 min-reqs = [
-    "pynwb==2.8.0",
-    "hdmf==3.14.1",
+    "pynwb==3.0.0",
+    "hdmf==4.0.0",
 ]
 
 # TODO: add URLs before release
