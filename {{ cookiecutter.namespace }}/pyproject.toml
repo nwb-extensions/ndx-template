@@ -41,15 +41,15 @@ keywords = [
     'ndx-extension',
 ]
 dependencies = [
-    "pynwb>=2.8.0",
-    "hdmf>=3.14.1",
+    "pynwb>=3.0.0",  # 3.0.0 compatible with hdmf 4.0+ and numpy 2.0
+    "hdmf>=4.0.0",  # 4.0.0 required for numpy 2.0 compatibility
 ]
 
 [dependency-groups]
 # minimum versions of project dependencies for testing (see .github/workflows/run_all_tests.yml)
 test-min-deps = [
-    "pynwb==2.8.0",
-    "hdmf==3.14.1",
+    "pynwb==3.0.0",
+    "hdmf==4.0.0",
     {include-group = "test"},
 ]
 
